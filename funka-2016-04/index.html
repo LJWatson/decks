@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Make it, shake it, break it</title>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/button.css">
+<link rel="stylesheet" href="shower/themes/brightness.css">
+</head>
+<body class="shower list">
+<header class="caption">
+<h1>Make it, shake it, break it</h1>
+</header>
+<section class="slide" id="cover">
+<h2>Make it, shake it, break it</h2>
+<p>Funka Accessibility Days 2016</p>
+<p><a href="https://twitter.com/leoniewatson">@LeonieWatson</a> <a href="http://tink.uk">tink.uk</a></p>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+padding-top: 200px;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>Vibration API</h2>
+
+<p><a href="https://www.w3.org/TR/vibration/">W3C Recommendation (2015)</a></p>
+</section>
+
+<section class="slide">
+<h2>What?</h2>
+
+<p>Enables simple haptic feedback from webapps</p>
+</section>
+
+<section class="slide">
+<h2>Why?</h2>
+
+<ul>
+<li>New email notifications</li>
+<li>Game effects</li>
+<li>Incoming call notifications</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>How?</h2>
+
+<ul>
+<li>Patterns of on/off pulses</li>
+<li>Each pulse is described in milliseconds</li>
+<li>Patterns are a combination of pulses/pauses</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Where?</h2>
+
+<ul>
+<li>Chrome on Android</li>
+<li>Chrome, Firefox and Opera on desktop</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Basic HTML</h2>
+
+<pre><code>
+&lt;button id="v1"&gt;Vibrate once&lt;/button&gt;
+&lt;button id="v2"&gt;Vibrate twice&lt;/button&gt;
+&lt;button id="v3"&gt;Vibrate more&lt;/button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Check for API support</h2>
+
+<pre><code>
+ if ("vibrate" in navigator) {
+	//Do something.
+ } else {
+    alert("Browser does not support the Vibration API");
+ }
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Vibrate once</h2>
+
+<pre><code>
+ var vibrateOnce = function(e) {
+	window.navigator.vibrate(500);
+ };
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Vibrate twice</h2>
+
+<pre><code>
+ var vibrateTwice = function(e) {
+	window.navigator.vibrate([500, 500, 500]);
+ };
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Vibrate more</h2>
+
+<pre><code>
+ var vibrateMore = function(e) {
+	window.navigator.vibrate([500, 500, 500, 500, 500]);
+ };
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Event listeners</h2>
+
+<pre><code>
+document.getElementById("v1")
+		.addEventListener("click", vibrateOnce);
+document.getElementById("v2")
+		.addEventListener("click", vibrateTwice);
+document.getElementById("v3")
+		.addEventListener("click", vibrateMore);
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Vibration API demo</h2>
+
+<video class="brightness" src="media/vibration.mp4">
+</section>
+
+<section class="slide">
+<h2>CSS Flexible Box Layout module</h2>
+
+<p><a href="https://www.w3.org/TR/css-flexbox-1/W">W3C Candidate Recommendation (2016)</a></p>
+</section>
+
+
+<section class="slide">
+<h2>What?</h2>
+
+<p>Enables flexible layout control and visual ordering</p>
+</section>
+
+<section class="slide">
+<h2>Why?</h2>
+
+<ul>
+<li>Easier responsive layouts</li>
+<li>Drag and drop functionality</li>
+<li>No more float hacks</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>How?</h2>
+
+<ul>
+<li>display: flex;</li>
+<li>order: int;</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Where?</h2>
+
+<p>Pretty much everywhere except IE before 11</p>
+</section>
+
+<section class="slide">
+<h2>Basic HTML</h2>
+
+<pre><code>
+&lt;div&gt;
+    &lt;button&gt;1&lt;/button&gt;
+    &lt;button&gt;2&lt;/button&gt;
+    &lt;button&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Unflexed buttons</h2>
+
+<div>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+</div>
+
+</section>
+
+
+<section class="slide">
+<h2>Keyboard experience</h2>
+
+<video class="brightness" src="media/no-flexbox.mp4">
+</section>
+
+<section class="slide">
+<h2>display and order properties</h2>
+
+<pre><code>
+&lt;div style="display: flex;"&gt;
+    &lt;button style="order: 3;"&gt;1&lt;/button&gt;
+    &lt;button style="order: 2;"&gt;2&lt;/button&gt;
+    &lt;button style="order: 1;"&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</section>
+
+<section class="slide">
+<h2>Flexed buttons</h2>
+
+<div style="display: flex;">
+<button style="order: 3;">1</button>
+<button style="order: 2;">2</button>
+<button style="order: 1;">3</button>
+</div>
+</section>
+
+<section class="slide">
+<h2>Keyboard experience</h2>
+
+<video class="brightness" src="media/flexbox-chrome.mp4">
+</section>
+
+<section class="slide">
+<h2>tabindex attribute</h2>
+
+<pre><code>
+&lt;div style="display: flex;"&gt;
+    &lt;button style="order: 3;" tabindex="3"&gt;1&lt;/button&gt;
+    &lt;button style="order: 2;" tabindex="2"&gt;2&lt;/button&gt;
+    &lt;button style="order: 1;" tabindex="1"&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Spec advice?</h2>
+
+<blockquote cite="https://www.w3.org/TR/css-flexbox-1/#order-accessibility">
+Authors must use ‘order' only for visual, not logical, reordering of content.</blockquote>
+ </section>
+
+<section class="slide">
+<h2>The Firefox bug</h2>
+
+<video class="brightness" src="media/flexbox-firefox.mp4">
+</section>
+
+<section class="slide">
+<h2>Web Speech API</h2>
+
+<p><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">W3C Community Group specification (2012)</a></p>
+</section>
+
+<section class="slide">
+<h2>What?</h2>
+
+<p>Enables speech input and output for webapps</p>
+</section>
+
+<section class="slide">
+<h2>Why?</h2>
+
+<ul>
+<li>Ask calendar for today's appointments</li>
+<li>Get help with complex interfaces</li>
+<li>Hands-free recipe books</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>How?</h2>
+
+<ul>
+<li>SpeechSynthesis and SpeechRecognition interfaces</li>
+<li>Methods for controlling and manipulating speech output/input</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Where?</h2>
+
+<p><u>SpeechSynthesis interface:</u></p>
+<ul>
+<li>Chrome, Opera and Safari on desktop</li>
+<li>Chrome and Safari on mobile</li>
+</ul>
+
+<p><u>SpeechRecognition interface:</u></p>
+<ul>
+<li>Chrome and Opera on the desktop</li>
+<li>Chrome on Android</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Basic HTML</h2>
+
+<pre><code>
+&lt;button data-hint="Use space or enter to activate"&gt;
+	Foo
+&lt;/button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Check for API support</h2>
+
+<pre><code>
+if (window.SpeechSynthesisUtterance === undefined) {
+	alert("Browser does not support the Web Speech API");
+} else {
+	// Do something
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Get controls with hints</h2>
+
+<pre><code>
+hints = document.querySelectorAll('[data-hint]'),
+		hoverTimeout;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Create speech callback</h2>
+
+<pre><code>
+speakHint = function(e) {
+	var msg =
+      new SpeechSynthesisUtterance(e.target.dataset.hint);
+    window.speechSynthesis.speak(msg);
+};
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard functionality</h2>
+
+<pre><code>
+function focusEventListener(e) {
+	hoverTimeout = window.setTimeout(speakHint, 500, e);
+}
+
+function blurEventListener(e) {
+	window.clearTimeout(hoverTimeout);
+}
+	</code></pre>
+	</section>
+
+<section class="slide">
+<h2>Mouse functionality</h2>
+
+<pre><code>
+function mouseoverEventListener(e) {
+	hoverTimeout = window.setTimeout(speakHint, 500, e);
+}
+
+function mouseoutEventListener(e) {
+	window.clearTimeout(hoverTimeout);
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Event listeners</h2>
+
+<pre><code>
+hints.forEach(function(hint) {
+	hint.addEventListener('focus', focusEventListener);
+	hint.addEventListener('blur', blurEventListener);
+	hint.addEventListener('mouseover', mouseoverEventListener);
+	hint.addEventListener('mouseout', mouseoutEventListener);
+});
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Web Speech API demo</h2>
+
+<video class="brightness" src="media/web-speech-hint.mp4">
+</section>
+
+<section class="slide">
+<h2>Scalable Vector Graphics (SVG)</h2>
+
+<ul>
+<li><a href="https://www.w3.org/TR/SVG10/">SVG W3C Recommendation 1.0 (2001)</a></li>
+<li><a href="https://www.w3.org/TR/SVG/">SVG 1.1 2nd edition W3C Recommendation (2011)</a></li>
+<li><a href="https://www.w3.org/TR/SVG2/">SVG 2.0 W3C Working Draft (2015)</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>What?</h2>
+
+<p>Create graphics that scale without loss of quality, and which can have semantic meaning</p>
+</section>
+
+<section class="slide">
+<h2>Why?</h2>
+
+<ul>
+<li>Responsive images</li>
+<li>Icons</li>
+<li>Reduced bandwidth</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>How?</h2>
+
+<p>Draw on-screen using elements and animations</p>
+</section>
+
+<section class="slide">
+<h2>Where?</h2>
+
+<p>Pretty much everywhere</p>
+</section>
+
+<section class="slide">
+<h2>Rectangles</h2>
+
+<svg width="250" height="100">
+  <rect x="0" y="0" width="100%" height="100%" style="fill: #b55fff;" />
+</svg>
+</section>
+
+<section class="slide">
+<h2>rect element</h2>
+
+<pre><code>
+&lt;svg width="250" height="100"&gt;
+  &lt;rect x="0" y="0" width="100%" height="100%"
+        style="fill: #b55fff;" /&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Circles</h2>
+
+<svg width="250" height="100">
+<circle cx="125" cy="50" r="32.5" style="fill: #820bbb;"  />
+</svg>
+</section>
+
+<section class="slide">
+<h2>circle element</h2>
+
+<pre><code>
+&lt;svg width="250" height="100"&gt;
+  &lt;circle tabindex="0" cx="125" cy="50" r="32.5"
+          style="fill: #820bbb;"  /&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Pentagrams</h2>
+
+<svg width="304" height="290">
+  <path d="M2,111 h300 l-242.7,176.3 92.7,-285.3 92.7,285.3 z" style="fill:#b55fff;stroke:#000000;stroke-width:15;stroke-linejoin:round"/>
+</svg>
+</section>
+
+<section class="slide">
+<h2>path element</h2>
+
+<pre><code>
+&lt;svg width="304" height="290"&gt;
+&lt;path d="M2,111 h300 l-242.7,176.3 92.7,-285.3 92.7,285.3 z"
+      style="fill:#b55fff;stroke:#000000;stroke-width:15;
+            stroke-linejoin:round"/&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Scalability</h2>
+
+<svg width="456" height="445">
+<path d="M2,111 h300 l-242.7,176.3 92.7,-285.3 92.7,285.3 z" style="fill:#b55fff;stroke:#000000;stroke-width:15;stroke-linejoin:round"/>
+</svg>
+</section>
+
+<section class="slide">
+<h2>Screen reader experience</h2>
+
+<svg width="304" height="290">
+<path d="M2,111 h300 l-242.7,176.3 92.7,-285.3 92.7,285.3 z" style="fill:#b55fff;"/>
+</svg>
+</section>
+
+<section class="slide">
+<h2>img role</h2>
+
+<pre><code>
+&lt;svg role="img" width="304" height="290"&gt;
+&lt;path d="M2,111 h300 l-242.7,176.3 92.7,-285.3 92.7,285.3 z"
+      style="fill:#b55fff;"/&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>title element</h2>
+
+<pre><code>
+&lt;svg role="img" width="304" height="290"&gt;
+  &lt;title&gt;Violet pentagram&lt;/title&gt;
+  &lt;path d="M2,111 h300 l-242.7,176.3 92.7,-285.3 92.7,285.3 z"
+      style="fill:#b55fff;&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>desc element</h2>
+
+<pre><code>
+&lt;svg role="img" width="304" height="290"&gt;
+  &lt;title&gt;Violet pentagram&lt;/title&gt;
+  &lt;desc&gt;Five pointed star&lt;/desc&gt;
+  &lt;path d="M2,111 h300 l-242.7,176.3 92.7,-285.3 92.7,285.3 z"
+      style="fill:#b55fff;&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>aria-labelledby attribute</h2>
+
+<pre><code>
+&lt;svg role="img" aria-labelledby="title"
+    width="304" height="290"&gt;
+&lt;title id="title"&gt;Violet pentagram&lt;/title&gt;
+&lt;desc&gt;Five pointed star&lt;/desc&gt;
+&lt;path d="M2,111 h300 l-242.7,176.3 92.7,-285.3 92.7,285.3 z"
+      style="fill:#b55fff;&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>aria-describedby attribute</h2>
+
+<pre><code>
+&lt;svg role="img" aria-labelledby="title"
+    aria-describedby="desc" width="304" height="290"&gt;
+&lt;title id="title"&gt;Violet pentagram&lt;/title&gt;
+&lt;desc id="desc"&gt;Five pointed star&lt;/desc&gt;
+&lt;path d="M2,111 h300 l-242.7,176.3 92.7,-285.3 92.7,285.3 z"
+      style="fill:#b55fff;&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader experience</h2>
+
+<video class="brightness" src="media/svg-aria.mp4">
+</section>
+
+<section class="slide">
+<h2>Text</h2>
+
+<svg width="250" height="100">
+<text x="50" y="50" style="fill: #000000; font-size: 2em;">Tequila</text>
+</svg>
+</section>
+
+<section class="slide">
+<h2>text element</h2>
+
+<pre><code>
+&lt;svg width="250" height="100"&gt;
+  &lt;text x="50" y="50" style="fill: #000000; font-size: 2em;"&gt;
+    Tequila
+  &lt;/text&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rotated text</h2>
+
+<svg width="250" height="150">
+<text x="50" y="25" style="fill: #000000; font-size: 2em;" transform="rotate(30 20,40)">Tequila</text>
+</svg>
+</section>
+
+<section class="slide">
+<h2>transform attribute</h2>
+
+<pre><code>
+&lt;svg width="250" height="150"&gt;
+  &lt;text x="50" y="25" style="fill: #000000; font-size: 2em;"
+      transform="rotate(30 20,40)"&gt;Tequila&lt;/text&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>SVG Accessibility API Mappings (AAM)</h2>
+
+<p><a href="https://www.w3.org/TR/svg-aam-1.0/">W3C Working draft (2015)</a></p>
+</section>
+
+<section class="slide">
+<h2>Playground</h2>
+
+<p><a href="https://ljwatson.github.io/playground/">ljwatson.github.io/playground/</a></p>
+</section>
+
+<section class="slide">
+<h2>Thank you</h2>
+
+<p>Questions?</p>
+</section>
+
+<!-- <div class="progress"></div> -->
+<script src="shower/shower.min.js"></script>
+</body>
+</html>

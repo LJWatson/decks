@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility mechanics for web applications</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>Accessibility mechanics for web applications</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>Accessibility mechanics for web applications</h2>
+
+<p>Ember London meetup, April 2016</p>
+<p><a href="http://twitter.com/leoniewatson">@LeonieWatson</a>  <a href="http://tink.uk">tink.uk</a></p>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+padding-top: 200px;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>HTML</h2>
+</section>
+
+<section class="slide">
+<h2>Role</h2>
+<p>Most HTML elements have roles that define their purpose</p>
+</section>
+
+<section class="slide">
+<h2><code>&lt;img&gt;</code> element</h2>
+<p>Has a default implicit role of "graphic" or "image"</p>
+<pre><code>
+&lt;img src="tequila.png" alt="Chamuco's tequila"&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2><code>&lt;main&gt;</code> element</h2>
+<p>Has a default implicit role of "main"</p>
+<pre><code>
+&lt;main&gt;
+	&lt;h1&gt;Tequila&lt;/h1&gt;
+	...
+&lt;/main&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2><code>&lt;span&gt;</code> and <code>&lt;div&gt;</code> elements</h2>
+<p>Have semantically neutral default implicit roles</p>
+<pre><code>
+&lt;span&gt;Plain text&lt;/span&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Name</h2>
+<p>Some HTML elements can be given accessible names to identify them</p>
+</section>
+
+<section class="slide">
+<h2><code>&lt;a&gt;</code> element</h2>
+<p>Accessible names can be the content of an HTML element</p>
+<pre><code>
+&lt;a href="http://tink.uk"&gt;Tink UK&lt;/a&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2><code>&lt;img&gt;</code> element</h2>
+<p>Accessible names can be assigned using HTML attributes</p>
+<pre><code>
+&lt;img src="tequila.png" alt="Chamuco's tequila"&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2><code>&lt;label&gt;</code> element</h2>
+<p>Accessible names can be assigned using associated HTML elements</p>
+<pre><code>
+&lt;label for="username"&gt;Username&lt;/label&gt;
+&lt;input type="text" id="username"&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>State</h2>
+<p>Many HTML elements have associated states</p>
+</section>
+
+<section class="slide">
+<h2><code>required</code> attribute</h2>
+<p>Indicates when a form input is required</p>
+<pre><code>
+&lt;input type="checkbox" id="terms" required&gt;
+&lt;label&gt;Accept terms&lt;/label&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard focus</h2>
+<p>Interactive HTML elements come with keyboard support</p>
+</section>
+
+<section class="slide">
+<h2><code>&lt;a&gt;</code> element</h2>
+<p>Can be focused on with the tab key, and activated with the enter key</p>
+<pre><code>
+&lt;a href="http://tink.uk"&gt;Tink UK&lt;/a&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2><code>&lt;button&gt;</code> element</h2>
+<p>Can be focused on with the tab key, and activated with the space or enter key</p>
+<pre><code>
+&lt;button&gt;Tequila&lt;/button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>DOM tree</h2>
+<img src="pictures/dom-tree.png" alt="DOM tree">
+</section>
+
+<section class="slide">
+<h2>Accessibility tree</h2>
+<img src="pictures/acc-tree.png" alt="Accessibility tree">
+</section>
+
+<section class="slide">
+<h2>Platform Accessibility APIs</h2>
+<ul>
+<li>Windows: MSAA   UIAutomation   IAccessible2</li>
+<li>Mac OS: NSAccessibility   Protocol</li>
+<li>Linux: IAccessible2   ATK/AT-ASPI</li>
+<li>iOS: UIAccessibility</li>
+<li>Android: Accessibility Framework</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Platform controls</h2>
+<img src="pictures/bold-checkbox.PNG" alt="Bold checkbox in Windows 10">
+<ul>
+<li>Role is "checkbox"</li>
+<li>Accessible name is "Bold"</li>
+<li>State is focused, checked, focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Web control</h2>
+<pre><code>
+&lt;input type="checkbox" for="bold"&gt;
+&lt;label for="bold"&gt;Bold&lt;/label&gt;
+</code></pre>
+<ul>
+<li>Role is "checkbox"</li>
+<li>Accessible name is "Bold"</li>
+<li>State is focused, checked, focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML Accessibility API Mappings (AAM)</h2>
+<p>The relationship between platform objects and web objects is documented in the <a href="https://www.w3.org/TR/html-aam-1.0/">HTML AAM</a></p>
+</section>
+
+<section class="slide">
+<h2>ARIA</h2>
+</section>
+
+<section class="slide">
+<h2>Role</h2>
+<p>30+ roles including:</p>
+<ul>
+<li>dialog</li>
+<li>slider</li>
+<li>toolbar</li>
+<li>tree</li>
+<li>tablist</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Name (and description)</h2>
+<p>Attributes for providing accessible names and descriptions:</p>
+<ul>
+<li>aria-label</li>
+<li>aria-labelledby</li>
+<li>aria-describedby</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>State</h2>
+<p>9 states including:</p>
+<ul>
+<li>aria-checked</li>
+<li>aria-pressed</li>
+<li>aria-hidden</li>
+<li>aria-invalid</li>
+<li>aria-current</li>
+</ul>
+</section>
+
+<section class="slide">
+	<h2>Ember component</h2>
+	<pre><code style="font-size: 60%">
+App.TequilaButtonComponent = Ember.Component.extend({
+	tagName: 'tequila-button',
+	nameBinding: 'tequila.name',
+	attributeBindings: ['tabindex'],
+	answer: false,
+	label: function() { return "Is " + this.get('name') + " tequila good?"; }
+					.property('name'),
+	tabindex: 1,
+	click: function(event) { alert('Yes'); }
+});
+	</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rendered DOM</h2>
+<pre><code style="font-size: 60%">
+&lt;tequila-button tabindex="1" class="ember-view" id="ember260"&gt;
+	&lt;script type="text/x-placeholder" id="metamorph-2-start"&gt;&lt;/script&gt;
+	Is Reposado tequila good?
+	&lt;script type="text/x-placeholder" id="metamorph-2-end"&gt;&lt;/script&gt;
+&lt;/tequila-button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader experience</h2>
+<video class="brightness" src="media/ember-inaccessible.mp4">
+</section>
+
+<section class="slide">
+<h2>Accessible Ember component</h2>
+
+<pre><code style="font-size: 60%">
+App.TequilaButtonComponent = Ember.Component.extend({
+	tagName: 'tequila-button',
+	nameBinding: 'tequila.name',
+	attributeBindings: [<mark>'label:aria-label'</mark>, 'tabindex'],
+	answer: false,
+	label: function() { return "Is " + this.get('name') + " tequila good?"; }
+					.property('name'),
+	tabindex: <mark>0</mark>,
+	<mark>ariaRole: 'button',</mark>
+	click: function(event) { alert('Yes'); },
+	<mark>keyDown: function(event) {</mark>
+		<mark>if (event.keyCode == 13 || event.keyCode == 32) { this.click(event); }</mark>
+	<mark>}</mark>
+});
+	</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rendered DOM</h2>
+<pre><code style="font-size: 60%">
+&lt;tequila-button role="button" tabindex="0" aria-label="Is Reposado tequila good?"
+ 				class="ember-view" id="ember260"&gt;
+	&lt;script type="text/x-placeholder" id="metamorph-2-start"&gt;&lt;/script&gt;
+	Is Reposado tequila good?
+	&lt;script type="text/x-placeholder" id="metamorph-2-end"&gt;&lt;/script&gt;
+&lt;/tequila-button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader experience</h2>
+<video class="brightness" src="media/ember-accessible.mp4">
+</section>
+
+<section class="slide">
+<h2>Ember a11y test suite</h2>
+<p>Use the <a href="https://github.com/trentmwillis/ember-a11y-testing">Ember a11y test suite</a> within the Ember framework.</p>
+</section>
+
+<section class="slide">
+<h2>Installation</h2>
+<p>Use Ember Cli to install Ember a11y testing as an add-on:</p>
+<pre><code>
+ember install ember-a11y-testing
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Full test suite</h2>
+<p>Call the <code>a11yTest</code> method from  inside an assertion:</p>
+<pre><code style="font-size: 60%">
+test('Home page passes a11y tests', function(assert) {
+  visit('/');
+
+  andThen(function() {
+    assert.ok(a11yTest());
+  });
+});
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Run individual tests</h2>
+<p>Pass a configuration object to run specific tests:</p>
+<pre><code style="font-size: 60%">
+test('Home page passes a11y tests', function(assert) {
+  visit('/');
+
+  andThen(function() {
+    assert.ok(a11yTest({
+      allActionsFocusable: false
+    }));
+  });
+});
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Tenon API</h2>
+<p>Use the <a href="http://tenon.io">Tenon API</a> with your build tools</p>
+</section>
+
+<section class="slide">
+<h2>Installation</h2>
+<p>Install a <a href="https://tenon.io/getcode.php">Tenon module</a> for Grunt, Gulp or other environments</p>
+</section>
+
+<section class="slide">
+<h2>Required parameters</h2>
+<p>Send a post request to the API with required parameters:</p>
+<ul>
+<li>key - Your API key</li>
+<li>url - The application to be tested</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Optional parameters</h2>
+<p>Choose optional parameters such as:</p>
+<ul>
+<li>certainty - Sets the level of certainty for issue reporting</li>
+<li>priority - Requests a priority level for each issue</li>
+<li>level - Sets the WCAG level to test against</li>
+<li>viewPortHeight - Sets the viewport to be tested</li>
+</ul>
+</section>
+
+
+<section class="slide">
+<h2>Ember-axe</h2>
+<p>The <a href="https://www.npmjs.com/package/ember-axe">Ember-axe plugin</a> can be used to test accessibility within Ember</p>
+</section>
+
+<section class="slide">
+<h2>Test it yourself</h2>
+<p>Abandon your mouse, turn on a screen reader, zoom in/out</p>
+</section>
+
+<section class="slide">
+<h2>Thank you</h2>
+<p>Questions?</p>
+</section>
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
