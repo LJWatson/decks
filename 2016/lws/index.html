@@ -55,7 +55,7 @@ color:#000;
 <section class="slide">
 <h2>Web control</h2>
 <pre><code>
-&lt;input type="checkbox" for="bold"&gt;
+&lt;input type="checkbox" id="bold"&gt;
 &lt;label for="bold"&gt;Bold&lt;/label&gt;
 </code></pre>
 <ul>
@@ -105,6 +105,15 @@ color:#000;
 </section>
 
 <section class="slide">
+<h2>HTML</h2>
+<pre><code>
+&lt;span id="link" data-link="http://tink.uk"&gt;
+    Tink UK
+&lt;/span&gt;
+</code></pre>
+</section>
+
+<section class="slide">
 <h2>Link demo</h2>
 <video src="media/pseudo-link.mp4">
 </section>
@@ -112,15 +121,6 @@ color:#000;
 <section class="slide">
 <h2>Link keyboard demo</h2>
 <img src="pictures/pseudo-link.png" alt="Link screenshot">
-</section>
-
-<section class="slide">
-<h2>HTML</h2>
-<pre><code>
-&lt;span id="link" data-link="http://tink.uk"&gt;
-    Tink UK
-&lt;/span&gt;
-</code></pre>
 </section>
 
 <section class="slide">
@@ -136,7 +136,7 @@ color:#000;
 <h2>Add focus styles</h2>
 <pre><code>
 span:hover, span:focus, span:active {
-    color:#000;
+    color: #000;
     background-color: #fc0;
 	cursor: pointer;
 }
@@ -201,6 +201,17 @@ var fetchResource =  function (e) {
 <h2>ToggleTip design pattern</h2>
 <p><a href="Ljwatson.github.io/design-patterns/toggletip2/toggletip.html
 ">Ljwatson.github.io/design-patterns/toggletip2/toggletip.html</a></p>
+</section>
+
+<section class="slide">
+<h2>HTML</h2>
+<pre><code style="font-size: 75%">
+&lt;span id="button"&gt;Tequila&lt;/span&gt;
+
+&lt;div id="tip"&gt;
+    &lt;span id="content"&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
 </section>
 
 <section class="slide">
@@ -391,8 +402,8 @@ tip.setAttribute('hidden', true);
 <section class="slide">
 <h2>Add another role attribute</h2>
 <pre><code>
-&lt;div id="panel1" <mark>role="tabpanel"</mark>&gt;&lt;Blanco tequila…&lt;/div&gt;
-&lt;div id="panel2" <mark>role="tabpanel"</mark>&gt;&lt;Reposado tequila…&lt;/div&gt;
+&lt;div id="panel1" <mark>role="tabpanel"</mark>&gt;Blanco tequila…&lt;/div&gt;
+&lt;div id="panel2" <mark>role="tabpanel"</mark>&gt;Reposado tequila…&lt;/div&gt;
 </code></pre>
 </section>
 
@@ -416,11 +427,11 @@ tip.setAttribute('hidden', true);
 <pre><code style="font-size: 75%">
 &lt;ul role="tablist"&gt;
     &lt;li role="presentation"&gt;
-        &lt;a href="#panel1" id="tab1" role=tab" aria-controls="panel1“
+        &lt;a href="#panel1" id="tab1" role=tab" aria-controls="panel1"
 	       <mark>aria-selected="true"</mark>&gt;Blanco&lt;/a&gt;
     &lt;/li&gt;
     &lt;li role="presentation"&gt;
-        &lt;a href="#panel2" id="tab2" role="tab" aria-controls="panel2“
+        &lt;a href="#panel2" id="tab2" role="tab" aria-controls="panel2"
 	       <mark>aria-selected="false"</mark>&gt;Reposado&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
@@ -432,11 +443,11 @@ tip.setAttribute('hidden', true);
 <pre><code style="font-size: 75%">
 &lt;ul role="tablist"&gt;
     &lt;li role="presentation"&gt;
-        &lt;a href="#panel1" id="tab1" role=tab" aria-controls="panel1“
+        &lt;a href="#panel1" id="tab1" role=tab" aria-controls="panel1"
 	       aria-selected="true" <mark>tabindex="0"</mark>&gt;Blanco&lt;/a&gt;
     &lt;/li&gt;
     &lt;li role="presentation"&gt;
-        &lt;a href="#panel2" id="tab2" role="tab" aria-controls="panel2“
+        &lt;a href="#panel2" id="tab2" role="tab" aria-controls="panel2"
 	       aria-selected="false" <mark>tabindex="-1"</mark>&gt;Reposado&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
@@ -449,7 +460,7 @@ tip.setAttribute('hidden', true);
 &lt;ul role="tablist"&gt;
 ...
     &lt;li role="presentation"&gt;
-        &lt;a href="#panel2" id="tab2" role="tab" aria-controls="panel2“
+        &lt;a href="#panel2" id="tab2" role="tab" aria-controls="panel2"
 	 aria-selected="false" tabindex="-1"&gt;Reposado&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
@@ -464,7 +475,7 @@ tip.setAttribute('hidden', true);
 <pre><code style="font-size: 75%">
 &lt;ul role="tablist"&gt;
     &lt;li role="presentation"&gt;
-        &lt;a href="#panel1" <mark>id="tab1"</mark> role=tab" aria-controls="panel1“
+        &lt;a href="#panel1" <mark>id="tab1"</mark> role=tab" aria-controls="panel1"
 	 aria-selected="true" tabindex="0"&gt;Blanco&lt;/a&gt;
     &lt;/li&gt;
 	...
@@ -506,8 +517,8 @@ tip.setAttribute('hidden', true);
 <h2>Thank you!</h2>
 <ul>
 <li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
-<li>Blog: <a href="http://tink.uk">tink.uk</a></li>
-<li>Github: <a href="https://github.com/ljwatson">@LJWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
 </ul>
 </section>
 
