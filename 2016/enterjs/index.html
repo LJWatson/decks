@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Developer's guide to accessible DOM scripting</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>Developer's guide to accessible DOM scripting</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>Developer's guide to <br> accessible DOM scripting</h2>
+<p>Enter.JS, Darmstadt 2016</p>
+<ul>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>JavaScript is not evil</h2>
+<ul>
+<li>JavaScript is ok for accessibility</li>
+<li>But it has to be accessible JavaScript</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Progressive enhancement is good</h2>
+<ul>
+<li>It builds resilience</li>
+<li>It degrades gracefully</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Platform Accessibility APIs</h2>
+<ul>
+<li>Windows: UIAutomation, MSAA, IAccessible2</li>
+<li>Mac OS: NSAccessibility   Protocol</li>
+<li>Linux: IAccessible2   ATK/AT-ASPI</li>
+<li>iOS: UIAccessibility</li>
+<li>Android: Accessibility Framework</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Platform controls</h2>
+<img src="pictures/bold-checkbox.PNG" alt="Bold checkbox in Windows 10" style="padding: 50px">
+<ul>
+<li>Role is "checkbox"</li>
+<li>Accessible name is "Bold"</li>
+<li>State is focused, checked, focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Web control</h2>
+<pre><code>
+&lt;input type="checkbox" id="bold"&gt;
+&lt;label for="bold"&gt;Bold&lt;/label&gt;
+</code></pre>
+<ul>
+<li>Role is "checkbox"</li>
+<li>Accessible name is "Bold"</li>
+<li>State is focused, checked, focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>DOM tree</h2>
+<img src="pictures/dom-tree.png" alt="DOM tree">
+
+</section>
+
+<section class="slide">
+<h2>Accessibility tree</h2>
+<img src="pictures/acc-tree.png" alt="Accessibility tree">
+</section>
+
+<section class="slide">
+<h2>Manipulating the DOM</h2>
+<ul>
+<li>Browser parses the HTML and builds the DOM</li>
+<li>Browser uses the DOM to build the accessibility tree</li>
+<li>Browser updates the DOM in response to user interaction or scripted events</li>
+<li>Browser responds to changes in the DOM and updates the accessibility tree</li>
+<li>Assistive technologies listen for changes in the accessibility tree and respond accordingly</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>With HTML...</h2>
+<p>You get:</p>
+<ul>
+<li>Focus</li>
+<li>Interaction</li>
+<li>Semantics</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Interactive elements</h2>
+<p>HTML has natively interactive elements, including:</p>
+<ul>
+<li>&lt;a href&gt;</li>
+<li>&lt;button&gt;</li>
+<li>&lt;input&gt;</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Expected interactions</h2>
+<p>Interactive elements have expected interactions:</p>
+<ul>
+<li>A link is activated by click, tap or the Enter key</li>
+<li>A button is activated by click, tap or the Enter or Space key</li>
+<li>An input is activated by click, tap or the Enter key</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Implicit semantics</h2>
+<p>Most HTML elements have default semantics (role and state):</p>
+<ul>
+<li><a href=https://www.w3.org/TR/core-aam-1.1/">Core AAM</a></li>
+<li><a href="https://www.w3.org/TR/html-aam-1.0/">HTML AAM</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML screen reader demo</h2>
+<video src="media/landmarks.mp4">
+</section>
+
+<section class="slide">
+<h2>So why don't we do that?</h2>
+<ul>
+<li>Create custom controls or widgets</li>
+<li>Use JavaScript frameworks</li>
+<li>Build Web Components</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Primitive building blocks</h2>
+<p>The &lt;div&gt; and &lt;span&gt; elements have:</p>
+<ul>
+<li>No focus</li>
+<li>No interaction</li>
+<li>No semantics</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Rule 1 - Focus</h2>
+<p>Interactive things must be focusable</p>
+</section>
+
+<section class="slide">
+<h2>DOM order</h2>
+<p>The tab order follows the DOM order of interactive elements</p>
+</section>
+
+<section class="slide">
+<h2>DOM order example</h2>
+<pre><code>
+&lt;button&gt;1&lt;/button&gt;
+&lt;button&gt;2&lt;/button&gt;
+&lt;button&gt;3&lt;/button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>DOM order demo</h2>
+<video src="media/dom-order.mp4">
+</section>
+
+<section class="slide">
+<h2>The tabindex attribute</h2>
+<ul>
+<li>Elements with tabindex="0" are part of the natural tab sequence</li>
+<li>Elements with tabindex="-1" are not, but are focusable with scripting</li>
+<li>Elements with tabindex=">0" are never a good idea</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>tabindex="0" example</h2>
+<pre><code>
+&lt;button&gt;1&lt;/button&gt;
+&lt;span id="button" <mark>tabindex="0"</mark>&gt;2&lt;/span&gt;
+&lt;button&gt;3&lt;/button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>tabindex="0" demo</h2>
+<video src="media/dom-order.mp4">
+</section>
+
+<section class="slide">
+<h2>tabindex="-1" example</h2>
+<pre><code>
+&lt;button&gt;&lt;1&lt;/button&gt;&lt;
+&lt;button <mark>tabindex="-1"</mark>&gt;&lt;2&lt;/button&gt;&lt;
+&lt;button&gt;&lt;3&lt;/button&gt;&lt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>tabindex="-1" demo</h2>
+<video src="media/tabindex-1.mp4">
+</section>
+
+<section class="slide">
+<h2>tabindex="1" example</h2>
+<pre><code>
+&lt;button <mark>tabindex="3"</mark>&gt;1&lt;/button&gt;
+&lt;button <mark>tabindex="2"</mark>&gt;2&lt;/button&gt;
+&lt;button <mark>tabindex="1"</mark>&gt;3&lt;/button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>tabindex="1" demo</h2>
+<video src="media/tabindex1.mp4">
+</section>
+
+<section class="slide">
+<h2>Disclosure demo</h2>
+<p><a href="https://ljwatson.github.io/design-patterns/disclosure3/">ljwatson.github.io/design-patterns/disclosure3/</a></p>
+</section>
+
+<section class="slide">
+<h2>Basic HTML</h2>
+<pre><code>
+&lt;span id="button"&gt;Tequila &lt;span id="icon"&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;div id="content"&gt;Makes me happy&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Disclosure demo</h2>
+<img src="pictures/disclosure.jpg" alt="Disclosure button">
+</section>
+
+<section class="slide">
+<h2>Add focus</h2>
+<pre><code style="font-size: 80%">
+&lt;span id="button" <mark>tabindex="0"</mark>&gt;Tequila &lt;span id="icon"&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;script&gt;
+  var button = document.getElementById('button');
+  button.setAttribute('tabindex', 0);
+&lt;/script&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rule 2 - Interaction</h2>
+<p>Interactive things must have expected behaviours</p>
+</section>
+
+<section class="slide">
+<h2>Mouse events</h2>
+<pre><code>
+button.addEventListener('click', disclose, false);
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard events</h2>
+<pre><code>
+if (event.keyCode == 13 || event.keyCode ==32) {
+  disclose();
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Touch events</h2>
+<ul>
+<li>Mobile browsers fire mouse compatibility events in response to touch</li>
+<li>But 300ms event dispatch delay, and mousemove is not tracked</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>300ms event dispatch delay</h2>
+<ul>
+<li>Double tap gestures</li>
+<li>Devices wait in case of second tap</li>
+<li>Causes a delay before events are fired</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Mousemove not tracked</h2>
+<ul>
+<li>Moving finger over screen is not tracked</li>
+<li>Only a single mousemove event is fired</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Touch Events & Pointer Events</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/touch-events/">Touch Events (W3C Recommendation 2013)</a></li>
+<li><a href="https://www.w3.org/TR/pointerevents/">Pointer Events (W3C Recommendation 2015)</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Getting touchy</h2>
+<p>Patrick Lauke's <a href="https://patrickhlauke.github.io/getting-touchy-presentation/#">Getting touchy deck</a> and <a href="https://vimeo.com/141039559">Getting touchy talk</a>.</p>
+</section>
+
+<section class="slide">
+        <h2>Rule 3 - Semantics</h2>
+        <p>When using primitives provide semantic information</p>
+        </section>
+
+        <section class="slide">
+<h2>Role</h2>
+<p>Most HTML elements have roles that define their purpose</p>
+</section>
+
+<section class="slide">
+<h2><code>&lt;img&gt;</code> element</h2>
+<p>Has a default implicit role of "graphic" or "image"</p>
+<pre><code>
+&lt;img src="tequila.png" alt="Chamuco's tequila"&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>State</h2>
+<p>Many HTML elements have associated states</p>
+</section>
+
+<section class="slide">
+<h2><code>required</code> attribute</h2>
+<p>Indicates when a form input is required</p>
+<pre><code>
+&lt;input type="checkbox" id="terms" required&gt;
+&lt;label&gt;Accept terms&lt;/label&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>ARIA</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/wai-aria/">ARIA 1.0 (W3C Recommendation 2014)</a></li>
+<li><a href="https://www.w3.org/TR/wai-aria-1.1/">ARIA 1.1 (W3C Working Draft 2016)</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Add button role</h2>
+<pre><code>
+button.setAttribute('role', 'button');
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add aria-expanded attribute</h2>
+<pre><code>
+button.setAttribute('aria-expanded', 'false');
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add aria-hidden attribute</h2>
+<pre><code>
+icon.setAttribute('aria-hidden', 'true');
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add hidden attribute</h2>
+<pre><code>
+content.setAttribute('hidden', 'true');
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add functionality</h2>
+<pre><code style="font-size: 75%">
+if (content.hasAttribute('hidden')) {
+    button.setAttribute('aria-expanded', 'true');
+    button.setAttribute('aria-controls', 'content');
+    content.removeAttribute('hidden');
+}
+else {
+    button.setAttribute('aria-expanded', 'false');
+    content.setAttribute('hidden', 'true');
+    button.removeAttribute('aria-controls');
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Disclosure screen reader demo</h2>
+<video src="media/disclosure.mp4">
+</section>
+
+<section class="slide">
+	<h2>Ember component</h2>
+	<pre><code style="font-size: 60%">
+App.TequilaButtonComponent = Ember.Component.extend({
+	tagName: 'tequila-button',
+	nameBinding: 'tequila.name',
+	attributeBindings: ['tabindex'],
+	answer: false,
+	label: function() { return "Is " + this.get('name') + " tequila good?"; }
+					.property('name'),
+	tabindex: 1,
+	click: function(event) { alert('Yes'); }
+});
+	</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rendered DOM</h2>
+<pre><code style="font-size: 60%">
+&lt;tequila-button tabindex="1" class="ember-view" id="ember260"&gt;
+	&lt;script type="text/x-placeholder" id="metamorph-2-start"&gt;&lt;/script&gt;
+	Is Reposado tequila good?
+	&lt;script type="text/x-placeholder" id="metamorph-2-end"&gt;&lt;/script&gt;
+&lt;/tequila-button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Ember component Screen reader demo</h2>
+<video src="media/ember-inaccessible.mp4">
+</section>
+
+<section class="slide">
+<h2>Accessible Ember component</h2>
+<pre><code style="font-size: 55%">
+App.TequilaButtonComponent = Ember.Component.extend({
+	tagName: 'tequila-button',
+	nameBinding: 'tequila.name',
+	attributeBindings: [<mark>'label:aria-label'</mark>, 'tabindex'],
+	answer: false,
+	label: function() { return "Is " + this.get('name') + " tequila good?"; }
+					.property('name'),
+	tabindex: <mark>0</mark>,
+	<mark>ariaRole: 'button',</mark>
+	click: function(event) { alert('Yes'); },
+	<mark>keyDown: function(event) {</mark>
+		<mark>if (event.keyCode == 13 || event.keyCode == 32) { this.click(event); }</mark>
+	<mark>}</mark>
+});
+	</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rendered DOM</h2>
+<pre><code style="font-size: 60%">
+&lt;tequila-button role="button" tabindex="0" aria-label="Is Reposado tequila good?"
+ 				class="ember-view" id="ember260"&gt;
+	&lt;script type="text/x-placeholder" id="metamorph-2-start"&gt;&lt;/script&gt;
+	Is Reposado tequila good?
+	&lt;script type="text/x-placeholder" id="metamorph-2-end"&gt;&lt;/script&gt;
+&lt;/tequila-button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Accessible Ember component Screen reader demo</h2>
+<video src="media/ember-accessible.mp4">
+</section>
+
+
+<section class="slide">
+<h2>Tenon API</h2>
+<p>Use the <a href="http://tenon.io">Tenon API</a> with your build tools</p>
+</section>
+
+<section class="slide">
+<h2>Installation</h2>
+<p>Install a <a href="https://tenon.io/getcode.php">Tenon module</a> for Grunt, Gulp or other environments</p>
+</section>
+
+<section class="slide">
+<h2>Required parameters</h2>
+<p>Send a post request to the API with required parameters:</p>
+<ul>
+<li>key - Your API key</li>
+<li>url - The application to be tested</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Optional parameters</h2>
+<p>Choose optional parameters such as:</p>
+<ul>
+<li>certainty - Sets the level of certainty for issue reporting</li>
+<li>priority - Requests a priority level for each issue</li>
+<li>level - Sets the WCAG level to test against</li>
+<li>viewPortHeight - Sets the viewport to be tested</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>More tools</h2>
+<ul>
+<li><a href="https://github.com/trentmwillis/ember-a11y-testing">Ember a11y test suite</a></li>
+<li><a href="https://github.com/reactjs/react-a11y">React a11y tests</a></li>
+<li><a href="http://news.softpedia.com/news/Web-Accessibility-Audits-for-the-Node-js-Command-Line-483780.shtml">Enter A11y for Node.js</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Test it yourself</h2>
+<p>Abandon your mouse, turn on a screen reader, zoom in/out</p>
+</section>
+
+<section class="slide">
+<h2>Thank you!</h2>
+<ul>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+</section>
+
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
