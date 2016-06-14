@@ -257,6 +257,27 @@ color:#000;
 </section>
 
 <section class="slide">
+<h2>Roving tabindex</h2>
+<pre><code style="font-size: 75%">
+&lt;ul&gt;
+    &lt;li&gt;
+        &lt;a href="#panel1" id="tab1"&gt;Blanco&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+       &lt;<mark>tabindex="-1"</mark> a href="#panel2" id="tab2"&gt;Reposado&lt;/a&gt;
+    &lt;/li&gt;
+        &lt;li&gt;
+       &lt;<mark>tabindex="-1"</mark> a href="#panel3" id="tab3"&gt;Joven&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<section class="slide">
+<h2>Roving tabindex demo</h2>
+<video src="media/tabpanels-with-aria.mp4">
+</section>
+
+<section class="slide">
 <h2>Disclosure demo</h2>
 <p><a href="https://ljwatson.github.io/design-patterns/disclosure3/">ljwatson.github.io/design-patterns/disclosure3/</a></p>
 </section>
