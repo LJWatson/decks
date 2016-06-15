@@ -258,6 +258,16 @@ color:#000;
 
 <section class="slide">
 <h2>Roving tabindex</h2>
+<ul>
+<li>Set the currently selected object to tabindex="0"</li>
+<li>Set all other objects to tabindex="-1"</li>
+<li>When user navigates to next object set focus using .focus()</li>
+<li>Set currently selected object to tabindex="0", and all others to tabindex="-1"</li>
+</ul>
+</section>
+
+<section clas="slide">
+<h2>Roving tabindex example</h2>
 <pre><code style="font-size: 75%">
 &lt;ul&gt;
     &lt;li&gt;
@@ -322,9 +332,11 @@ button.addEventListener('click', disclose, false);
 <section class="slide">
 <h2>Keyboard events</h2>
 <pre><code>
-if (event.keyCode == 13 || event.keyCode ==32) {
-  disclose();
-}
+button.addEventListener('keydown', function(event) {
+    if (event.keyCode == 13 || event.keyCode ==32) {
+        disclose();
+    }
+});
 </code></pre>
 </section>
 
