@@ -1,0 +1,34 @@
+section video {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'brightness\'><feColorMatrix type=\'matrix\' values=\'1.2 0 0 0 0 0 1.2 0 0 0 0 0 1.2 0 0 0 0 0 1.2 0\'/></filter></svg>#brightness"); /* Firefox 3.5+ */
+    -webkit-filter:brightness(108.5%); /* Chrome 19+ & Safari 6+ */
+    max-height: 80%;
+}
+
+section img {
+    max-height: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+section blockquote {
+  position: absolute;
+  bottom: 30px;
+  margin-right: 20px;
+}
+.valign {
+  position: relative;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+section.left img {
+  left: 0px;
+  float: left;
+  padding-right: 90px;
+}
+
+section.left blockquote {
+  padding-top: 100px;
+  bottom: auto;
+  position: relative;
+}
