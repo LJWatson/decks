@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>On CSS accessibility and drinking tea</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>On CSS accessibility and drinking tea</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>On CSS accessibility<br/>and drinking tea</h2>
+<p>Mirror conf, Braga 2016</p>
+<ul style="padding-top: 100px">
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>Space Jam</h2>
+<img src="pictures/space-jam3.jpg" alt="Space Jam poster (1996)" style="text-align: center">
+</section>
+
+<section class="slide">
+<h2>Space Jam website</h2>
+<img src="pictures/space-jam-website.jpg" alt="Space Jam website (1996)">
+</section>
+
+<section class="slide">
+<h2>Old school style...</h2>
+<pre><code style="font-size: 80%">
+&lt;body vlink="#ff4c4c"
+      alink="#ff4c4c"
+      link="#ff4c4c"
+      text="#ff0000"
+      bgcolor="#000000"
+      background="img/bg_stars.gif"&gt;
+...
+&lt;/body&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Formatting...</h2>
+<pre><code>
+&lt;center&gt;
+&lt;nobr&gt;
+...
+&lt;/nobr&gt;
+&lt;/center&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Layout...</h2>
+<pre><code style="font-size: 80%">
+&lt;table width="500" border="0"&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;...&lt;/td&gt;
+      ...
+    &lt;/tr&gt;
+  &lt;tbody&gt;
+&lt;/table&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Fonts...</h2>
+<pre><code style="font-size: 80%">
+&lt;font size="-1"&gt;
+  &lt;a target="_blank" href="http://www.warnerbros.com/term-use"&gt;
+    Legal/Privacy Information About This Site.&lt;/a&gt;
+&lt;/font&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>And accessibility</h2>
+<ul>
+<li>No style override</li>
+<li>No text resize</li>
+<li>No layout flexibility</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>CSS1</h2>
+
+<ul>
+<li><a href="https://www.w3.org/TR/REC-CSS1/">CSS1 (W3C Recommendation 1996)</a></li>
+<li>Box model and basic floats</li>
+<li>Properties for fonts, colours and dimensions</li>
+<li>Pseudo-class for anchors</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Time for a nice cup of tea</h2>
+<img src="pictures/tea-and-pot.jpg" alt="Cup of tea"></section>
+</section>
+
+<section class="slide">
+<h2>Platform Accessibility APIs</h2>
+<ul>
+<li>Windows: MSAA   UIAutomation   IAccessible2</li>
+<li>Mac OS: NSAccessibility   Protocol</li>
+<li>Linux: IAccessible2   ATK/AT-ASPI</li>
+<li>iOS: UIAccessibility</li>
+<li>Android: Accessibility Framework</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Platform controls</h2>
+<img src="pictures/bold-checkbox.PNG" alt="Bold checkbox in Windows 10" style="padding: 50px">
+<ul>
+<li>Role is "checkbox"</li>
+<li>Accessible name is "Bold"</li>
+<li>State is focused, checked, focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Web control</h2>
+<pre><code>
+&lt;input type="checkbox" id="bold"&gt;
+&lt;label for="bold"&gt;Bold&lt;/label&gt;
+</code></pre>
+<ul>
+<li>Role is "checkbox"</li>
+<li>Accessible name is "Bold"</li>
+<li>State is focused, checked, focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>DOM tree</h2>
+<img src="pictures/dom-tree.png" alt="DOM tree">
+</section>
+
+<section class="slide">
+<h2>Accessibility tree</h2>
+<img src="pictures/acc-tree.png" alt="Accessibility tree">
+</section>
+
+<section class="slide">
+<h2>Manipulating the DOM</h2>
+<ul>
+<li>Browser parses the HTML and builds the DOM</li>
+<li>Browser uses the DOM to build the accessibility tree</li>
+<li>Browser updates the DOM in response to user interaction or scripted events</li>
+<li>Browser responds to changes in the DOM and updates the accessibility tree</li>
+<li>Assistive technologies listen for changes in the accessibility tree and respond accordingly</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML example</h2>
+<pre><code>
+&lt;a href="/"&gt;Tequila!&lt;/a&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>HTMl screen reader demo</h2>
+<video src="media/tequila-link.mp4">
+</section>
+
+
+<section class="slide">
+<h2>HTML headings screen reader demo</h2>
+<video src="media/headings.mp4">
+</section>
+
+<section class="slide">
+<h2>CSS2</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/2008/REC-CSS2-20080411/">CSS2 (W3C Recommendation 1998)</a></li>
+<li><a href="https://www.w3.org/TR/2008/REC-CSS2-20080411/selector.html#before-and-after">before/after pseudo-elements</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>:after example</h2>
+<pre><code>
+#a:after {
+  content: ' Makes me happy!';
+}
+...
+&lt;a href="/" id="a"&gt;Tequila!&lt;/a&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rendered code</h2>
+<pre><code>
+&lt;a href="/" id="a"&gt;Tequila!&lt;/a&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>CSS2.1 on generated content</h2>
+<blockquote cite="https://www.w3.org/TR/CSS2/generate.html">
+Generated content does not alter the document tree. In particular, it is not fed back to the document language processor (e.g., for reparsing).
+</blockquote>
+</section>
+
+<section class="slide">
+<h2>:after screen reader demo</h2>
+<video src="media/tequila-link-after.mp4">
+</section>
+
+<section class="slide">
+<h2>Browser support</h2>
+<p>CSS generated content is accessibility supported in:</p>
+<ul>
+<li>Chrome</li>
+<li>Edge</li>
+<li>Firefox</li>
+<li>Safari</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Browser solutions</h2>
+<ul>
+<li>Create a text node in the accessibility tree</li>
+<li>Include generated content in the <a href="https://www.w3.org/TR/accname-aam-1.1/">accessible name computation</a>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Time for a nice cup of tea?</h2>
+<img src="pictures/tea-and-pot.jpg" alt="Cup of tea">
+</section>
+
+<section class="slide">
+<h2>CSS3 FlexBox</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/css-flexbox-1/">CSS3 FlexBox (W3C Candidate Recommendation 2016)</a></li>
+<li>Easier responsive layouts</li>
+<li>No more float hacks</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Basic HTML</h2>
+<pre><code>
+&lt;div&gt;
+    &lt;button&gt;1&lt;/button&gt;
+    &lt;button&gt;2&lt;/button&gt;
+    &lt;button&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard demo</h2>
+<video src="media/no-flexbox.mp4">
+</section>
+
+<section class="slide">
+<h2>display and order properties</h2>
+<pre><code>
+&lt;div <mark>style="display: flex;"</mark>&gt;
+    &lt;button <mark>style="order: 3;"</mark>&gt;1&lt;/button&gt;
+    &lt;button <mark>style="order: 2;"</mark>&gt;2&lt;/button&gt;
+    &lt;button <mark>style="order: 1;"</mark>&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</section>
+
+<section class="slide">
+<h2>Flexed keyboard demo</h2>
+<video src="media/flexbox-chrome.mp4">
+</section>
+
+<section class="slide">
+<h2>Spec advice?</h2>
+<blockquote cite="https://www.w3.org/TR/css-flexbox-1/#order-accessibility">
+Authors must use ‘order' only for visual, not logical, reordering of content.</blockquote>
+ </section>
+
+ <section class="slide">
+<h2>tabindex attribute</h2>
+<pre><code>
+&lt;div style="display: flex;"&gt;
+    &lt;button style="order: 3;" <mark>tabindex="3"</mark>&gt;1&lt;/button&gt;
+    &lt;button style="order: 2;" <mark>tabindex="2"</mark>&gt;2&lt;/button&gt;
+    &lt;button style="order: 1;" <mark>tabindex="1"</mark>&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>tabindex demo</h2>
+<video src="media/flexbox-firefox.mp4">
+</section>
+
+<section class="slide">
+<h2>tabindex problem</h2>
+<ul>
+<li>Elements with tabindex="0" are part of the natural tab sequence</li>
+<li>Elements with tabindex="-1" are not, but are focusable with scripting</li>
+<li>Elements with tabindex=">0" are never a good idea</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>aria-flowto attribute</h2>
+<ul>
+<li>Creates a navigation flow from one element to another</li>
+<li>Takes the id value of the element to be navigated to</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>aria-flowto example</h2>
+<pre><code style="font-size: 80%">
+&lt;div style="display: flex;"&gt;
+    &lt;button <mark>id="b1" aria-flowto="b3"</mark> style="order: 3;"&gt;1&lt;/button&gt;
+    &lt;button <mark>id="b2" aria-flowto="b1"</mark> style="order: 2;"&gt;2&lt;/button&gt;
+    &lt;button <mark>id="b3" aria-flowto="b2"</mark> style="order: 1;"&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</section>
+
+<section class="slide">
+<h2>aria-flowto screen reader demo</h2>
+<video src="media/flexbox-aria-flowto.mp4">
+</section>
+
+<section class="slide">
+<h2>The Firefox "bug"</h2>
+<video src="media/flexbox-firefox.mp4">
+</section>
+
+<section class="slide">
+<h2>Time for a nice cup of tea?</h2>
+<img src="pictures/tea-and-pot.jpg" alt="Cup of tea">
+</section>
+
+<section class="slide">
+<h2>CSS3 Speech</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/css3-speech/">CSS3 Speech (W3C Candidate Recommendation 2012)</a></li>
+<li>Properties for speech on/off, volume, pitch and rate</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>speak:; property</h2>
+<p>Determines whether content is presented aurally</p>
+<pre><code>
+speak: auto;
+</code></pre>
+<p>Values: auto, normal, none</p>
+</section>
+
+<section class="slide">
+<h2>voice-volume property</h2>
+<p>Determines volume of voice output:</p>
+<pre><code>
+voice-volume: medium;
+</code></pre>
+<p>Values: silent, x-soft, soft, medium, loud, x-loud</p>
+</section>
+
+<section class="slide">
+<h2>voice-rate property</h2>
+<p>Determines speaking rate:</p>
+<pre><code>
+voice-rate: normal;
+</code></pre>
+<p>Values: normal, x-slow, slow, medium, fast, x-fast</p>
+</section>
+
+<section class="slide">
+<h2>voice-pitch propertey</h2>
+<p>Determines the baseline voice pitch:</p>
+<pre><code>
+voice-pitch: medium;
+</code></pre>
+<p>Values: x-low, low, medium, high, x-high</p>
+</section>
+
+<section class="slide">
+<h2>Use cases?</h2>
+<ul>
+<li>News headlines spoken in a different voice</li>
+<li>Notifications spoken louder</li>
+<li>Small print spoken more quietly and quickly</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Speech demo</h2>
+<video src="media/css-speech.mp4">
+</section>
+
+<section class="slide">
+<h2>Visual ARIA</h2>
+<p><a href="http://whatsock.com/training/matrices/visual-aria.htm">http://whatsock.com/training/matrices/visual-aria.htm</a></p>
+</section>
+
+<section class="slide">
+<h2>Thank you!</h2>
+<ul>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+
+</section>
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>

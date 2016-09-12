@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Developer's guide to accessibility mechanics</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>Developer's guide to accessibility mechanics</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>Developer's guide to<br/> accessibility mechanics</h2>
+<p>From The Front, Bologna 2016</p>
+<p><a href="http://twitter.com/leoniewatson">@LeonieWatson</a></p>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>Platform controls</h2>
+<img src="pictures/bold-checkbox.PNG" alt="Bold checkbox in Windows 10">
+<ul>
+<li>Role is "checkbox"</li>
+<li>Accessible name is "Bold"</li>
+<li>State is focused, checked, focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Web control</h2>
+<pre><code>
+&lt;input type="checkbox" id="bold"&gt;
+&lt;label for="bold"&gt;Bold&lt;/label&gt;
+</code></pre>
+<ul>
+<li>Role is "checkbox"</li>
+<li>Accessible name is "Bold"</li>
+<li>State is focused, checked, focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML Accessibility API Mappings (AAM)</h2>
+<p>The relationship between platform objects and web objects is documented in the <a href="https://www.w3.org/TR/html-aam-1.0/">HTML AAM</a></p>
+</section>
+
+<section class="slide">
+<h2>Content navigation (headings)</h2>
+<video src="media/headings.mp4">
+</section>
+
+<section class="slide">
+<h2>Content navigation (landmarks)</h2>
+<video src="media/landmarks.mp4">
+</section>
+
+<section class="slide">
+<h2>DOM tree</h2>
+<img src="pictures/dom-tree.png" alt="DOM tree">
+</section>
+
+<section class="slide">
+<h2>Accessibility tree</h2>
+<img src="pictures/acc-tree.png" alt="Accessibility tree">
+</section>
+
+<section class="slide">
+<h2>Neutral semantics</h2>
+<p><code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> have semantically neutral default implicit roles</p>
+<pre><code>
+&lt;span&gt;Plain text&lt;/span&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Link design pattern</h2>
+<p><a href="Ljwatson.github.io/design-patterns/link1/link.html">Ljwatson.github.io/design-patterns/link1/link.html
+</a></p>
+</section>
+
+<section class="slide">
+<h2>HTML</h2>
+<pre><code>
+&lt;span id="link" data-link="http://tink.uk"&gt;
+    Tink UK
+&lt;/span&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Link demo</h2>
+<video src="media/pseudo-link.mp4">
+</section>
+
+<section class="slide">
+<h2>Link keyboard demo</h2>
+<img src="pictures/pseudo-link.png" alt="Link screenshot">
+</section>
+
+<section class="slide">
+<h2>Add tabindex</h2>
+<pre><code>
+&lt;span id="link" data-link="http://tink.uk" <mark>tabindex="0"</mark> &gt;
+    Tink UK
+&lt;/span&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add focus styles</h2>
+<pre><code>
+span:hover, span:focus, span:active {
+    color: #000;
+    background-color: #fc0;
+	cursor: pointer;
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add link role</h2>
+<pre><code>
+&lt;span id="link" data-link="http://tink.uk"
+      tabindex="0" <mark>role="link"</mark>&gt;
+    Tink UK
+&lt;/span&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add event listeners</h2>
+<pre><code>
+link.addEventListener("click", fetchResource);
+link.addEventListener("keydown", fetchResource);
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add functionality</h2>
+<pre><code style="font-size: 75%">
+var fetchResource =  function (e) {
+    e.preventDefault();
+    window.location.href = e.target.dataset.link;
+};
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add keyboard functionality</h2>
+<pre><code style="font-size: 75%">
+var fetchResource =  function (e) {
+    if (e.type === "keydown" && e.keyCode !== 13) {
+        return false;
+    }
+
+    e.preventDefault();
+    window.location.href = e.target.dataset.link;
+};
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Link screen reader demo</h2>
+<video src="media/pseudo-link-screenreader.mp4">
+</section>
+
+<section class="slide">
+<h2>Or just use HTML</h2>
+<pre><code>
+&lt;a href="http://tink.uk"&gt;Tink UK&lt;/a&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>ToggleTip design pattern</h2>
+<p><a href="Ljwatson.github.io/design-patterns/toggletip2/toggletip.html
+">Ljwatson.github.io/design-patterns/toggletip2/toggletip.html</a></p>
+</section>
+
+<section class="slide">
+<h2>HTML</h2>
+<pre><code style="font-size: 75%">
+&lt;span id="button"&gt;Tequila&lt;/span&gt;
+
+&lt;div id="tip"&gt;
+    &lt;span id="content"&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>ToggleTip demo</h2>
+<video src="media/toggletip.mp4">
+</section>
+
+<section class="slide">
+<h2>ToggleTip keyboard demo</h2>
+<img src="pictures/toggletip.png" alt="ToggleTip screenshot">
+</section>
+
+<section class="slide">
+<h2>Add tabindex</h2>
+<pre><code style="font-size: 75%">
+&lt;span id="button" <mark>tabindex="0"</mark>&gt;Tequila&lt;/span&gt;
+
+&lt;div id="tip"&gt;
+    &lt;span id="content"&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add focus styles</h2>
+<pre><code style="font-size: 75%">
+span[id="button"]:hover, span[id="button"]:focus {
+    background-color: #fc0;
+	color: #555;
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add role attributes</h2>
+<pre><code style="font-size: 75%">
+&lt;span id="button" tabindex="0" <mark>role="button"</mark>&gt;Tequila&lt;/span&gt;
+
+&lt;div id="tip" <mark>role="complementary"</mark>&gt;
+    &lt;span id="content" <mark>role="tooltip"</mark>&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add aria-expanded attribute</h2>
+<pre><code style="font-size: 75%">
+&lt;span id="button" tabindex="0" role="button"
+	<mark>aria-expanded="false"</mark>&gt;Tequila&lt;/span&gt;
+
+&lt;div id="tip" role="complementary"&gt;
+    &lt;span id="content" role="tooltip"&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add aria-describedby attribute</h2>
+<pre><code style="font-size: 75%">
+&lt;span id="button" tabindex="0" role="button"
+	aria-expanded="false" <mark>aria-describedby="tip"</mark>&gt;Tequila&lt;/span&gt;
+
+&lt;div id="tip" role="complementary"&gt;
+    &lt;span id="content" role="tooltip"&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add hidden attribute</h2>
+<pre><code style="font-size: 75%">
+&lt;span id="button" tabindex="0" role="button"
+	aria-expanded="false" aria-describedby="tip"&gt;Tequila&lt;/span&gt;
+
+&lt;div id="tip" role="complementary" <mark>hidden</mark>&gt;
+    &lt;span id="content" role="tooltip"&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add aria-live attribute</h2>
+<pre><code style="font-size: 75%">
+&lt;span id="button" tabindex="0" role="button"
+	aria-expanded="false" aria-describedby="tip"&gt;Tequila&lt;/span&gt;
+
+&lt;div id="tip" role="complementary" hidden&gt;
+    &lt;span id="content" role="tooltip" <mark>aria-live="polite"</mark>&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add event listeners and functionality</h2>
+<pre><code style="font-size: 75%">
+button.addEventListener('click', toggleTip, false);
+
+button.addEventListener('keydown', function(e) {
+    if (e.keyCode == 13 || e.keycode == 32) {
+        toggleTip();
+    }
+});
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add more functionality</h2>
+<pre><code style="font-size: 75%">
+document.addEventListener('keydown', function(e) {
+    if (e.keyCode == 27) {
+        toggleTip();
+    }
+});
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>If ToggleTip is hidden...</h2>
+<pre><code>
+button.setAttribute('aria-expanded', 'true');
+content.innerHTML = "Makes me happy!";
+tip.removeAttribute('hidden');
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>If ToggleTip is not hidden...</h2>
+<pre><code>
+button.setAttribute('aria-expanded', 'false');
+content.innerHTML = '';
+tip.setAttribute('hidden', true);
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>ToggleTip screen reader demo</h2>
+<video src="media/toggletip-screenreader.mp4">
+</section>
+
+<section class="slide">
+<h2>Tabpanels design pattern</h2>
+<p><a href="Ljwatson.github.io/design-patterns/tabpanels1/tabpanel.html
+">Ljwatson.github.io/design-patterns/tabpanels1/tabpanel.html</a></p>
+</section>
+
+<section class="slide">
+<h2>HTML</h2>
+<pre><code style="font-size: 75%">
+&lt;ul&gt;
+    &lt;li&gt;
+        &lt;a href="#panel1" id="tab1"&gt;Blanco&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+       &lt;a href="#panel2" id="tab2"&gt;Reposado&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>More HTML</h2>
+<pre><code>
+&lt;div id="panel1"&gt;Blanco tequila…&lt;/div&gt;
+
+&lt;div id="panel2"&gt;Reposado tequila…&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader tabpanels demo</h2>
+<video src="media/tabpanels-without-aria.mp4">
+</section>
+
+<section class="slide">
+<h2>Add role attributes</h2>
+<pre><code style="font-size: 75%">
+&lt;ul <mark>role="tablist"</mark>&gt;
+    &lt;li <mark>role="presentation"</mark>&gt;
+        &lt;a href="#panel1" id="tab1 <mark>role="tab"</mark>&gt;&lt;Blanco&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li <mark>role="presentation"</mark>&gt;
+       &lt;a href="#panel2" id="tab2" <mark>role="tab"</mark>&gt;&lt;Reposado&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul>&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add another role attribute</h2>
+<pre><code>
+&lt;div id="panel1" <mark>role="tabpanel"</mark>&gt;Blanco tequila…&lt;/div&gt;
+&lt;div id="panel2" <mark>role="tabpanel"</mark>&gt;Reposado tequila…&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add aria-controls attribute</h2>
+<pre><code style="font-size: 75%">
+&lt;ul role="tablist"&gt;
+    &lt;li role="presentation"&gt;
+        &lt;a href="#panel1" id="tab1 role="tab" <mark>aria-controls="panel1"</mark>&gt;
+          Blanco&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div <mark>id="panel1"</mark> role="tabpanel"&gt;Blanco tequila…&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+
+<h2>Add aria-selected attribute</h2>
+<pre><code style="font-size: 75%">
+&lt;ul role="tablist"&gt;
+    &lt;li role="presentation"&gt;
+        &lt;a href="#panel1" id="tab1" role=tab" aria-controls="panel1"
+	       <mark>aria-selected="true"</mark>&gt;Blanco&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li role="presentation"&gt;
+        &lt;a href="#panel2" id="tab2" role="tab" aria-controls="panel2"
+	       <mark>aria-selected="false"</mark>&gt;Reposado&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add tabindex attribute</h2>
+<pre><code style="font-size: 75%">
+&lt;ul role="tablist"&gt;
+    &lt;li role="presentation"&gt;
+        &lt;a href="#panel1" id="tab1" role=tab" aria-controls="panel1"
+	       aria-selected="true" <mark>tabindex="0"</mark>&gt;Blanco&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li role="presentation"&gt;
+        &lt;a href="#panel2" id="tab2" role="tab" aria-controls="panel2"
+	       aria-selected="false" <mark>tabindex="-1"</mark>&gt;Reposado&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add hidden attribute</h2>
+<pre><code style="font-size: 75%">
+&lt;ul role="tablist"&gt;
+...
+    &lt;li role="presentation"&gt;
+        &lt;a href="#panel2" id="tab2" role="tab" aria-controls="panel2"
+	 aria-selected="false" tabindex="-1"&gt;Reposado&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div id="panel1" role="tabpanel"&gt;Blanco tequila…&lt;/div&gt;
+&lt;div id="panel2" role="tabpanel" <mark>hidden</mark>&gt;Reposado tequila…&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add aria-labelledby attribute</h2>
+<pre><code style="font-size: 75%">
+&lt;ul role="tablist"&gt;
+    &lt;li role="presentation"&gt;
+        &lt;a href="#panel1" <mark>id="tab1"</mark> role=tab" aria-controls="panel1"
+	 aria-selected="true" tabindex="0"&gt;Blanco&lt;/a&gt;
+    &lt;/li&gt;
+	...
+&lt;/ul&gt;
+
+&lt;div id="panel1" role="tabpanel" <mark>aria-labelledby="tab1"</mark>&gt;
+    Blanco tequila…
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add keyboard interaction</h2>
+<p>Listen for keydown and capture keycodes:</p>
+<ul>
+<li>Left 		37</li>
+<li>Right 		38</li>
+<li>Up 		39</li>
+<li>Down 	40</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Screen reader tabs demo</h2>
+<video src="media/tabpanels-with-aria.mp4">
+</section>
+
+<section class="slide">
+<h2>Quick & dirty accessibility mechanics</h2>
+<ul>
+<li>Use the right HTML (let the browser do the work)</li>
+<li>Provide focus and keyboard support</li>
+<li>Provide accessible names and descriptions</li>
+<li>Communicate state</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Thank you!</h2>
+<ul>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+</section>
+
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
