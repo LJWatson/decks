@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lightening guide to accessibility mechanics</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>Lightning guide to accessibility mechanics</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>Lightning guide to<br/>Accessibility mechanics</h2>
+<p>TPAC Developer meetup, Lisbon 2016</p>
+<br/>
+<ul>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>HTML code</h2>
+<pre><code>
+&lt;input type="checkbox" id="bold" checked&gt;
+&lt;label for="bold"&gt;Bold&lt;/label&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>DOM tree</h2>
+<img src="pictures/checkbox-dom.png" alt="DOM information for an HTML checkbox">
+</section>
+
+<section class="slide">
+<h2>Accessibility tree</h2>
+<img src="pictures/checkbox-a11y-tree.png" alt="Accessibility tree information for an HTML checkbox">
+</section>
+
+<section class="slide">
+<h2>Accessibility APIs</h2>
+<ul>
+<li>UIA, MSAA and IAccessible2 on Windows</li>
+<li>IAccessible2 and ATK on Linux</li>
+<li>Accessibility API on OSX and iOS</li>
+<li>Accessibility Framework on Android</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML5.1</h2>
+<ul>
+<li>Most HTML elements have implicit roles and states</li>
+<li>Documented in the <a href="https://www.w3.org/TR/html-aam-1.0/">HTML Accessibility API Mappings (AAM)</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>SVG2.0</h2>
+<ul>
+<li>Some SVG elements have implicit roles</li>
+<li>Documented in the <a href="https://www.w3.org/TR/svg-aam-1.0/">SVG Accessibility API Mappings (AAM)</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>ARIA1.1</h2>
+<ul>
+<li>Attributes to use with HTML and SVG</li>
+<li>Changes the accessibility tree</li>
+<li>Does not change the DOM</li>
+<li>Does not add functionality</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML</h2>
+<pre><code style="font-size: 90%">
+&lt;button id="button"&gt;
+    Tequila &lt;span id="icon"&gt;&lt;/span&gt;
+&lt;/button&gt;
+&lt;div id="content" hidden&gt;
+    &lt;p&gt;Makes me happy!&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>HTML + ARIA</h2>
+<pre><code style="font-size: 90%">
+&lt;button <mark>aria-expanded="false"</mark> id="button"&gt;
+    Tequila &lt;span <mark>aria-hidden="true"</mark> id="icon"&gt;&lt;/span&gt;
+&lt;/button&gt;
+&lt;div id="content" hidden&gt;
+    &lt;p&gt;Makes me happy!&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Event listeners</h2>
+<pre><code style="font-size: 90%">
+button.addEventListener('click', disclose, false);
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Functionality</h2>
+<pre><code style="font-size: 65%">
+    function disclose(event) {
+        if (content.hasAttribute('hidden')) {
+            button.setAttribute('aria-expanded', 'true');
+            button.setAttribute('aria-controls', 'content');
+            content.removeAttribute('hidden');
+        }
+        else {
+            button.setAttribute('aria-expanded', 'false');
+            content.setAttribute('hidden', 'true');
+            button.removeAttribute('aria-controls');
+        }
+    }
+</code></pre>
+</section>
+
+
+<section class="slide">
+<h2>SVG</h2>
+<pre><code style="font-size: 90%">
+&lt;svg version="2.0" width="300" height="200"&gt;
+    &lt;rect width="75" height="50" rx="20" ry="20" /&gt;
+    &lt;text x="35" y="30"&gt;Tequila!&lt;/text&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+
+<section class="slide">
+<h2>SVG + ARIA</h2>
+<pre><code style="font-size: 90%">
+&lt;svg version="2.0" width="300" height="200"&gt;
+    &lt;rect width="75" height="50" rx="20" ry="20"
+         <mark>role="button"</mark> <mark>tabindex="0"</mark> <mark>aria-expanded="false"</mark> /&gt;
+    &lt;text x="35" y="30"&gt;Tequila!&lt;/text&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+
+<section class="slide">
+<h2>Event listeners</h2>
+<pre><code>
+    button.addEventListener('click', disclose, false);
+
+	button.addEventListener('keydown', function(event) {
+        if (event.keyCode == 13 || event.keyCode ==32) {
+            disclose();
+        }
+	});
+    </code></pre>
+    </section>
+
+    <section class="slide">
+    <h2>Demo</h2>
+    <video src="media/disclosure.mp4">
+    </section>
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
