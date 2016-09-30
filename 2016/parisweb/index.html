@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HTML5.1 & Web Platform APIs</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>HTML5.1 & Web Platform APIs</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>HTML5.1 & Web Platform APIs</h2>
+<p>Paris Web, October 2016</p>
+<ul>
+<li>L&eacute;onie Watson</li>
+<li>Chaals McCathie Nevile</li>
+</ul>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>Push API</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/push-api/">W3C Working Draft, December 2015</a></li>
+<li><a href="https://w3c.github.io/push-api/">Editor's Draft, August 2016</a></li>
+<li><a href="https://github.com/w3c/push-api/">Push API on Github</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>What?</h2>
+<p>Enables push notifications in webapps</p>
+</section>
+
+<section class="slide">
+<h2>How?</h2>
+<ul>
+<li>Part of the Service Workers family</li>
+<li>Objects, events and methods for managing and manipulating push notifications</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Where?</h2>
+<img src="pictures/chrome.png" alt="Chrome">
+<img src="pictures/firefox.png" alt="Firefox">
+</section>
+
+<section class="slide">
+<h2>Subscribe to notifications</h2>
+<ul>
+<li>Webapp has an active service worker</li>
+<li>Subscribe to Push notifications using <code>PushManager.subscribe()</code></li>
+<li><code>PushSubscription</code> contains endpoint and encryption key</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Handle notifications</h2>
+<ul>
+<li>Incoming Push notifications delivered to <code>ServiceWorkerGlobalScope.onpush</code> event handler</li>
+<li>Webapp shows Push notification using <code>ServiceWorkerRegistration.showNotification()</code></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>PushEvent interface</h2>
+<ul>
+<li>Push action sent to a service worker</li>
+<li>Contains information sent from a webapp to a <code>PushSubscription</code></li>
+ </ul>
+ </section>
+
+ <section class="slide">
+ <h2>PushManager interface</h2>
+<ul>
+<li>Enables webapp to receive third party notifications</li>
+<li>Replaces <code>PushRegistrationManager</code> interface</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>PushMessageData interface</h2>
+<ul>
+<li>Access to push data sent from server</li>
+<li>Has methods for manipulating the received notification data</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>PushSubscription interface</h2>
+<ul>
+<li>Provides URL endpoint</li>
+<li>Enables Push notification unsubscribe</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Push API demo</h2>
+<video src="media/push.mp4">
+</section>
+
+<section class="slide">
+<h2>Gamepad API</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/gamepad/">W3C Working Draft, February 2016</a></li>
+<li><a href="https://w3c.github.io/gamepad/">Editor's Draft, August 2016</a></li>
+<li><a href="https://github.com/w3c/gamepad/">Gamepad API on Github</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>What?</h2>
+<p>Enables game controller support in browser-based games</p>
+</section>
+
+<section class="slide">
+<h2>How?</h2>
+<ul>
+<li>Events and objects for querying gamepad state</li>
+<li>Method for returning connected gamepads</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Where?</h2>
+<img src="pictures/chrome.png" alt="Chrome">
+<img src="pictures/firefox.png" alt="Firefox">
+<img src="pictures/edge.png" alt="Edge">
+<img src="pictures/opera.png" alt="Opera">
+</section>
+
+<section class="slide">
+<h2>Connect a gamepad</h2>
+<p>The <code>gamepadconnected</code> event fires when a gamepad is connected</p>
+<pre><code>
+window.addEventListener('gamepadconnected', function() {
+    console.log('Gamepad connected');
+});
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Query a gamepad</h2>
+<p>The <code>navigator.getGamepads()</code> method returns an array of connected gamepads</p>
+<pre><code style="font-size:90%">
+window.addEventListener('gamepadconnected', function(e) {
+    var gamepad = navigator.getGamepads()[e.gamepad.index];
+    console.log('Gamepad connected: Index %d', gamepad.index);
+});
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Gamepad object properties</h2>
+<ul>
+<li><code>id</code>: string of gamepad information</li>
+<li><code>index</code>: unique index number</li>
+<li><code>connected</code>: boolean indicating gamepad connection state</li>
+<li><code>buttons</code>: array of <code>GamepadButton</code> objects</li>
+<li><code>axes</code>: array of axis based controls</li>
+<li><code>timestamp</code>: time the gamepad data was last updated</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Gamepad API demo</h2>
+<video src="media/gamepad.mp4">
+</section>
+
+<section class="slide">
+<h2>Vibration API</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/vibration/">W3C Recommendation, February 2015</li>
+<li><a href="https://w3c.github.io/vibration/">2nd Edition Editor's Draft, August 2016</a></li>
+<li><a href="https://github.com/w3c/vibration/">Vibration API on Github</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>What?</h2>
+<p>Enables simple haptic feedback from webapps</p>
+</section>
+
+<section class="slide">
+<h2>How?</h2>
+<ul>
+<li>Patterns of on/off pulses</li>
+<li>Each pulse is described in milliseconds</li>
+<li>Patterns are a combination of pulses/pauses</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Where?</h2>
+<img src="pictures/chrome.png" alt="Chrome">
+<img src="pictures/firefox.png" alt="Firefox">
+<img src="pictures/opera.png" alt="Opera">
+</section>
+
+<section class="slide">
+<h2>Vibrate once</h2>
+<pre><code>
+ var vibrateOnce = function(e) {
+	window.navigator.vibrate(500);
+ };
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Vibrate twice</h2>
+<pre><code>
+ var vibrateTwice = function(e) {
+	window.navigator.vibrate([500, 500, 500]);
+ };
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Vibrate more</h2>
+<pre><code>
+ var vibrateMore = function(e) {
+	window.navigator.vibrate([500, 500, 500, 500, 500]);
+ };
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Vibration API demo</h2>
+<video src="media/vibration.mp4">
+</section>
+
+<section class="slide">
+<h2>Pointer Lock API</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/2016/PR-pointerlock-20160830/">W3C Proposed Recommendation, August 2016</a></li>
+<li><a href="https://w3c.github.io/pointerlock/">Editor's Draft, August 2016</a></li>
+<li><a href="https://github.com/w3c/pointerlock/">Pointer Lock API on Github</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>What?</h2>
+<p>Locks mouse movement to a single element, removes the mouse cursor, and removes mouse movement boundaries</p>
+</section>
+
+<section class="slide">
+<h2>How?</h2>
+<ul>
+<li>Extends MouseEvent interface with movement attributes</li>
+<li>Methods and events for managing  and manipulating a pointer lock</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Where?</h2>
+<img src="pictures/chrome.png" alt="Chrome">
+<img src="pictures/firefox.png" alt="Firefox">
+<img src="pictures/edge.png" alt="Edge">
+<img src="pictures/opera.png"  alt="Opera">
+</section>
+
+<section class="slide">
+<h2>Pointer lock features</h2>
+<ul>
+<li>Hides the on-screen mouse cursor</li>
+<li>Persistent until released by an API call</li>
+<li>Sends events regardless of mouse button state</li>
+<li>Not confined to the browser window</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Request pointer lock</h2>
+<p>The <code>requestPointerLock()</code> method locks the pointer to an element</p>
+<pre><code>
+canvas.requestPointerLock();
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Query pointer locked element</h2>
+<p>The <code>pointerLockElement</code> property of the <code>document</code> object</p>
+<pre><code>
+if (document.pointerLockElement === canvas) {
+    console.log('Pointer loc status: Locked');
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Release pointer lock</h2>
+<p>The <code>exitPointerLock()</code> method of the <code>document</code> object</p>
+<pre><code>
+document.exitPointerLock();
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Listen for pointer lock changes</h2>
+<p>The <code>pointerlockchange</code> event fires when the pointer lock state changes</p>
+<pre><code style="font-size: 80%">
+if ("onpointerlockchange" in document) {
+    document.addEventListener('pointerlockchange', someFunction, false);
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Detect pointer lock errors</h2>
+<p>The <code>pointerlockerror</code> event fires when <code>requestPointerLock()</code> or <code>exitPointerLock()</code> fails</p>
+<pre><code style="font-size: 80%">
+document.addEventListener('pointerlockerror', someFunction, false);
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Pointer Lock demo</h2>
+<video src="media/pointerlock.mp4">
+</section>
+
+<section class="slide">
+<h2>Web Speech API</h2>
+<ul>
+<li><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html">W3C Editor's Draft, June 2014</a></li>
+<li><a href="https://www.w3.org/community/speech-api/">Speech API Community Group</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>What?</h2>
+<p>Enables speech input and output for webapps</p>
+</section>
+
+<section class="slide">
+<h2>How?</h2>
+<ul>
+<li>SpeechSynthesis and SpeechRecognition interfaces</li>
+<li>Methods for controlling and manipulating speech output/input</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>SpeechRecognition interface: Where?</h2>
+<img src="pictures/chrome.png" alt="Chrome">
+<img src="pictures/opera.png" alt="Opera">
+</section>
+
+<section class="slide">
+<h2>SpeechSynthesis interface: Where?</h2>
+<img src="pictures/chrome.png" alt="Chrome">
+<img src="pictures/edge.png" alt="Edge">
+<img src="pictures/opera.png" alt="Opera">
+<img src="pictures/safari.png" alt="Safari">
+</section>
+
+<section class="slide">
+<h2>Basic HTML</h2>
+<pre><code>
+&lt;button data-hint="Use space or enter to activate"&gt;
+	Foo
+&lt;/button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Check for API support</h2>
+<pre><code>
+if (window.SpeechSynthesisUtterance === undefined) {
+	alert("Browser does not support the Web Speech API");
+} else {
+	// Do something
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Get controls with hints</h2>
+<pre><code>
+hints = document.querySelectorAll('[data-hint]'),
+		hoverTimeout;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Create speech callback</h2>
+<pre><code style="font-size: 80%">
+speakHint = function(e) {
+	var msg = new SpeechSynthesisUtterance(e.target.dataset.hint);
+    window.speechSynthesis.speak(msg);
+};
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard functionality</h2>
+<pre><code>
+function focusEventListener(e) {
+	hoverTimeout = window.setTimeout(speakHint, 500, e);
+}
+
+function blurEventListener(e) {
+	window.clearTimeout(hoverTimeout);
+}
+	</code></pre>
+	</section>
+
+<section class="slide">
+<h2>Mouse functionality</h2>
+<pre><code>
+function mouseoverEventListener(e) {
+	hoverTimeout = window.setTimeout(speakHint, 500, e);
+}
+
+function mouseoutEventListener(e) {
+	window.clearTimeout(hoverTimeout);
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Event listeners</h2>
+<pre><code style="font-size: 90%">
+hints.forEach(function(hint) {
+	hint.addEventListener('focus', focusEventListener);
+	hint.addEventListener('blur', blurEventListener);
+	hint.addEventListener('mouseover', mouseoverEventListener);
+	hint.addEventListener('mouseout', mouseoutEventListener);
+});
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Web Speech API demo</h2>
+<video src="media/hints.mp4">
+</section>
+
+<section class="slide">
+<h2>HTML 5.1</h2>
+<ul>
+  <li>Faire revisions (±) annuelles</li>
+  <li>Spec sur <a href="https://github.com/w3c/html">github</a></li>
+  <li>Réfléchir réalité, utiliser <a href="http://wicg.io">WICG</a> pour "incubation"</li>
+  <li>"Proposed Recommendation" 15 Septembre 2016</a>
+  <li>Nous travaillons sur <a href="https://w3c.github.io/html">HTML 5.2</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Where?</h2>
+<p><img src="pictures/ya.png" alt="Yandex">
+<img src="pictures/firefox.png" alt="Firefox">
+<img src="pictures/opera.png" alt="Opera">
+<img src="pictures/edge.png" alt="Edge">
+<img src="pictures/safari.png" alt="Safari">
+<img src="pictures/ucweb.png" alt="UCWeb">
+<img src="pictures/chrome.png" alt="Chrome">
+<img src="pictures/aduck.jpg" alt="Glazou!!">
+<img src="pictures/opera.png" style="width:20px;height:20px" alt="Opera Mini">
+...</p>
+<p>Regardez le <a href="https://w3c.github.io/test-results/html51/implementation-report.html">rapport d'implementation</a></p>
+<p>Mais ça changera…</p>
+</section>
+
+<section class="slide">
+<h2>Quoi?</h2>
+<ul>
+  <li>Nouvelles fonctionalités</li>
+  <li>Regressions vers HTML 4 :(</li>
+  <li>Integration dans l'écosystème</li>
+  <li>bugfixes</a>
+  <li>Mieux expliquer certaines choses</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Quoi de neuf?</h2>
+<ul>
+  <li><code>picture</code> / <code>srcset</code></li>
+  <li><code>details</code>, <code>summary</code></li>
+  <li><code>input type={week,month,datetime-local}</code></li>
+  <li><code>registerProtocolHandler()</code></a>
+  <li><code>oncopy</code>, <code>oncut</code>, <code>onpaste</code></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2><code>picture</code>, <code>srcset</code></h2>
+<p>Images "<span lang="en">responsive</span>"</p>
+<pre><code>&lt;picture>
+  &lt;source srcset="1.png" type="image/png"
+     media="max-width:20px">
+  &lt;source srcset="1.svg" type="image/svg+xml"
+     media="min-width:20px">
+  &lt;img src="one.jpg" alt="two!">
+&lt;picture></code></pre>
+</section>
+
+<section class="slide">
+ <h2><code>srcset</code>…</h2>
+<pre><code>&lt;img src="ouff.jpg" alt="Oh-la-la"
+  sizes="super-petit.jpg 100w,
+         petit.jpg 300w,
+         grand.jpg 800w"></code></pre>
+<p><img src="pictures/ya.png" alt="Yandex">
+<img src="pictures/firefox.png" alt="Firefox">
+<img src="pictures/opera.png" alt="Opera">
+<img src="pictures/edge.png" alt="Edge">
+<img src="pictures/safari.png" alt="Safari">
+<img src="pictures/chrome.png" alt="Chrome"></p>
+</section>
+
+<section class="slide">
+<h2><code>details</code> et <code>summary</code></h2>
+<details>
+<summary>information optionelle</summary>
+<pre><code>&lt;details>can
+  &lt;summary>Ce que se voit toujours&lt;/summary>
+  Et voici, des explications, etc
+  <img src="pictures/ya.png" alt="Yandex"> <img src="pictures/firefox.png" alt="Firefox"> <img src="pictures/opera.png" alt="Opera"> <img src="pictures/safari.png" alt="Safari">
+&lt;/details></code></pre>
+</details>
+</section>
+
+<section class="slide">
+<h2>Nouvelles <code>type</code>s</h2>
+<ul>
+  <li><code>input type="week"</code>: <input type="week"></li>
+  <li><code>input type="month"</code>: <input type="month"></li>
+  <li><code>input type="datetime-local"</code>: <input type="datetime-local"></li>
+</ul>
+<p><img src="pictures/ya.png" alt="Yandex"> <img src="pictures/edge.png" alt="Edge"></p>
+</section>
+
+<section class="slide">
+<h2><code>registerProtocolHandler()</code></h2>
+<pre><code>navigator.registerProtocolHander("mailto",
+      "http://mail.yandex.com", "Яндекс Почта")</code></pre>
+<ul>
+  <li>Protocols: liste + "<code>web+<var>[a-z]*</var></code>"</li>
+  <li>URL: Que de la même "origine"</li>
+  <li>Titre</li>
+</ul>
+<p><img src="pictures/ya.png" alt="Yandex"> <img src="pictures/firefox.png" alt="Firefox"> <img src="pictures/opera.png" alt="Opera"> </p>
+</section>
+
+<section class="slide">
+ <h2><code>oncopy</code>, <code>oncut</code>, <code>onpaste</code></h2>
+<p><code oncopy="alert('Vous allez me partager?')">&lt;code oncopy="alert('Vous allez me partager?')">()&lt;/code></code></p>
+<p>Etc…<p>
+<p><img src="pictures/ya.png" alt="Yandex"> <img src="pictures/firefox.png" alt="Firefox"> <img src="pictures/opera.png" alt="Opera"> <img src="pictures/safari.png" alt="Safari"></p>
+</section>
+
+<section class="slide">
+<h2>Ce n'est pas tout!</h2>
+<ul>
+ <li><code>reportValidity()</code></li>
+ <li><code>fastSeek()</code></li>
+ <li><code>forceSpellCheck()</code></li>
+ <li><code>scrollRestoration()</code></li>
+ <li><code>menu type="contextmenu"</code>, <code>menuitem</code></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Regression?</h2>
+<ul>
+  <li><code>accesskey=<del style="color:red">"1 a 語"</del>"a"</code>, comme HTML 4</li>
+  <li>@<code>rev</code> retourne, principalement pour RDFa</li>
+  <li>Mettez les entêtes en ordre</li>
+</ul>
+<pre><code>&lt;section>&lt;h1>
+  &lt;section><del style="color:red">&lt;h1></del>&lt;h2></code></pre>
+</section>
+
+<section class="slide">
+ <h2>Fonctionalités supprimées</h2>
+<dl>
+  <dt>Faute d'implementation</dt>
+   <dd><code>&lt;label form="UnAutre"></code><dd>
+   <dd><code>&lt;range multiple></code></li>
+  <dt>Suppression des implementations</dt>
+   <dd><code>MediaController</code></dd>
+   <dd><code>appcache</code></dd>
+   <dd><code>keygen</code> - dès HTML 5.2</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Reparation</h2>
+<ul>
+  <li><code><del style="color:red">mouse</del>wheel</code></li>
+  <li><code>&lt;option>&lt;/option></code> est valide</li>
+  <li>Construction des tables…</li>
+  <li><code>&lt;figcaption></code> n'import où dans une <code>figure</code></li>
+</ul>
+<p>Etc etc… et il en reste à faire :(</p>
+</section>
+
+<section class="slide">
+<h2>Integration</h2>
+<ul>
+ <li><code>requestAnimationFrame</code></li>
+ <li>Content Security Policy (CSP)</li>
+ <li><code>allowfullscreen</code></li>
+ <li>Expliquer mieux SVG en HTML</li>
+</ul>
+</section>
+
+<section class="slide">
+ <h2>Reporté a l'avenir(?)</h2>
+<ul>
+  <li><code>&lt;style scoped></code></li>
+  <li><code>&lt;dialog></code></li>
+  <li><code>isProtocolHandlerRegistered</code></li>
+  <li><code>contenteditable="<var>???</var>"</code></li>
+  <li><code>inputmode</code></li>
+  <li>tables sortables</li>
+</section>
+
+<section class="slide">
+<h2>Le futur proche?</h2>
+<p>Peut-être, entre autres, il y aura…</p>
+<ul>
+ <li>Custom Elements</li>
+ <li>Shadow DOM</li>
+ <li>Service Workers</li>
+ <li><code>beforeInput</code></li>
+ <li>javascript <code>module</code></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Picture credits</h2>
+<p>The pictures used in this talk:</p>
+<ul>
+<li>Browser logos from browser companies</li>
+<li>Duck from <a href="http://cliparts.co">ClipArts</a></li>
+</ul>
+</section>
+
+
+<section class="slide">
+<h2>Demo credits</h2>
+<p>The demos used in this talk:</p>
+<ul>
+<li><a href="https://gauntface.github.io/simple-push-demo/">Push API demo</a></li>
+<li><a href="http://html5gamepad.com">Gamepad API demo</a></li>
+<li><a href="http://ljwatson.github.io/playground/vibration/index.html">Vibration API demo</a></li>
+<li><a href="https://mdn.github.io/pointer-lock-demo/">Pointer Lock demo</a></li>
+<li><a href="http://ljwatson.github.io/playground/hints2/index.html">Web Speech API demo</a></li>
+</ul>
+</section>
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
