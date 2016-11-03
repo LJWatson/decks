@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SVG accessibility</title>
+    <base target="_blank">
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+<style>
+   body { font-family: "Textbook New", Arial, sans-serif; color: #000; background-color: #fff; }
+.cover h2 { margin:0 0 0;
+	color:#000;
+        text-align: center;
+	font-size:2.5em;  }
+.cover h3 { margin:.5em 0 0;
+	color:#000;
+        text-align: center;
+	font-size:2em;  }
+.cover p { margin:.5em 0 0;
+	text-align:center;
+	color:#000;
+	font-size:1.7em; }
+#cover p a { color:#000; }
+dd, ul { margin-left: 1em }
+</style>
+</head>
+
+<body class="shower list">
+<header class="caption">
+      <h1>SVG accessibility</h1>
+      <p><a href="http://tink.uk/">Léonie</a> - <a href="http://thepaciellogroup.com">TPG</a>, <a href="http://chaals.com/">Chaals</a> - <a href="http://yandex.com">Yandex</a>/<a href="https://yandex.ru">Яндекс</a></p>
+</header>
+
+<section class="slide cover">
+<h2>SVG accessibility</h2>
+<p style="font-style:italic">Graphical Web, November 2016</p>
+<p>Léonie Watson, TPG</p>
+<p>Chaals McCathie Nevile, Yandex/Яндекс</p>
+</section>
+
+    <section class="slide">
+        <h2>Themes</h2>
+        <ul>
+          <li>Background</li>
+          <li>Graphics</li>
+          <li>Animation, CSS</li>
+          <li>Keyboards: links, <code>tabindex</code></li>
+          <li>Semantics: <code>text</code>, <code>title</code>, <code>desc</code></li>
+          <li><code>use</code>, ARIA 1.0</li>
+          <li>ARIA graphics module…</li>
+        </ul>
+    </section>
+
+
+<section class="slide">
+<h2 class="shout">Background</h2>
+</section>
+
+<section class="slide">
+<h2>15 years ago</h2>
+<p><a href="http://w3.org/TR/SVG-access">Accessibility features of SVG</a></p>
+<ul>
+  <li>Structure</li>
+  <li><code>title</code> / <code>desc</code></li>
+  <li><code>font</code> - like webfonts</li>
+  <li>Interactivity…??</li>
+  <li>metadata with RDF and [magic]?</li>
+  <li>CSS…</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>SVG in browsers</h2>
+<dl>
+ <dt>CSS <code>background-image</code></dt>
+   <dd>Just a picture</dd>
+ <dt>Embedded as <code>img</code></dt>
+   <dd>Only HTML: <code>alt</code> and </code>longdesc</code></dd>
+ <dt>Stand-alone SVG</dt>
+   <dd>Nothing in IE or Edge</dd>
+ <dt>HTML with SVG code inline</dt>
+  <dd>As good as it gets?</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>What <em>works</em>?</h2>
+<ul>
+ <li>Zoom and pan<sup>*</sup></li>
+ <li>fonts<sup>*</sup>, links<sup>*</sup></li>
+ <li>Top level <code>title</code></li>
+ <li>Tooltips for <code>&lt;title>…&lt;/title></code></li>
+ <li>ARIA<sup>*</sup>, <code>tabindex</code><sup>*</sup></li>
+</ul>
+<p>* Sort of, most places…</p>
+</section>
+
+<section class="slide">
+<h2 class="shout">It's graphics</h2>
+</section>
+
+<section class="slide">
+<h2>Be clear…</h2>
+<p><a href="pictures/airline.html"><img height="400" src="pictures/airline.svg" alt="A mysterious graph" longdesc="airline-desc.html"></a></p>
+</section>
+
+<section class="slide">
+<h2>And comprehensible</h2>
+<p><a href="pictures/bar.html"><img height="400" src="pictures/bar.svg" alt="A confusing bar graph" longdesc="bar-desc.html"></a></p>
+</section>
+
+<section class="slide">
+<h2>Grouping</h2>
+<p><a href="pictures/clusterBar.html"><img height="400" src="pictures/clusterBar.svg" alt="A less confusing bar graph" longdesc="clusterbar-desc.html"></a></p>
+</section>
+
+<section class="slide">
+<h2>Contrast</h2>
+<p><a href="pictures/clusterBar.html"><img height="400" src="pictures/clusterBar.svg" alt="A bar graph with high contrast set" longdesc="clusterbar-desc.html"></a></p>
+</section>
+
+<section class="slide">
+<h2>Allow zoom/pan</h2>
+<p><a style="float:right;width:50%" href="pictures/rectrack2.html"><img src="pictures/rectrack2.svg" alt="A flow chart with some animation" longdesc="rectrack-desc.html" style="max-width:90%"><a href="pictures/chem-BV-ox.html"><img src="pictures/chem-BV-ox.svg" alt="A tiny flowchart" longdesc="chem-BV-ox-desc.html" style="max-width:40%"></a></p>
+<p>Use <code>onzoom</code>, <code>currentScale</code>
+ <br>(nonscalable units may work one day)</p>
+</section>
+
+<section class="slide">
+<h2 class="shout">Animation, interaction</h2>
+</section>
+
+<section class="slide">
+  <h2>SVG animation</h2>
+  <p><img src="broken" style="float:right;width:40%;height:80%" alt="A beaker, filled with ice and a thermometer, with a heater and a button…">Heating ice…</p>
+<ul>
+ <li>Press the heat button…</li>
+ <li>…temperature rises to zero</li>
+ <li>…ice melts. Temperature at zero</li>
+ <li>…water temperature rises…</li>
+</ul>
+
+  <p>But labelling needs JS :(</p>
+</section>
+
+
+<section class="slide">
+  <h2>Using CSS</h2>
+  <p><a href="pictures/rectrack2.html"><img src="pictures/rectrack2.svg" alt="A flow chart with some animation" longdesc="rectrack-desc.html"></a></p>
+  <p>Help people focus on what matters</p>
+</section>
+
+<section class="slide">
+<h2 class="shout">Keyboards…</h2>
+</section>
+
+<section class="slide">
+<h2>Use links…</h2>
+<p><a href="pictures/roads.html"><img height="400" src="pictures/roads.svg" alt="A roadmap. Or maybe a lot of marks left by a snail, or cracked glass." longdesc="roads-desc.html"></a></p>
+<p>Don't work in Safari ;(</p>
+</section>
+
+<section class="slide">
+<h2>…linking…</h2>
+<p><a style="float:right;width:50%" href="pictures/chord.html"><img height="400" src="pictures/chord.svg" alt="A chord graph" longdesc="sparse-chord-desc.html"></a><a href="pictures/sparse-chord.html"><img height="400" src="pictures/sparse-chord.svg" alt="A chord graph" longdesc="sparse-chord-desc.html"></a></p>
+</section>
+
+<section class="slide">
+  <h2>Use <code>tabindex</code></h2>
+  <p><a href="pictures/rectrack2.html"><img src="pictures/rectrack2.svg" alt="A flow chart with some animation" longdesc="rectrack-desc.html"></a></p>
+  <p>Navigable - soon in Mac Firefox?</p>
+</section>
+
+<section class="slide">
+<h2 class="shout">SVG Semantics</h2>
+</section>
+
+<section class="slide">
+<h2>Use <code>text</code></h2>
+ <ul>
+  <li>Labels can be navigated, searched</li>
+  <li>Use fonts, <strong>not</strong> <code>path</code></li>
+ </ul>
+<p><a href="pictures/chem-BV-ox.html"><img src="pictures/chem-BV-ox.svg" alt="An organic chemistry process" longdesc="chem-BV-ox-desc.html" style="max-width:100%"></a></p>
+</section>
+
+<section class="slide">
+<p style="width:30%;float:right"><a href="pictures/trenchcoat-man.html"><img src="pictures/trenchcoat-man.svg" alt="trenchcoat man"></a></p>
+<h2><code>title</code> and <code>desc</code></h2>
+<ul>
+ <li><em>First</em> <code>title</code> is available</li>
+ <li>Provide a <code>desc</code> for the image</li>
+ <li>Enable exploration</li>
+</ul>
+ <p>This needs aria tagging :(</p>
+</section>
+
+<section class="slide">
+<h2>Making <code>title</code>/<code>desc</code> <em>work</em></h2>
+<pre><code>&lt;g <mark>aria-labelledby</mark>="mytitle"
+  <mark>aria-describedby</mark>="mydesc">
+  &lt;title id="mytitle">Key component&lt;/title>
+  &lt;desc id="mydesc">Pre-mixed tomato juice,
+    pepper, celery salt and chili&lt;/desc> 
+  ...
+&lt;/g></code></pre>
+</section>
+
+<section class="slide">
+<h2>Use <code>use</code></h2>
+<ul>
+  <li>Contextual title - and a general one?</li>
+  <li>Put a <code>desc</code> in the definition</li>
+</ul>    
+<pre><code>&lt;g id="aDef">&lt;title id="def-title"…</code>
+[…]
+<code>&lt;use aria-labelledby="myName def-title"…>
+  &lt;title id="myName">Red</code></pre>
+</section>
+
+<section class="slide">
+<h2>ARIA helps screenreaders</h2>
+<ul>
+ <li><code>role="img"</code> for atomic stuff<br>
+   especially with <code>text</code> elements inside</li>
+  <li><code>role={list,listitem}</code></li>
+  <li><code>aria-live</code> and friends</li>
+  <li>tabular data charts as tables</li>
+  <li><code>role="heading" aria-level={1…6}</code></li>
+</ul>
+<p><a href="http://ljwatson.github.io/decks/2016/lws/index.html#">Interactive controls, as per HTML</a> (<a href="https://vimeo.com/167255877">watch video</a>)</p>
+</section>
+
+<section class="slide">
+<h2>ARIA graphics module</h2>
+<p><code>role=</code></p>
+<ul>
+  <li><code>graphics-object</code></li>
+  <li><code>graphics-document</code></li>
+  <li><code>graphics-symbol</code></li>
+</ul>
+<p>A <strong>preliminary</strong> proposal. <a href="http://w3c.github.io/aria/aria/graphics.html">Thinking, comments welcome</a>…</p>
+</section>
+
+<section class="slide">
+<h2>Picture credits</h2>
+<dl>
+  <dt>The charts</dt>
+  <dd>IBM</dd>
+  <dt>Trenchcoat Man</dt>
+   <dd><a href="http://2dforever.com">Tom Waterhouse</a> - <a href="https://twitter.com/2DForever">@2Dforever</a>
+  <dt>Process flowchart, ugly cross-linked thing</dt>
+  <dd>Chaals</dd>
+</dl>
+<p>Play with the <a href="">github examples repo</a></p>
+</section>
+
+<section class="slide">
+<h2>"more or less"</h2>
+<ul>
+ <li><code>title</code>, <code>desc</code> mostly need aria</code>
+ <li>SVG Animation and Microsoft: <strong>Sigh</strong></li> 
+ <li>Links, except internal links in Safari</li>
+ <li><code>tabindex</code> works except Mac Firefox</li>
+ <li>Keyboard <code>click</code>,
+ <code>animate</code> with <code>accesskey</code> are unreliable:<br>
+  use JS key events :(</li>
+ <li><code>aria-flowto</code> would be great. But mostly doesn't work</li>
+</ul>
+</section>
+
+<section class="slide cover">
+<h2>Thank you</h2>
+<p><a href="http://tink.co.uk">tink.uk</a>, <a href="https://www.yandex.com/search/?text=chaals">yandex.com/?q=chaals</a></p>
+<h3>Нет глупых вопросов.<br>Глупость - не вопрошать.</h3>
+
+
+</section>
+
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
