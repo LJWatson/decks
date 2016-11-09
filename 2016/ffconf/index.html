@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technologic (Human Afterall): Accessibility mix</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>Technologic (Human Afterall): Accessibility mix</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>Technologic (Human Afterall): Accessibility mix</h2>
+<p>ffconf, Brighton 2016</p>
+<ul>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">github.com/ljwatson</a></li>
+</ul>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>"Buy it, use it, break it, fix it"</h2>
+<audio data-autoplay src="media/samples/1-buy-it-use-it-break-it-fix-it.mp3">
+</section>
+
+<section class="slide">
+<h2>"Trash it, change it, mail - upgrade it"</h2>
+<audio data-autoplay src="media/samples/2-Trash-it-change-it-mail-upgrade-it.mp3">
+</section>
+
+<section class="slide">
+<h2>Implicit semantics</h2>
+<p>Most HTML elements have implicit semantics (role and state)</p>
+<ul>
+<li><a href=https://www.w3.org/TR/core-aam-1.1/">Core AAM</a></li>
+<li><a href="https://www.w3.org/TR/html-aam-1.0/">HTML AAM</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Links</h2>
+<pre><code>
+&lt;a href="http://tink.uk"&gt;Tink.UK&lt;/a&gt;
+</code></pre>
+<ul>
+<li>Role = "link"</li>
+<li>Accessible name = "Tink.UK"</li>
+<li>State = focusable</li>
+</ul>
+<audio src="media/link.mp3">
+</section>
+
+<section class="slide">
+<h2>Images</h2>
+<pre><code style="font-size: 80%">
+&lt;img src="chamucos.png"
+     alt="A bottle of Chamucos tequila with the dancing devil logo"&gt;
+</code></pre>
+<ul>
+<li>Role = "image"</li>
+<li>Accessible name = "A bottle of Chamucos tequila with the dancing devil logo"</li>
+</ul>
+<audio src="media/graphic.mp3">
+</section>
+
+<section class="slide">
+<h2>Inputs</h2>
+<pre><code>
+&lt;input type="checkbox" id="tequila" checked&gt;
+&lt;label for="tequila"&gt;Tequila makes me happy&lt;/label&gt;
+</code></pre>
+<ul>
+<li>Role = "checkbox"</li>
+<li>Accessible name = "Tequila makes me happy"</li>
+<li>State = "focusable checked"</li>
+</ul>
+<audio src="media/checkbox.mp3">
+</section>
+
+<section class="slide">
+<h2>Neutral semantics</h2>
+<p>Some HTML elements do not convey semantics (role or state)</p>
+</section>
+
+<section class="slide">
+<h2>Divs and spans</h2>
+<pre><code>
+&lt;div&gt;This is just&lt;/div&gt;
+&lt;span&gt;like plain text&lt;/span&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>"Charge it, point it, zoom it, press it"</h2>
+<audio data-autoplay src="media/samples/3-Charge-it-point-it-zoom-it-press-it.mp3">
+</section>
+
+<section class="slide">
+<h2>Keyboard focus</h2>
+<p>HTML has interactive elements that receive focus, including:</p>
+<ul>
+<li>&lt;a href&gt;</li>
+<li>&lt;button&gt;</li>
+<li>&lt;input&gt;</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>DOM order</h2>
+<p>The tab order follows the DOM order of interactive elements</p>
+</section>
+
+<section class="slide">
+<h2>DOM order example</h2>
+<pre><code>
+&lt;button&gt;1&lt;/button&gt;
+&lt;button&gt;2&lt;/button&gt;
+&lt;button&gt;3&lt;/button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>DOM order demo</h2>
+<video src="media/dom-order.mp4">
+</section>
+
+<section class="slide">
+<h2>Expected interactions</h2>
+<p>Interactive elements have expected interactions provided by the browser:</p>
+<ul>
+<li>A link is activated by click, tap or the Enter key</li>
+<li>A button is activated by click, tap or the Enter or Space key</li>
+<li>An input is activated by click, tap or the Enter key</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>"Snap it, work it, quick - erase it"</h2>
+<audio data-autoplay src="media/samples/4-Snap-it-work-it-quick-erase-it.mp3">
+</section>
+
+<section class="slide">
+<h2>HTML code</h2>
+<pre><code>
+&lt;input type="checkbox" id="bold" checked&gt;
+&lt;label for="bold"&gt;Bold&lt;/label&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>DOM tree</h2>
+<img src="pictures/checkbox-dom.png" alt="DOM information for an HTML checkbox">
+</section>
+
+<section class="slide">
+<h2>Accessibility tree</h2>
+<img src="pictures/checkbox-a11y-tree.png" alt="Accessibility tree information for an HTML checkbox">
+</section>
+
+<section class="slide">
+<h2>Manipulating the DOM</h2>
+<ul>
+<li>Browser parses the HTML and builds the DOM</li>
+<li>Browser uses the DOM to build the accessibility tree</li>
+<li>Browser updates the DOM in response to user interaction or scripted events</li>
+<li>Browser responds to changes in the DOM and updates the accessibility tree</li>
+<li>Assistive technologies listen for changes in the accessibility tree and respond accordingly</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Accessibility APIs</h2>
+<ul>
+<li>UIA, MSAA and IAccessible2 on Windows</li>
+<li>IAccessible2 and ATK on Linux</li>
+<li>Accessibility API on OSX and iOS</li>
+<li>Accessibility Framework on Android</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>"Write it, cut it, paste it, save it"</h2>
+<<audio data-autoplay src="media/samples/5-write-it-cut-it-paste-it-save-it.mp3">
+</section>
+
+<section class="slide">
+<h2>ARIA</h2>
+<p>Attributes to polyfill semantic information in HTML and SVG</p>
+<ul>
+<li><a href="https://www.w3.org/TR/wai-aria/">ARIA 1.0 (W3C Recommendation 2014)</a></li>
+<li><a href="https://www.w3.org/TR/wai-aria-1.1/">ARIA 1.1 (W3C Working Draft 2016)</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Role</h2>
+<p>Roles including:</p>
+<ul>
+<li>dialog</li>
+<li>slider</li>
+<li>toolbar</li>
+<li>tree</li>
+<li>tablist</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Name (and description)</h2>
+<p>Attributes for providing accessible names and descriptions:</p>
+<ul>
+<li>aria-label</li>
+<li>aria-labelledby</li>
+<li>aria-describedby</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>State</h2>
+<p>States including:</p>
+<ul>
+<li>aria-checked</li>
+<li>aria-pressed</li>
+<li>aria-hidden</li>
+<li>aria-invalid</li>
+<li>aria-current</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>"Load it, check it, quick - rewrite it"</h2>
+<audio data-autoplay src="media/samples/6-Load-it-check-it-quick-rewrite-it.mp3">
+</section>
+
+<section class="slide">
+<h2>Disclosure design pattern</h2>
+<p><a href="https://ljwatson.github.io/design-patterns/disclosure3/">ljwatson.github.io/design-patterns/disclosure3/</a></p>
+</section>
+
+<section class="slide">
+<h2>HTML code</h2>
+<pre><code>
+&lt;span id="button"&gt;Tequila &lt;span id="icon"&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;div id="content"&gt;Makes me happy&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Disclosure demo</h2>
+<img src="pictures/disclosure.jpg" alt="Disclosure button">
+</section>
+
+<section class="slide">
+<h2>Add focus</h2>
+<pre><code style="font-size: 80%">
+&lt;span id="button" <mark>tabindex="0"</mark>&gt;Tequila &lt;span id="icon"&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;script&gt;
+  var button = document.getElementById('button');
+  button.setAttribute('tabindex', 0);
+&lt;/script&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add button role</h2>
+<pre><code>
+button.setAttribute('role', 'button');
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add aria-expanded attribute</h2>
+<pre><code>
+button.setAttribute('aria-expanded', 'false');
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add aria-controls attribute</h2>
+<pre><code>
+button.setAttribute('aria-controls', 'content');
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add aria-hidden attribute</h2>
+<pre><code>
+icon.setAttribute('aria-hidden', 'true');
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add hidden attribute</h2>
+<pre><code>
+content.setAttribute('hidden', 'true');
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rendered code</h2>
+<pre><code style="font-size: 80%">
+&lt;span id="button" tabindex="0" role="button"
+      aria-expanded="false" aria-controls="content"&gt;
+    Tequila &lt;span id="icon" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;/span&gt;
+&lt;div id="content" hidden&gt;Makes me happy&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Mouse events</h2>
+<pre><code>
+button.addEventListener('click', disclose, false);
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard events</h2>
+<pre><code>
+button.addEventListener('keydown', function(event) {
+    if (event.keyCode == 13 || event.keyCode ==32) {
+        disclose();
+    }
+});
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add functionality</h2>
+<pre><code style="font-size: 75%">
+if (content.hasAttribute('hidden')) {
+    button.setAttribute('aria-expanded', 'true');
+    button.setAttribute('aria-controls', 'content');
+    content.removeAttribute('hidden');
+}
+else {
+    button.setAttribute('aria-expanded', 'false');
+    content.setAttribute('hidden', 'true');
+    button.removeAttribute('aria-controls');
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Disclosure screen reader demo</h2>
+<video src="media/disclosure.mp4">
+</section>
+
+<section class="slide">
+<h2><h2>Or just use HTML</h2>
+<p><a href="https://ljwatson.github.io/design-patterns/disclosure1/">ljwatson.github.io/design-patterns/disclosure1/</a></p>
+</section>
+
+<section class="slide">
+<h2>"Plug it, play it, burn it, rip it"</h2>
+<audio data-autoplay src="media/samples/7-plug-it-play-it-burn-it-rip-it.mp3">
+</section>
+
+<section class="slide">
+<h2>Tenon API</h2>
+<p>Use the <a href="http://tenon.io">Tenon API</a> with your build tools</p>
+</section>
+
+<section class="slide">
+<h2>Installation</h2>
+<p>Install a <a href="https://tenon.io/getcode.php">Tenon module</a> for Grunt, Gulp or other environments</p>
+</section>
+
+<section class="slide">
+<h2>Required parameters</h2>
+<p>Send a post request to the API with required parameters:</p>
+<ul>
+<li>key - Your API key</li>
+<li>url - The application to be tested</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Optional parameters</h2>
+<p>Choose optional parameters such as:</p>
+<ul>
+<li>certainty - Sets the level of certainty for issue reporting</li>
+<li>priority - Requests a priority level for each issue</li>
+<li>level - Sets the WCAG level to test against</li>
+<li>viewPortHeight - Sets the viewport to be tested</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>"Drag and drop it, zip - unzip it"</h2>
+<audio data-autoplay src="media/samples/8-Drag-It-Drop-It-Zip-Unzip-It.mp3">
+</section>
+
+<section class="slide">
+<h2>Ember a11y test suite</h2>
+<ul>
+<li><a href="https://github.com/trentmwillis/ember-a11y-testing">Ember a11y test suite</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>React</h2>
+<ul>
+<li><a href="https://github.com/reactjs/react-a11y">React a11y</a></li>
+<li><a href="https://code.facebook.com/posts/435862739941212/making-react-apps-accessible/">React accessibility API</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Angular</h2>
+<ul>
+<li><a href="https://docs.angularjs.org/api/ngAria">ngARIA</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>"Lock it, fill it, call it, find it"</h2>
+<audio data-autoplay src="media/samples/9-lock-it-fill-it-call-it-find-it.mp3">
+</section>
+
+<section class="slide">
+<h2>Test it yourself</h2>
+<p>Abandon your mouse, turn on a screen reader, zoom in/out</p>
+</section>
+
+<section class="slide">
+<h2>"View it, code it, jam - unlock it"</h2>
+<audio data-autoplay src="media/samples/10-view-it-code-it-jam-unlock-it.mp3">
+</section>
+
+<section class="slide">
+<h2>Space Jam</h2>
+<img src="pictures/space-jam3.jpg" alt="Space Jam poster (1996)" style="text-align: center">
+</section>
+
+<section class="slide">
+<h2>Space Jam website</h2>
+<img src="pictures/space-jam-website.jpg" alt="Space Jam website (1996)">
+</section>
+
+<section class="slide">
+<h2>Old school style...</h2>
+<pre><code style="font-size: 80%">
+&lt;body vlink="#ff4c4c"
+      alink="#ff4c4c"
+      link="#ff4c4c"
+      text="#ff0000"
+      bgcolor="#000000"
+      background="img/bg_stars.gif"&gt;
+...
+&lt;/body&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Formatting...</h2>
+<pre><code>
+&lt;center&gt;
+&lt;nobr&gt;
+...
+&lt;/nobr&gt;
+&lt;/center&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Layout...</h2>
+<pre><code style="font-size: 80%">
+&lt;table width="500" border="0"&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;...&lt;/td&gt;
+      ...
+    &lt;/tr&gt;
+  &lt;tbody&gt;
+&lt;/table&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Fonts...</h2>
+<pre><code style="font-size: 80%">
+&lt;font size="-1"&gt;
+  &lt;a target="_blank" href="http://www.warnerbros.com/term-use"&gt;
+    Legal/Privacy Information About This Site.&lt;/a&gt;
+&lt;/font&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>"Surf it, scroll it, pause it, click it"</h2>
+<audio data-autoplay src="media/samples/11-surf-it-scroll-it-pause-it-click-it.mp3">
+</section>
+
+<section class="slide">
+<h2>Accessibility</h2>
+<ul>
+<li>No style override</li>
+<li>No text resize</li>
+<li>No layout flexibility</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>CSS1</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/REC-CSS1/">CSS1 (W3C Recommendation 1996)</a></li>
+<li>Box model and basic floats</li>
+<li>Properties for fonts, colours and dimensions</li>
+<li>Pseudo-class for anchors</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>"Cross it, crack it, switch - update it"</h2>
+<audio data-autoplay src="media/samples/12-cross-it-crack-it-switch-update-it.mp3">
+</section>
+
+<section class="slide">
+<h2>CSS2</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/2008/REC-CSS2-20080411/">CSS2 (W3C Recommendation 1998)</a></li>
+<li><a href="https://www.w3.org/TR/2008/REC-CSS2-20080411/selector.html#before-and-after">before/after pseudo-elements</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>:after example</h2>
+<pre><code>
+#a:after {
+  content: ' Makes me happy!';
+}
+...
+&lt;a href="/" id="a"&gt;Tequila!&lt;/a&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rendered code</h2>
+<pre><code>
+&lt;a href="/" id="a"&gt;Tequila!&lt;/a&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>"Name it, rate it, tune it, print it"</h2>
+<audio data-autoplay src="media/samples/13-name-it-rate-it-tune-it-print-it.mp3">
+</section>
+
+<section class="slide">
+<h2>CSS2.1 on generated content</h2>
+<blockquote cite="https://www.w3.org/TR/CSS2/generate.html">
+Generated content does not alter the document tree. In particular, it is not fed back to the document language processor (e.g., for reparsing).
+</blockquote>
+</section>
+
+<section class="slide">
+<h2>:after screen reader demo</h2>
+<video src="media/tequila-link-after.mp4">
+</section>
+
+<section class="slide">
+<h2>Browser support</h2>
+<p>CSS generated content is accessibility supported in:</p>
+<ul>
+<li>Chrome</li>
+<li>Edge</li>
+<li>Firefox</li>
+<li>Safari</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Browser solutions</h2>
+<ul>
+<li>Create a text node in the accessibility tree</li>
+<li>Include generated content in the <a href="https://www.w3.org/TR/accname-aam-1.1/">accessible name computation</a>
+</ul>
+</section>
+
+<section class="slide">
+<h2>"Scan it, send it, fax - rename it"</h2>
+<audio data-autoplay src="media/samples/14-scan-it-send-it-fax-rename-it.mp3">
+</section>
+
+<section class="slide">
+<h2>CSS3 FlexBox</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/css-flexbox-1/">CSS3 FlexBox (W3C Candidate Recommendation 2016)</a></li>
+<li>Easier responsive layouts</li>
+<li>No more float hacks</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Basic HTML</h2>
+<pre><code>
+&lt;div&gt;
+    &lt;button&gt;1&lt;/button&gt;
+    &lt;button&gt;2&lt;/button&gt;
+    &lt;button&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard demo</h2>
+<video src="media/no-flexbox.mp4">
+</section>
+
+<section class="slide">
+<h2>display and order properties</h2>
+<pre><code>
+&lt;div <mark>style="display: flex;"</mark>&gt;
+    &lt;button <mark>style="order: 3;"</mark>&gt;1&lt;/button&gt;
+    &lt;button <mark>style="order: 2;"</mark>&gt;2&lt;/button&gt;
+    &lt;button <mark>style="order: 1;"</mark>&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</section>
+
+<section class="slide">
+<h2>Flexed keyboard demo</h2>
+<video src="media/flexbox-chrome.mp4">
+</section>
+
+<section class="slide">
+<h2>"Touch it, bring it, pay it, watch it"</h2>
+<audio data-autoplay src="media/samples/15-touch-it-bring-it-pay-it-watch-it.mp3">
+</section>
+
+<section class="slide">
+<h2>Spec advice?</h2>
+<blockquote cite="https://www.w3.org/TR/css-flexbox-1/#order-accessibility">
+Authors must use ‘order' only for visual, not logical, reordering of content.</blockquote>
+ </section>
+
+ <section class="slide">
+<h2>tabindex attribute</h2>
+<pre><code>
+&lt;div style="display: flex;"&gt;
+    &lt;button style="order: 3;" <mark>tabindex="3"</mark>&gt;1&lt;/button&gt;
+    &lt;button style="order: 2;" <mark>tabindex="2"</mark>&gt;2&lt;/button&gt;
+    &lt;button style="order: 1;" <mark>tabindex="1"</mark>&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>tabindex demo</h2>
+<video src="media/flexbox-firefox.mp4">
+</section>
+
+<section class="slide">
+<h2>tabindex problem</h2>
+<ul>
+<li>Elements with tabindex="0" are part of the natural tab sequence</li>
+<li>Elements with tabindex="-1" are not, but are focusable with scripting</li>
+<li>Elements with tabindex=">0" are never a good idea</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>aria-flowto attribute</h2>
+<pre><code style="font-size: 80%">
+&lt;div style="display: flex;"&gt;
+    &lt;button <mark>id="b1" aria-flowto="b3"</mark> style="order: 3;"&gt;1&lt;/button&gt;
+    &lt;button <mark>id="b2" aria-flowto="b1"</mark> style="order: 2;"&gt;2&lt;/button&gt;
+    &lt;button <mark>id="b3" aria-flowto="b2"</mark> style="order: 1;"&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</section>
+
+<section class="slide">
+<h2>aria-flowto screen reader demo</h2>
+<video src="media/flexbox-aria-flowto.mp4">
+</section>
+
+<section class="slide">
+<h2>aria-flowto problem</h2>
+<ul>
+<li>aria-flowto adds another navigation method</li>
+<li>DOM order, flexed order and aria-flowto order</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The Firefox "bug"</h2>
+<video src="media/flexbox-firefox.mp4">
+</section>
+
+<section class="slide">
+<h2>"Turn it, leave it, start - format it"</h2>
+<audio data-autoplay src="media/samples/16-turn-it-leave-it-start-format-it.mp3">
+</section>
+
+<section class="slide">
+<h2>It doesn't have to be perfect</h2>
+<p>Just a little bit better than yesterday</p>
+</section>
+
+<section class="slide">
+<h2>Technologic (Human afterall): Accessibility mix</h2>
+<audio src="media/samples/18-technologic.mp3">
+<p>Thank you</p>
+<ul>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">github.com/ljwatson</a></li>
+</ul>
+</section>
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
