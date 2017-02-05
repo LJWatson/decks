@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Source Accessibility - FOSDEM</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>Open Source Accessibility</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>Open Source Accessibility</h2>
+<p>FOSDEM, Brussels 2017</p>
+<br/>
+<br/>
+<ul>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>Inclusive design</h2>
+<pInclusive design is the practice of making products and interfaces that can be used and enjoyed by different people in different situations</p>
+</section>
+
+<section class="slide">
+<h2>Open accessibility stack</h2>
+<ul>
+<li>The screen reader</li>
+<li>The code</li>
+<li>The browser</li>
+<li>The API</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Non-Visual Desktop Access (NVDA)</h2>
+<ul>
+<li>Windows screen reader:<br/>
+<a href="http://www.nvaccess.org/">www.nvaccess.org</a></li>
+<li>Written in Python</li>
+<li>Available on Github:<br/>
+<a href="https://github.com/nvaccess/nvda/">github.com/nvaccess/nvda</a></li>
+</ul>
+</section>
+
+
+<section class="slide">
+<h2>Screen reader demo: Headings</h2>
+<video src="media/tink-headings.mp4">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: Reading</h2>
+<video src="media/tink-article.mp4">
+</section>
+
+<section class="slide">
+<h2>HTML</h2>
+<ul>
+<li>HTML5.1 is a W3C Recommendation:<br/>
+<a href="https://www.w3.org/TR/html/">www.w3.org/TR/html</a></li>
+<li>Available on Github:<br>
+<a href="https://github.com/w3c/html">github.com/w3c/html</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Implicit semantics</h2>
+<p>Most HTML elements have implicit semantics (role and state)</p>
+<ul>
+<li>Core AAM:<br/>
+    <a href="https://www.w3.org/TR/core-aam-1.1/">www.w3.org/TR/core-aam-1.1</a></li>
+<li>HTML AAM:<br/>
+    <a href="https://www.w3.org/TR/html-aam-1.0/">www.w3.org/TR/html-aam-1.0</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Links</h2>
+<pre><code>
+&lt;a href="http://tink.uk"&gt;Tink.UK&lt;/a&gt;
+</code></pre>
+<ul>
+<li>Role = "link"</li>
+<li>Accessible name = "Tink.UK"</li>
+<li>State = focusable</li>
+</ul>
+<audio src="media/link.mp3">
+</section>
+
+<section class="slide">
+<h2>Images</h2>
+<pre><code style="font-size: 80%">
+&lt;img src="chamucos.png"
+     alt="A bottle of Chamucos tequila with the dancing devil logo"&gt;
+</code></pre>
+<ul>
+<li>Role = "image"</li>
+<li>Accessible name = "A bottle of Chamucos tequila with the dancing devil logo"</li>
+</ul>
+<audio src="media/graphic.mp3">
+</section>
+
+<section class="slide">
+<h2>Inputs</h2>
+<pre><code>
+&lt;input type="checkbox" id="tequila" checked&gt;
+&lt;label for="tequila"&gt;Tequila makes me happy&lt;/label&gt;
+</code></pre>
+<ul>
+<li>Role = "checkbox"</li>
+<li>Accessible name = "Tequila makes me happy"</li>
+<li>State = "focusable checked"</li>
+</ul>
+<audio src="media/checkbox.mp3">
+</section>
+
+<section class="slide">
+<h2>Firefox</h2>
+<ul>
+<li>Cross-platform web browser:<br/>
+<a href="https://www.mozilla.org/en-GB/firefox/new/">www.mozilla.org/en-GB/firefox/new/</a></li>
+<li>Written in C, C++, Java, Python, HTML & JavaScript</li>
+<li>Available on OpenHub:<br>
+<a href="https://www.openhub.net/p/firefox">openhub.net/p/firefox</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Keyboard focus</h2>
+<p>HTML has interactive elements that receive focus, including:</p>
+<ul>
+<li>&lt;a href&gt;</li>
+<li>&lt;button&gt;</li>
+<li>&lt;input&gt;</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Expected interactions</h2>
+<p>Interactive elements have expected interactions provided by the browser:</p>
+<ul>
+<li>A link is activated by click, tap or the Enter key</li>
+<li>A button is activated by click, tap or the Enter or Space key</li>
+<li>An input is activated by click, tap or the Enter key</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML code</h2>
+<pre><code>
+&lt;input type="checkbox" id="bold" checked&gt;
+&lt;label for="bold"&gt;Bold&lt;/label&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>DOM tree</h2>
+<img src="pictures/checkbox-dom.png" alt="DOM information for an HTML checkbox">
+</section>
+
+<section class="slide">
+<h2>Accessibility tree</h2>
+<img src="pictures/checkbox-a11y-tree.png" alt="Accessibility tree information for an HTML checkbox">
+</section>
+
+<section class="slide">
+<h2>Manipulating the DOM</h2>
+<ul>
+<li>Browser parses the HTML and builds the DOM</li>
+<li>Browser uses the DOM to build the accessibility tree</li>
+<li>Browser updates the DOM in response to user interaction or scripted events</li>
+<li>Browser responds to changes in the DOM and updates the accessibility tree</li>
+<li>Assistive technologies listen for changes in the accessibility tree and respond accordingly</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Accessibility Object Model (AOM)</h2>
+<ul>
+<li>JavaScript accessibility API</li>
+<li>Available on Github:<br>
+<a href="https://github.com/WICG/aom">github.com/WICG/aom</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Accessibility APIs</h2>
+<ul>
+<li>UIA, MSAA and IAccessible2 on Windows</li>
+<li>IAccessible2 and ATK on Linux</li>
+<li>Accessibility API on OSX and iOS</li>
+<li>Accessibility Framework on Android</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Platform controls</h2>
+<img src="pictures/bold-checkbox.PNG" alt="Bold checkbox in Windows 10">
+<ul>
+<li>Role is "checkbox"</li>
+<li>Accessible name is "Bold"</li>
+<li>State is focused, checked, focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Web control</h2>
+<pre><code>
+&lt;input type="checkbox" id="bold"&gt;
+&lt;label for="bold"&gt;Bold&lt;/label&gt;
+</code></pre>
+<ul>
+<li>Role is "checkbox"</li>
+<li>Accessible name is "Bold"</li>
+<li>State is focused, checked, focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML Accessibility API Mappings (AAM)</h2>
+<p>The relationship between platform objects and web objects is documented in the HTML AAM: <a href="https://www.w3.org/TR/html-aam-1.0/">www.w3.org/TR/html-aam-1.0/</a></p>
+</section>
+
+<section class="slide">
+<h2>AOM objectives</h2>
+<ul>
+<li>Modify the semantic properties of an accessibility node corresponding to a DOM node</li>
+<li>Create virtual accessibility nodes that do not correspond to DOM nodes</li>
+<li>Enable exploration of the accessibility tree and access the properties of accessibility nodes</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Open accessibility stack</h2>
+<ul>
+<li>NVDA</li>
+<li>HTML</li>
+<li>Firefox</li>
+<li>AOM</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Thank you</h2>
+<ul>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+</section>
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
