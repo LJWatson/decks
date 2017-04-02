@@ -1,3 +1,3 @@
 # decks
-Decks for talks in 2016.
+Decks and videos for talks by Léonie Watson.
 https://ljwatson.github.io/decks/
