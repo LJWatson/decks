@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Making SVG accessible</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1></h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>Making SVG accessible</h2>
+<p>London Web Standards, London May 2017</p>
+<ul style="margin-top: 2em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>SVG past</h2>
+</section>
+
+<section class="slide">
+<h2>History</h2>
+<ul>
+<li>SVG1, 2001</li>
+<li>SVG1.1, 2003</li>
+<li>SVG1.1 2nd Edition, 2011</li>
+</ul>
+
+</section>
+
+<section class="slide">
+<h2>Background</h2>
+<p>Accessibility Features of SVG, 2000</p>
+<ul>
+<li>Structure</li>
+<li>Styling</li>
+<li>Device independence</li>
+<li>Metadata</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>SVG present</h2>
+</section>
+
+<section class="slide">
+<h2>Ways to use SVG</h2>
+<ul>
+<li>CSS background image</li>
+<li>HTML <code>img</code> source</li>
+<li>Inline HTML</li>
+<li>Stand-alone document</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>CSS background image</h2>
+<p>Treat it the same as other background image formats</p>
+<ul>
+<li>Give it an accessible name</li>
+<li>Use a High Contrast Mode (HCM) detection script</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML img source</h2>
+<p>Treat it the same as other image formats</p>
+<pre><code>
+&lt;img src="foo.svg" alt="Foo"&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Inline HTML</h2>
+<p>Best results for accessible information</p>
+<pre><code>&lt;svg version="1.1" width="300" height="200"&gt;...&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Stand-alone SVG</h2>
+<p>No accessible information available in Microsoft browsers</p>
+</section>
+
+<section class="slide">
+<h2>SVG zoom/pan</h2>
+<p>Use <code>onzoom</code>, <code>currentScale</code></p>
+</section>
+
+<section class="slide">
+<h2>Basic SVG</h2>
+<p>Exposed role of image/diagram in Firefox and IE</p>
+<pre><code style="font-size: 75%">
+&lt;svg width="250" height="100"&gt;
+&lt;rect x="0" y="0" width="100%" height="100%" style="fill: #820bbb;" /&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Basic SVG + ARIA</h2>
+<p> Exposed role of image in Chrome, Firefox, IE and Safari</p>
+<pre><code style="font-size:75%">
+&lt;svg width="250" height="100"&gt;
+&lt;rect x="0" y="0" width="100%" height="100%" style="fill: #820bbb;"
+      <mark>role="img"</mark> /&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>SVG title</h2>
+<p>Exposed as accessible name in Chrome, Firefox and IE</p>
+<pre><code style="font-size: 75%">
+&lt;svg width="250" height="100"&gt;
+&lt;rect x="0" y="0" width="100%" height="100%" style="fill: #820bbb;"
+      role="img" &gt;
+<mark>&lt;title&gt;Rectangle&lt;/title&gt;</mark>
+&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>SVG title + ARIA</h2>
+<p>Exposed as accessible name in Chrome, Firefox, IE and Safari</p>
+<pre><code style="font-size:75%">
+&lt;svg width="250" height="100"&gt;
+&lt;rect x="0" y="0" width="100%" height="100%" style="fill: #820bbb;"
+      role="img" <mark>aria-labelledby="title"</mark> &gt;
+&lt;title <mark>id="title"</mark>&gt;Rectangle&lt;/title&gt;
+&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>SVG desc</h2>
+<p>Exposed as accessible description in Chrome, Firefox and IE</p>
+<pre><code style="font-size:75%">
+&lt;svg width="250" height="100"&gt;
+&lt;rect x="0" y="0" width="100%" height="100%" style="fill: #820bbb;"
+      role="img" aria-labelledby="title" &gt;
+&lt;title id="title"&gt;Rectangle&lt;/title&gt;
+<mark>&lt;desc&gt;Violet rectangle on its side&lt;/desc&gt;</mark>
+&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>SVG desc + ARIA</h2>
+<p>Exposed as accessible description in Chrome, Firefox, IE and Safari</p>
+<pre><code style="font-size: 75%">
+&lt;svg width="250" height="100"&gt;
+&lt;rect x="0" y="0" width="100%" height="100%" style="fill: #820bbb;"
+      role="img" aria-labelledby="title" <mark>aria-describedby="desc"</mark> &gt;
+&lt;title id="title"&gt;Rectangle&lt;/title&gt;
+&lt;desc <mark>id="desc"</mark>&gt;Violet rectangle on its side&lt;/desc&gt;
+&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>SVG text</h2>
+<p>Available to assistive technologies as plain text</p>
+<pre><code style="font-size:75%">
+&lt;svg width="250" height="100"&gt;
+&lt;text x="50" y="25" style="fill: #000000; font-size: 2em;"&gt;Tequila&lt;/text&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>SVG links</h2>
+<p>Supported in all browsers (except internal links in Safari)</p>
+<pre><code style="font-size:75%">
+&lt;svg width="250" height="100"&gt;
+&lt;a xlink:href="foo.html"&gt;
+&lt;text x="120" y="33"&gt;Foo&lt;/text&gt;
+&lt;/a&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>SVG tabindex</h2>
+<p>Supported in all browsers</p>
+<pre><code style="font-size:75%">
+&lt;svg width="250" height="100"&gt;
+&lt;rect x="0" y="0" width="100%" height="100%" style="fill: #820bbb;"
+      <mark>tabindex="0"</mark> &gt;
+&lt;text x="120" y="33"&gt;Foo&lt;/text&gt;
+&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Define an object</h2>
+<p>Define an object once</p>
+<pre><code style="font-size:75%">
+&lt;svg width="250" height="100"&gt;
+ &lt;defs&gt;
+  &lt;g id="rect"&gt;
+  &lt;desc&gt;Violet rectangle on its side&lt;/desc&gt;
+   &lt;rect x="0" y="0" width="100%" height="100%" style="fill: #820bbb;" /&gt;
+  &lt;/g&gt;
+ &lt;/defs&gt;
+&lt;/svg&gt;
+ </code></pre>
+ </section>
+
+ <section class="slide">
+ <h2>Re-use it elsewhere</h2>
+<pre><code style="font-size:75%">
+&lt;svg width="250" height="100"&gt;
+...
+&lt;use aria-labelledby="title1" xlink:href="#rect"&gt;
+  &lt;title id="title1"&gt;Rectangle 1&lt;/title&gt;
+&lt;/use&gt;
+&lt;use aria-labelledby="title2" xlink:href="#rect"&gt;
+  &lt;title id="title2"&gt;Rectangle 2&lt;/title&gt;
+&lt;/use&gt;
+...
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Putting it together</h2>
+<p>Use these techniques to make complex charts and diagrams moreaccessible</p>
+</section>
+
+<section class="slide">
+<h2>Simple button</h2>
+<pre><code style="font-size:75%">
+&lt;svg width="250" height="100"&gt;
+&lt;rect x="0" y="0" width="100%" height="100%" style="fill: #820bbb;"
+      <mark>tabindex="0"</mark> <mark>role="button"</mark>&gt;
+&lt;text x="120" y="33"&gt;Foo&lt;/text&gt;
+&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Complex chart</h2>
+<img src="pictures/chart.svg" alt="Line graph of screen reader statistics">
+</section>
+
+<section class="slide">
+<h2>Add table semantics</h2>
+<pre><code style="font-size:75%">
+&lt;g role="table"&gt;
+  &lt;g role="row"&gt;
+    &lt;g role="rowheader"&gt;&lt;text&gt;Jaws&lt;/text&gt;&lt;/g&gt;
+    ...
+  &lt;/g&gt;
+  ...
+&lt;/g&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Complex chart demo</h1>
+<video style="max-height: 100%; margin-top: -1em" src="media/chart-demo.mp4">
+</section>
+
+<section class="slide">
+<h2>Animations</h2>
+<video src="media/beaker-demo-silent.mp4">
+</section>
+
+<section class="slide">
+<h2>Updating the status</h2>
+<pre><code style="font-size:70%">
+&lt;g&gt;
+  &lt;text x="230" y="100"&gt;Status:&lt;/text&gt;
+  &lt;text id="idle" x="230" y="120"&gt;Idle
+    &lt;set attributeName="visibility" to="hidden" begin="heat.click" dur="30s"/&gt;
+  &lt;/text&gt;
+  &lt;text id="heating-ice" visibility="hidden" x="230" y="120"&gt;Heating ice
+    &lt;set attributeName="visibility" to="visible" begin="heat.click" dur="2s"/&gt;
+  &lt;/text&gt;
+  ...
+&lt;/g&gt;
+  </code></pre>
+  </section>
+<section class="slide">
+
+<h2>Make status a live region</h2>
+<pre><code style="font-size: 70%">
+&lt;g <mark>aria-live="polite"</mark>&gt;
+  &lt;text x="230" y="100"&gt;Status:&lt;/text&gt;
+  &lt;text id="idle" x="230" y="120"&gt;Idle
+    &lt;set attributeName="visibility" to="hidden" begin="heat.click" dur="30s"/&gt;
+  &lt;/text&gt;
+  &lt;text id="heating-ice" visibility="hidden" x="230" y="120"&gt;Heating ice
+    &lt;set attributeName="visibility" to="visible" begin="heat.click" dur="2s"/&gt;
+  &lt;/text&gt;
+  ...
+&lt;/g&gt;
+  </code></pre>
+  </section>
+
+  <section class="slide">
+  <h2>Animation + live region demo</h2>
+  <video src="media/beaker-demo.mp4">
+  </section>
+
+<section class="slide">
+<h2>SVG future</h2>
+</section>
+
+<section class="slide">
+<h2>Specifications</h2>
+<ul>
+<li>SVG 2.0 (work has halted)</li>
+<li>SVG Accessibility API Mappings (AAM)</li>
+<li>ARIA Graphics module</li>
+</ul>
+</section>
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
