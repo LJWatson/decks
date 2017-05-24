@@ -111,7 +111,13 @@ color:#000;
 <h2>Keyboard shortcuts: solution?</h2>
 <video src="media/screen-reader-demo-twitter-tabs.mp4">
 </section>
-
+<section class="slide">
+<h2>Keyboard shortcuts: solution</h2>
+<ul>
+<li>Make JavaScript shortcuts an enhancement (not a primary function)</li>
+<li>Make the primary function usable</li>
+</ul>
+</section>
 <section class="slide">
 <h2>Platform controls</h2>
 <img src="pictures/bold-checkbox.PNG" alt="Windows 10 bold checkbox" style="width:15%">
@@ -167,6 +173,7 @@ color:#000;
 <section class="slide">
 <h2>HTML mapping support</h2>
 <p>Browsers may support an element, but not accessibility support it</p>
+<p>A browser may accessibility support an element, but a screen reader may not</p>
 <ul>
 <li><a href="http://html5accessibility.com">html5accessibility.com</a></li>
 </ul>
@@ -233,7 +240,8 @@ color:#000;
 
 <section class="slide">
 <h2>With added semantics</h2>
-<pre><code>&lt;span id="button" <mark>role="button" tabindex="0"</mark>&gt;Tequila!&lt;/span&gt;</code></code>
+<pre><code>&lt;span id="button" <mark>role="button"
+tabindex="0"</mark>&gt;Tequila!&lt;/span&gt;</code></code>
 </section>
 
 <section class="slide">
@@ -243,7 +251,8 @@ color:#000;
 
 <section class="slide">
 <h2>ARIA: don't break native semantics</h2>
-<pre><code>&lt;button role="heading" <mark>aria-level="1"</mark>&gt;Tequila!&lt;/button&gt;</code></pre></code></pre>
+<pre><code>&lt;button role="heading"
+<mark>aria-level="1"</mark>&gt;Tequila!&lt;/button&gt;</code></pre></code></pre>
 </section>
 
 <section class="slide">
