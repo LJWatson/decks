@@ -222,7 +222,7 @@ checkbox">
 <pre><code>&lt;button&gt;Tequila!&lt;/button&gt;
 
 var button = document.getElementById('button');
-button.addEventListener('click', function(event) {
+button.addEventListener('click', doSomething, false);
 </code></pre>
 </section>
 
@@ -293,7 +293,7 @@ button.addEventListener('keydown', function(event) {
 <pre><code>&lt;span id="button" <mark>role="button" tabindex="0"</mark>&gt;Tequila!&lt;/span&gt;
 
 var button = document.getElementById('button');
-cbutton.addEventListener('keydown', function(event) {
+button.addEventListener('keydown', function(event) {
     if (event.keyCode == 13 || event.keyCode == 32) {
         toggle();
     }
@@ -327,7 +327,7 @@ cbutton.addEventListener('keydown', function(event) {
   &lt;li role="presentation"&gt;
       &lt;a role="tab" href="#p1" aria-selected="true" aria-controls="p1"&gt;Blanco&lt;/a&gt;
   &lt;/li&gt;
-  &lt;li role="presenttation"&gt;
+  &lt;li role="presentation"&gt;
     &lt;a role="tab" href="p2" aria-selected="false"&gt;Reposado&lt;/a&gt;
   &lt;/li&gt;
   ...
@@ -355,8 +355,8 @@ cbutton.addEventListener('keydown', function(event) {
   &lt;li role="presentation"&gt;
       &lt;a role="tab" href="#p1" aria-selected="true" aria-controls="p1"&gt;Blanco&lt;/a&gt;
   &lt;/li&gt;
-  &lt;li role="presenttation"&gt;
-      &lt;a <mark>tabindex="-1"</mark> role="tab" href="p2" aria-selected="false"&gt;Reposado&lt;/a&gt;
+  &lt;li role="presentation"&gt;
+      &lt;a <mark>tabindex="-1"</mark> role="tab" href="#p2" aria-selected="false"&gt;Reposado&lt;/a&gt;
   &lt;/li&gt;
   ...
 &lt;/ul&gt;</code></pre>
