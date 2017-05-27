@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're only supposed to blow the bloody doors off!</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>You're only supposed to blow the bloody doors off!</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>You're only supposed to blow the bloody doors off!</h2>
+<p>Frontend United, Athens May 2017</p>
+<ul style="margin-top: 2em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>You're only supposed to blow the bloody doors off!</h2>
+<video src="media/doors.mp4">
+</section>
+
+<section class="slide">
+<h2>Screen readers</h2>
+<p>Software that translates on-screen content into synthetic speech</p>
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/jaws.png" alt="Jaws">
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/nvda.jpg" alt="NVDA">
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/voiceover.png" alt="Voiceover">
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/narrator.png" alt="Narrator">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: text</h2>
+<video src="media/screen-reader-demo-text.mp4">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: headings</h2>
+<video src="media/screen-reader-demo-headings.mp4">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: forms</h2>
+<video src="media/screenreader-demo-forms.mp4">
+</section>
+
+<section class="slide">
+<h2>Keyboard intercept chain</h2>
+<dl>
+<dt>Windows</dt>
+<dd>Screen reader</dd>
+<dd>Browser</dd>
+<dt>Mac OS</dt>
+<dd>Browser</dd>
+<dd>Screen reader</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Virtual/browse mode</h2>
+<p>Windows screen readers create a virtual copy of the browser contents</p>
+</section>
+
+<section class="slide">
+<h2>Forms/focus mode</h2>
+<p>Windows screen readers pass keys straight through to the browser</p>
+</section>
+
+<section class="slide">
+<h2>JavaScript keyboard shortcuts</h2>
+<img src="pictures/twitter-shortcuts.png" alt="Screenshot of Twitter keyboard shortcuts dialogue">
+</section>
+
+<section class="slide">
+<h2>JavaScript keyboard shortcuts: problem</h2>
+<video src="media/screen-reader-demo-twitter.mp4">
+</section>
+
+<section class="slide">
+<h2>JavaScript keyboard shortcuts: solution</h2>
+<ul>
+<li>Make JavaScript shortcuts an enhancement (not a primary function)</li>
+<li>Make the primary function usable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Platform controls</h2>
+<img src="pictures/bold-checkbox.PNG" alt="Windows 10 bold checkbox" style="width:15%">
+<dl>
+<dt>Role</dt>
+<dd>checkbox</dd>
+<dt>Name</dt>
+<dd>Bold</dd>
+<dt>State</dt>
+<dd>Focusable, Focused, Checked</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Accessibility APIs</h2>
+<dl>
+<dt>Windows</dt>
+<dd>UI Automation (UIA)</dd>
+<dd>MS Active Accessibility (MSAA)</dd>
+<dd>IAccessible2 (IA2)</dd>
+<dt>Mac OS</dt>
+<dd>OSX Accessibility Protocol (AXAPI)</dd>
+<dt>Linux</dt>
+<dd>Accessibility Toolkit (ATK)</dd>
+<dd>AT Service Provider Interface (AT-SPI)</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Web controls</h2>
+<pre><code>&lt;label for="this"&gt;Bold&lt;/label&gt;
+&lt; type="checkbox" id="this" checked&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>checkbox</dd>
+<dt>Name</dt>
+<dd>Bold</dd>
+<dt>State</dt>
+<dd>Focusable, Focused, Checked</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Accessibility mappings</h2>
+<p>Define how role, state, properties, and keyboard focus are handled in the browser</p>
+<ul>
+<li><a href="https://www.w3.org/TR/core-aam-1.1/">Core Accessibility API Mappings (AAM) 1.1</a></li>
+<li><a href="https://www.w3.org/TR/html-aam-1.0/">HTML AMM 1.0</a></li>
+<li><a href="https://www.w3.org/TR/svg-aam-1.0/">SVG AAM 1.0</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML mapping support</h2>
+<p>Browsers may support an element, but not accessibility support it</p>
+<p>A browser may accessibility support an element, but a screen reader may not</p>
+<ul>
+<li><a href="http://html5accessibility.com">html5accessibility.com</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>DOM tree</h2>
+<img src="pictures/checkbox-dom.png" alt="DOM information for an HTML checkbox">
+</section>
+
+<section class="slide">
+<h2>Accessibility tree</h2>
+<img src="pictures/checkbox-a11y-tree.png" alt="Accessibility tree information for an HTML 
+checkbox">
+</section>
+
+<section class="slide">
+<h2>Manipulating the DOM</h2>
+<ul>
+<li>Browser parses the HTML and builds the DOM</li>
+<li>Browser uses the DOM to build the accessibility tree</li>
+<li>Browser updates the DOM in response to user interaction or scripted events</li>
+<li>Browser responds to changes in the DOM and updates the accessibility tree</li>
+<li>Assistive technologies listen for changes in the accessibility tree and respond accordingly</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Polyfill accessibility</h2>
+<p>When native accessibility information is unavailable</p>
+<ul>
+<li><a href="https://www.w3.org/TR/wai-aria/">ARIA 1.0</a></li>
+<li><a href="https://www.w3.org/TR/wai-aria-1.1/">ARIA 1.1 (in progress)</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>ARIA: don't use it</h2>
+<p>Use native HTML whenever possible</p>
+<ul>
+<li>Keyboard interaction</li>
+<li>Focus management</li>
+<li>Role, state, and property information</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Native HTML</h2>
+<pre><code>&lt;button&gt;Tequila!&lt;/button&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: native HTML</h2>
+<video src="media/screen-reader-demo-button.mp4">
+</section>
+
+<section class="slide">
+<h2>ARIA: unless you need to</h2>
+<p>When repurposing elements like <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code></p>
+</section>
+
+<section class="slide">
+<h2>Missing semantics</h2>
+<pre><code>&lt;span id="button"&gt;Tequila!&lt;/span&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard demo: missing semantics</h2>
+<img src="pictures/tequila-button.jpg" alt="Tequila! button">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: missing semantics</h2>
+<video src="media/screen-reader-demo-button-span.mp4">
+</section>
+
+<section class="slide">
+<h2>With added semantics</h2>
+<pre><code>&lt;span id="button" <mark>role="button"
+tabindex="0"</mark>&gt;Tequila!&lt;/span&gt;</code></code>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: with added semantics</h2>
+<video src="media/screen-reader-demo-button.mp4">
+</section>
+
+<section class="slide">
+<h2>ARIA: don't break native semantics</h2>
+<pre><code>&lt;button <mark>role="heading" 
+aria-level="1"</mark>&gt;Tequila!&lt;/button&gt;</code></pre></code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: broken semantics</h2>
+<video src="media/screen-reader-demo-button-heading.mp4">
+</section>
+
+<section class="slide">
+<h2>ARIA: make it work with a keyboard</h2>
+<p>When you create custom components it's your responsibility to make it work with the keyboard</p>
+</section>
+
+<section class="slide">
+<h2>Supplement existing interaction</h2>
+<pre><code>&lt;a href="#here" id="button" <mark>role="button"</mark>&gt;Tequila!&lt;/a&gt;
+
+var button = document.getElementById('button');
+button.addEventListener('keydown', function(event) {
+    if (event.keyCode == 13) {
+        doSomething();
+    }
+});</code></pre>
+</section>
+
+<section class="slide">
+<h2>Provide all interaction</h2>
+<pre><code>&lt;span id="button" <mark>role="button" tabindex="0"</mark>&gt;Tequila!&lt;/span&gt;
+
+var button = document.getElementById('button');
+button.addEventListener('click', doSomething, false);
+button.addEventListener('keydown', function(event) {
+    if (event.keyCode == 13 || event.keyCode == 32) {
+        toggle();
+    }
+});</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: provide all interaction</h2>
+<video src="media/screen-reader-demo-disclosure.mp4">
+</section>
+<section class="slide">
+<h2>Using the application role</h2>
+<pre><code>&lt;body role="application"&gt;...&lt;/body&gt;</code></pre>
+<p>Removes the screen reader from the keyboard intercept chain</p>
+</section>
+
+<section class="slide">
+<h2>Roles that trigger applications mode</h2>
+<p>Many ARIA roles trigger applications mode automatically, including:</p>
+<ul>
+<li>tablist</li>
+<li>grid</li>
+<li>menu and menubar</li>
+<li>toolbar</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Application mode: tablist</h2>
+<pre><code>&lt;ul role="tablist"&gt;
+  &lt;li role="presentation"&gt;
+      &lt;a role="tab" href="#p1" aria-selected="true" aria-controls="p1"&gt;Blanco&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li role="presenttation"&gt;
+    &lt;a role="tab" href="p2" aria-selected="false"&gt;Reposado&lt;/a&gt;
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;</code></pre>
+    </section>
+
+<section class="slide">
+<h2>Screen reader demo: application mode with tablist</h2>
+<video src="media/screen-reader-demo-tabpanels.mp4">
+</section>
+
+<section class="slide">
+<h2>Keyboard focus: roving tabindex</h2>
+<ul>
+<li>Set the currently selected object to tabindex="0"</li>
+<li>Set all other objects to tabindex="-1"</li>
+<li>When user navigates to next object set focus using .focus()</li>
+<li>Set currently selected object to tabindex="0", and all others to tabindex="-1"</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Keyboard interaction: event listners</h2>
+<p>Listen for keydown and capture keycodes:</p>
+<ul>
+<li>Left 		37</li>
+<li>Right 		38</li>
+<li>Up 		39</li>
+<li>Down 	40</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Focus management:  exampleroving tabindex</h2>
+<pre><code>&lt;ul role="tablist"&gt;
+  &lt;li role="presentation"&gt;
+      &lt;a role="tab" href="#p1" aria-selected="true" aria-controls="p1"&gt;Blanco&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li role="presenttation"&gt;
+    &lt;a <mark>tabindex="-1" role="tab" href="p2" aria-selected="false"&gt;Reposado&lt;/a&gt;
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;</code></pre>
+    </section>
+
+
+<section class="slide">
+<h2>Screen reader demo: application mode with tablist and keyboard interaction</h2>
+<video src="media/screen-reader-demo-tabpanels-keyboard.mp4">
+</section>
+
+<section class="slide">
+<h2>Accessibility Object Model (AOM)</h2>
+<p>JavaScript accessibility API for the future</p>
+<img src="pictures/chrome.png" alt="Chrome"><img src="pictures/firefox.png" alt="Firefox"><img
+src="pictures/safari.png" alt="Safari">
+</section>
+
+<section class="slide" id="cover">
+<h2>You're only supposed to blow the bloody doors off!</h2>
+<p>Thank you</p>
+<ul style="margin-top: 2em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+tex
