@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5 things about screen readers</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>5 things about screen readers</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>5 things about screen readers</h2>
+<p>Icons, Amsterdam May 2017</p>
+<ul style="margin-top: 2em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>Who?</h2>
+</section>
+
+<section class="slide">
+<h2>Not just blind people</h2>
+<ul>
+<li>Partially sighted people</li>
+<li>People on the Autism spectrum</li>
+<li>Dyslexic people</li></ul>
+</section>
+
+<section class="slide">
+<h2>Not just disabled people</h2>
+<ul>
+<li>People in cars</li>
+<li>People using digital assistants</li>
+<li>People using voice interfaces</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>What?</h2>
+</section>
+
+<section class="slide">
+<h2>Software</h2>
+<p>That translates on-screen content into synthetic speech</p>
+</section>
+
+<section class="slide">
+<h2>On every platform</h2>
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/jaws.png" alt="Jaws">
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/nvda.jpg" alt="NVDA">
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/voiceover.png" alt="Voiceover">
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/narrator.png" alt="Narrator">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: text</h2>
+<video src="media/screen-reader-demo-text.mp4">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: headings</h2>
+<video src="media/screen-reader-demo-headings.mp4">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: language</h2>
+<video src="media/screen-reader-demo-lang-attribute.mp4">
+</section>
+<section class="slide">
+<h2>Where?</h2>
+</section>
+
+<section class="slide">
+<h2>Platform controls</h2>
+<img src="pictures/bold-checkbox.PNG" alt="Windows 10 bold checkbox" style="width:15%">
+<dl>
+<dt>Role</dt>
+<dd>checkbox</dd>
+<dt>Name</dt>
+<dd>Bold</dd>
+<dt>State</dt>
+<dd>Focusable, Focused, Checked</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Web controls</h2>
+<pre><code>&lt;label for="this"&gt;Bold&lt;/label&gt;
+&lt; type="checkbox" id="this" checked&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>checkbox</dd>
+<dt>Name</dt>
+<dd>Bold</dd>
+<dt>State</dt>
+<dd>Focusable, Focused, Checked</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Accessibility APIs</h2>
+<dl>
+<dt>Windows</dt>
+<dd>UI Automation (UIA)</dd>
+<dd>MS Active Accessibility (MSAA)</dd>
+<dd>IAccessible2 (IA2)</dd>
+<dt>Mac OS</dt>
+<dd>OSX Accessibility Protocol (AXAPI)</dd>
+<dt>Linux</dt>
+<dd>Accessibility Toolkit (ATK)</dd>
+<dd>AT Service Provider Interface (AT-SPI)</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Accessibility mappings</h2>
+<p>Define how role, state, properties, and keyboard focus are handled in the browser</p>
+<ul>
+<li><a href="https://www.w3.org/TR/core-aam-1.1/">Core Accessibility API Mappings (AAM) 1.1</a></li>
+<li><a href="https://www.w3.org/TR/html-aam-1.0/">HTML AMM 1.0</a></li>
+<li><a href="https://www.w3.org/TR/svg-aam-1.0/">SVG AAM 1.0</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML mapping support</h2>
+<p>Browsers may support an element, but not accessibility support it</p>
+<p>A browser may accessibility support an element, but a screen reader may not</p>
+<ul>
+<li><a href="http://html5accessibility.com">html5accessibility.com</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>When?</h2>
+</section>
+
+<section class="slide">
+<h2>DOM tree</h2>
+<img src="pictures/checkbox-dom.png" alt="DOM information for an HTML checkbox">
+</section>
+
+<section class="slide">
+<h2>Accessibility tree</h2>
+<img src="pictures/checkbox-a11y-tree.png" alt="Accessibility tree information for an HTML
+checkbox">
+</section>
+
+<section class="slide">
+<h2>Manipulating the DOM</h2>
+<ul>
+<li>Browser parses the HTML and builds the DOM</li>
+<li>Browser uses the DOM to build the accessibility tree</li>
+<li>Browser updates the DOM in response to user interaction or scripted events</li>
+<li>Browser responds to changes in the DOM and updates the accessibility tree</li>
+<li>Assistive technologies listen for changes in the accessibility tree and respond accordingly</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Why?</h2>
+</section>
+
+<section class="slide">
+<h2>Because it feels good</h2>
+<p>We want to create things that people enjoy using</p>
+</section>
+
+<section class="slide">
+<h2>Because it's your responsibility</h2>
+<p>We have a professional responsibility to make things accessible</p>
+</section>
+
+<section class="slide">
+<h2>Because you have a choice</h2>
+<p>But not everyone else does</p>
+</section>
+
+<section class="slide">
+<h2>Because it doesn't have to be perfect</h2>
+<p>Just a little bit better than yesterday</p>
+</section>
+
+<section class="slide" id="cover">
+<h2>5 things about screen readers</h2>
+<p>Icons, Amsterdam May 2017</p>
+<ul style="margin-top: 2em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
+
