@@ -7,3 +7,23 @@ section>video {
 section>img {
     max-height: 80%;
 }
+
+dt {
+    float: left;
+    clear: left;
+    width: 120px;
+    font-weight: bold
+}
+
+dt::after {
+    content: ":";
+}
+
+dd {
+    margin: 0 0 0 130px;
+    padding: 0 0 0.5em 0;
+}
+
+code {
+    font-size: 70%; 
+}
