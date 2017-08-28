@@ -161,9 +161,12 @@ color:#000;
 <h2>Accessibility mappings</h2>
 <p>Define how role, state, properties, and keyboard focus are handled in the browser</p>
 <ul>
-<li><a href="https://www.w3.org/TR/core-aam-1.1/">Core Accessibility API Mappings (AAM) 1.1</a></li>
-<li><a href="https://www.w3.org/TR/html-aam-1.0/">HTML AMM 1.0</a></li>
-<li><a href="https://www.w3.org/TR/svg-aam-1.0/">SVG AAM 1.0</a></li>
+<li>Core Accessibility API Mappings (AAM) 1.1<br>
+<a href="https://www.w3.org/TR/core-aam-1.1/">w3.org/TR/core-aam-1.1</a></li>
+<li>HTML AMM 1.0<br>
+<a href="https://www.w3.org/TR/html-aam-1.0/">w3.org/TR/html-aam-1.0</a></li>
+<li>SVG AAM 1.0<br>
+<a href="https://www.w3.org/TR/svg-aam-1.0/">w3.org/TR/svg-aam-1.0</a></li>
 </ul>
 </section>
 
@@ -202,8 +205,10 @@ checkbox">
 <h2>Polyfill accessibility</h2>
 <p>When native accessibility information is unavailable</p>
 <ul>
-<li><a href="https://www.w3.org/TR/wai-aria/">ARIA 1.0</a></li>
-<li><a href="https://www.w3.org/TR/wai-aria-1.1/">ARIA 1.1 (in progress)</a></li>
+<li>ARIA 1.0<br>
+<a href="https://www.w3.org/TR/wai-aria/">w3.org/TR/wai-aria</a></li>
+<li>ARIA 1.1 (Candidate Recommendation)<br>
+<a href="https://www.w3.org/TR/wai-aria-1.1/">w3.org/TR/wai-aria-1.1</a></li>
 </ul>
 </section>
 
@@ -253,7 +258,7 @@ button.addEventListener('click', doSomething, false);
 
 <section class="slide">
 <h2>With added semantics</h2>
-<pre><code>&lt;span id="button" <mark>role="button" tabindex="0"</mark>&gt;Tequila!&lt;/span&gt;</code></code>
+<pre><code>&lt;span id="button" <mark>role="button" tabindex="0"</mark>&gt;Tequila!&lt;/span&gt;</code></pre>
 </section>
 
 <section class="slide">
@@ -263,7 +268,7 @@ button.addEventListener('click', doSomething, false);
 
 <section class="slide">
 <h2>ARIA: don't break native semantics</h2>
-<pre><code>&lt;button <mark>role="heading" aria-level="1"</mark>&gt;Tequila!&lt;/button&gt;</code></pre></code></pre>
+<pre><code>&lt;button <mark>role="heading" aria-level="1"</mark>&gt;Tequila!&lt;/button&gt;</code></pre>
 </section>
 
 <section class="slide">
@@ -328,7 +333,7 @@ button.addEventListener('keydown', function(event) {
       &lt;a role="tab" href="#p1" aria-selected="true" aria-controls="p1"&gt;Blanco&lt;/a&gt;
   &lt;/li&gt;
   &lt;li role="presentation"&gt;
-    &lt;a role="tab" href="p2" aria-selected="false"&gt;Reposado&lt;/a&gt;
+    &lt;a role="tab" href="#p2" aria-selected="false"&gt;Reposado&lt;/a&gt;
   &lt;/li&gt;
   ...
 &lt;/ul&gt;</code></pre>
