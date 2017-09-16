@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>State of accessibility</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>State of accessibility</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>State of accessibility</h2>
+<p>State of the Browser, London September 2017</p>
+<ul style="margin-top: 2em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>Browser accessibility support</h2>
+<img src="pictures/chrome.png" alt="Chrome">
+<img src="pictures/edge.png" alt="Edge">
+<img src="pictures/firefox.png" alt="Firefox">
+<img src="pictures/ie.png" alt="IE">
+<img src="pictures/safari.png" alt="Safari">
+</section>
+
+<section class="slide">
+<h2>Internet Explorer 56%</h2>
+<img src="pictures/ie.png" alt="IE">
+</section>
+
+<section class="slide">
+<h2>Safari 73%</h2>
+<img src="pictures/safari.png" alt="Safari">
+</section>
+
+<section class="slide">
+<h2>Chrome 81%</h2>
+<img src="pictures/chrome.png" alt="Chrome">
+</section>
+
+<section class="slide">
+<h2>Firefox 91%</h2>
+<img src="pictures/firefox.png" alt="Firefox">
+</section>
+
+<section class="slide">
+<h2>Edge 100%</h2>
+<img src="pictures/edge.png" alt="Edge">
+</section>
+
+<section class="slide">
+<h2>HTML5 accessibility support</h2>
+<p>http://html5accessibility.com/</p>
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/html5_logo.png" alt="HTML5 Logo"/>
+</section>
+
+<section class="slide">
+<h2>HTML checkbox</h2>
+<pre><code>&lt;input type="checkbox" id="bold"&gt;
+&lt;label for="bold"&gt;Bold&lt;/label&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>DOM tree</h2>
+<img src="pictures/checkbox-dom.png" alt="DOM information for an HTML checkbox">
+</section>
+
+<section class="slide">
+<h2>Rendered view</h2>
+<img src="pictures/bold-checkbox.png" alt="Bold checkbox" style="width: 15%">
+</section>
+
+<section class="slide">
+<h2>Accessibility tree</h2>
+<img src="pictures/checkbox-a11y-tree.png" alt="Accessibility tree information for an HTML checkbox">
+</section>
+
+<section class="slide">
+<h2>The <code>details</code> and <code>summary</code> elements</h2>
+<pre><code>&lt;details&gt;
+&lt;summary&gt;Tequila...&lt;/summary&gt;
+Makes me happy!
+&lt;/details&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Edge: not implemented</h2>
+<img src="pictures/edge-details-summary.png" alt="details/summary elements in Edge">
+</section>
+
+<section class="slide">
+<h2>Firefox: implemented</h2>
+<video src="media/keyboard-demo-details-summary.mp4">
+</section>
+<section class="slide">
+<h2>Accessibility information</h2>
+<dl>
+<dt>Role</dt>
+<dd>button</dd>
+<dt>State</dt>
+<dd>focusable</dd>
+<dd>focused</dd>
+<dd>expandable</dd>
+<dd>collapsed</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo</h2>
+<video src="media/screen-reader-demo-details-summary.mp4">
+</section>
+
+<section class="slide">
+<h2>Accessibility APIs</h2>
+<dl>
+<dt>Windows</dt>
+<dd>UI Automation (UIA)</dd>
+<dd>MS Active Accessibility (MSAA)</dd>
+<dd>IAccessible2 (IA2)</dd>
+<dt>Mac OS</dt>
+<dd>OSX Accessibility Protocol (AXAPI)</dd>
+<dt>Linux</dt>
+<dd>Accessibility Toolkit (ATK)</dd>
+<dd>AT Service Provider Interface (AT-SPI)</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Jaws and NVDA</h2>
+<p>Create a virtual copy of the browser content</p>
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/jaws.png" alt="Jaws">
+<img style="max-width: 22%; padding-right: 1em;" src="pictures/nvda.jpg" alt="NVDA">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: headings</h2>
+<video src="media/screen-reader-demo-headings.mp4">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: text</h2>
+<video src="media/screen-reader-demo-text.mp4">
+</section>
+
+<section class="slide">
+<h2>Accessibility mechanics</h2>
+<ul>
+<li>Browser parses the HTML, then builds the DOM and a11y tree</li>
+<li>Screen reader (on Windows) queries the a11y tree, then builds the virtual buffer</li>
+<li>Browser responds to changes in the DOM, then updates the a11y tree</li>
+<li>Screen reader listens for changes in the a11y tree, then updates the virtual buffer</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Browser processes</h2>
+<p>Change the way screen readers interact with the browser</p>
+</section>
+
+<section class="slide">
+<h2>Internet Explorer + MSAA</h2>
+<p>Allows screen readers to make accessibility API calls within the same process</p>
+<img src="pictures/ie.png" alt="IE">
+</section>
+
+<section class="slide">
+<h2>Edge + UIA</h2>
+<p>Prevents screen readers from making accessibility API calls within the same process</p>
+<img src="pictures/edge.png" alt="Edge">
+</section>
+
+<section class="slide">
+<h2>Chrome + UIA2</h2>
+<p>Passes the accessibility tree from the content process back to the UI process, where screen readers can query it</p>
+<img src="pictures/chrome.png" alt="Chrome">
+</section>
+
+<section class="slide">
+<h2>Narrator and VoiceOver</h2>
+<p>Do not create a virtual copy of the browser content</p>
+<div style="display: flex; max-width: 80%">
+<figure style="margin: auto">
+    <img style="max-width: 100px" src="pictures/narrator.png" alt="Narrator">
+    <figcaption>Narrator</figcaption>
+</figure>
+<figure style="margin: auto">
+    <img style="max-width: 100px" src="pictures/voiceover.png" alt="VoiceOver">
+    <figcaption>VoiceOver</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="slide">
+<h2>Accessibility Object Model (AOM)</h2>
+<p>Experimental JavaScript API that enables developers to modify the accessibility tree</p>
+<img src="pictures/chrome.png" alt="Chrome">
+<img src="pictures/safari.png" alt="Safari">
+<img src="pictures/firefox.png" alt="Firefox">
+</section>
+
+<section class="slide">
+<h2>AOM phases</h2>
+<ol>
+<li>Modify the semantic properties of the accessibility node associated with a DOM node;</li>
+<li>Directly respond to events or actions from AT;</li>
+<li>Create virtual accessibility nodes (not associated with DOM nodes);</li>
+<li>Programmatically explore the accessibility tree, and access the computed properties of accessibility nodes.</li>
+</ol>
+</section>
+
+<section class="slide">
+<h2>AOM Phase 1</h2>
+<p>Has landed in Chrome Canary behind the flag:</p>
+<pre><code>--enable-blink-features=AccessibilityObjectModel</code></pre>
+</section>
+
+<section class="slide">
+<h2>HTML code</h2>
+<pre><code>&lt;span id="button"&gt;Tequila!&lt;/span&gt;
+&lt;div id="container"&gt;
+Makes me happy!
+&lt;/div&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Create DOM node references</h2>
+<pre><code>var button = document.getElementById('button');
+var container = document.getElementById('container');</code></pre>
+</section>
+
+<section class="slide">
+<h2>Modify DOM node properties</h2>
+<pre><code>button.setAttribute('tabindex', 0);
+container.setAttribute('hidden', true);</code></pre>
+</section>
+
+<section class="slide">
+<h2>Modify accessible node properties</h2>
+<pre><code>button.accessibleNode.role = "button";
+button.accessibleNode.expanded = false;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Create AccessibleNodeList</h2>
+<pre><code>var content = new AccessibleNodeList();
+content.add(container.accessibleNode);</code></pre></code></pre>
+</section>
+
+<section class="slide">
+<h2>Create the function</h2>
+<pre><code>    function disclose(event) {
+        if(container.getAttribute('hidden')) {
+            button.accessibleNode.expanded = true;
+            button.accessibleNode.controls = content;
+            container.removeAttribute('hidden');
+        }
+        else {
+            button.accessibleNode.expanded = false;
+            button.accessibleNode.controls = null;
+            container.setAttribute('hidden', true);
+        }
+    }</code></pre>
+</section>
+
+<section class="slide">
+<h2>Add event listeners</h2>
+<pre><code>    button.addEventListener('click', disclose, false);
+    button.addEventListener('keydown', function(event) {
+        if (event.keyCode == 13 || event.keyCode ==32) {
+            disclose();
+        }
+    });</code></pre>
+    </section>
+
+    <section class="slide">
+    <h2>Screen reader demo: AOM disclosure</h2>
+    <video src="media/disclosure.mp4">
+    </section>
+
+    <section class="slide">
+    <h2>Playing with the Accessibility Object Model (AOM)</h2>
+    <p><a href="https://tink.uk/playing-with-the-accessibility-object-model-aom/">tink.uk/playing-with-the-accessibility-object-model-aom/</a></p>
+    </section>
+
+<section class="slide">
+<h2>Thank you!</h2>
+<ul style="margin-top: 2em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">https://github.com/ljwatson</a></li>
+</ul>
+</section>
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
