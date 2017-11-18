@@ -202,48 +202,47 @@ Makes me happy!
 </section>
 
 <section class="slide">
-<h2>Use <code>role="button"</code></h2>
+<h2>The <code>details</code> and <code>summary</code> elements</h2>
 <pre><code>&lt;details&gt;
-    &lt;summary id="button" <mark>role="button"</mark>&gt;
-        Tequila...
-    &lt;/summary&gt;
-Makes me happy!
+&lt;summary id="button"&gt;Tequila...&lt;/summary&gt;
+&lt;div id="content"&gt;Makes me happy!&lt;/div&gt;
 &lt;/details&gt;</code></pre>
 </section>
-
-<section class="slide">
-<h2>Use <code>tabindex="0"</code></h2>
-<pre><code>&lt;details&gt;
-    &lt;summary id="button" role="button" <mark>tabindex="0"</mark>&gt;
-        Tequila...
-    &lt;/summary&gt;
-Makes me happy!
-&lt;/details&gt;</code></pre>
-</section>
-
-<section class="slide">
-<h2>Use <code>aria-expanded="false"</code></h2>
-<pre><code>&lt;details&gt;
-    &lt;summary id="button" role="button" tabindex="0" <mark>aria-expanded="false"</mark>&gt;
-        Tequila...
-    &lt;/summary&gt;
-Makes me happy!
-&lt;/details&gt;</code></pre>
-</section>
-
-<pre><code>&lt;details&gt;
-    &lt;summary id="button" role="button" tabindex="0" aria-expanded="false"&gt;
-        Tequila...
-    &lt;/summary&gt;
-<mark>&lt;div id="content" hidden&gt;
-Makes me happy!
-&lt;/div&gt;
-&lt;/details&gt;</code></pre>
 
 <section class="slide">
 <h2>Create DOM node references</h2>
 <pre><code>var button = document.getElementById('button');
 var content = document.getElementById('content');</code></pre>
+</section>
+
+<section class="slide">
+<h2>Set <code>role="button"</code></h2>
+<pre><code>button.setAttribute('role', 'button');</code></pre>
+</section>
+
+<section class="slide">
+<h2>Set <code>tabindex="0"</code></h2>
+<pre><code>button.setAttribute('tabindex', 0);</code></pre>
+</section>
+
+<section class="slide">
+<h2>Set <code>aria-expanded="false"</code></h2>
+<pre><code>button.setAttribute('aria-expanded', 'false');</code></pre>
+</section>
+
+<section class="slide">
+<h2>Set <code>hidden</code> attribute</h2>
+<pre><code>content.setAttribute('hidden', 'true');</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rendered code</h2>
+<pre><code>&lt;details&gt;
+    &lt;summary id="button" role="button" tabindex="0" aria-expanded="false"&gt;
+        Tequila...
+    &lt;/summary&gt;
+    &lt;div id="content" hidden&gt;Makes me happy!&lt;/div&gt;Makes me happy!
+&lt;/details&gt;</code></pre>
 </section>
 
 <section class="slide">
@@ -301,49 +300,57 @@ var content = document.getElementById('content');</code></pre>
 </section>
 
 <section class="slide">
-<h2>HTML code</h2>
-<pre><code>&lt;span id="button"&gt;Tequila!&lt;/span&gt;
-&lt;div id="container"&gt;
-Makes me happy!
-&lt;/div&gt;</code></pre>
+<h2>The <code>details</code> and <code>summary</code> elements</h2>
+<pre><code>&lt;details&gt;
+&lt;summary id="button"&gt;Tequila...&lt;/summary&gt;
+&lt;div id="content"&gt;Makes me happy!&lt;/div&gt;
+&lt;/details&gt;</code></pre>
 </section>
 
 <section class="slide">
 <h2>Create DOM node references</h2>
 <pre><code>var button = document.getElementById('button');
-var container = document.getElementById('container');</code></pre>
+var content = document.getElementById('content');</code></pre>
 </section>
 
 <section class="slide">
 <h2>Modify DOM node properties</h2>
 <pre><code>button.setAttribute('tabindex', 0);
-container.setAttribute('hidden', true);</code></pre>
+content.setAttribute('hidden', true);</code></pre>
 </section>
 
 <section class="slide">
-<h2>Modify accessible node properties</h2>
-<pre><code>button.accessibleNode.role = "button";
-button.accessibleNode.expanded = false;</code></pre>
+<h2>Set AOM <code>button</code> property</h2>
+<pre><code>button.accessibleNode.role = "button";</code></pre>
+</section>
+
+<section class="slide">
+<h2>Set AOM <code>expanded</code> property</h2>
+<pre><code>button.accessibleNode.expanded = false;</code></pre>
 </section>
 
 <section class="slide">
 <h2>Create AccessibleNodeList</h2>
-<pre><code>var content = new AccessibleNodeList();
-content.add(container.accessibleNode);</code></pre></code></pre>
+<pre><code>var references = new AccessibleNodeList();
+</section>
+
+<section class="slide">
+<h2>Add AccessibleNode to array</h2>
+<pre><code>references.add(content.accessibleNode);</code></pre>
 </section>
 
 <section class="slide">
 <h2>Create the function</h2>
 <pre><code>    function disclose(event) {
-        if(container.getAttribute('hidden')) {
+        if(content.getAttribute('hidden')) {
             button.accessibleNode.expanded = true;
             button.accessibleNode.controls = content;
-            container.removeAttribute('hidden');
+            content.removeAttribute('hidden');
         }
         else {
             button.accessibleNode.expanded = false;
             button.accessibleNode.controls = null;
-            container.setAttribute('hidden', true);
+            content.setAttribute('hidden', true);
         }
     }</code></pre>
 </section>
@@ -360,7 +367,7 @@ content.add(container.accessibleNode);</code></pre></code></pre>
 
     <section class="slide">
     <h2>Screen reader demo: AOM disclosure</h2>
-    <video src="media/screen-reader-demo-disclosure.mp4">
+    <video src="media/screen-reader-demo-details-summary.mp4">
     </section>
 
 <section class="slide" id="cover">
