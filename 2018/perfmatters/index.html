@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>There's more to performance than meets the eye</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>There's more to performance than meets the eye</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>There's more to performance than meets the eye</h2>
+<p>#PerfMatters, San Francisco 2018</p>
+<p>Léonie Watson ~ The Paciello Group (TPG)</p>
+<ul style="margin-top: 1em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>Web performance</h2>
+<p>The speed at which web pages are downloaded and displayed in the user's browser</p>
+</section>
+
+<section class="slide">
+<h2>Browsers</h2>
+<table id="browsers">
+    <tr>
+        <td><img src="pictures/chrome.png" alt="Chrome"></td>
+        <td><img src="pictures/edge.png" alt="Edge"></td>
+        <td><img src="pictures/firefox.png" alt="Firefox"></td>
+        <td><img src="pictures/safari.png" alt="Safari"></td>
+    </tr>
+    <tr>
+        <td>Chrome</td>
+        <td>Edge</td>
+        <td>Firefox</td>
+        <td>Safari</td>
+    </tr>
+    <tr class="companies">
+        <td>(Google)</td>
+        <td>(Microsoft)</td>
+        <td>(Mozilla)</td>
+        <td>(Apple)</td>
+    </tr>
+</table>
+</section>
+
+<section class="slide">
+<h2>Screen readers</h2>
+<table id="screenreaders">
+    <tr>
+        <td><img src="pictures/jaws.png" alt="Jaws"></td>
+        <td><img style="max-height: 105px" src="pictures/nvda.png" alt="NVDA"></td>
+        <td><img src="pictures/voiceover.png" alt="Voiceover"></td>
+        <td><img src="pictures/narrator.png" alt="Narrator"></td>
+        <td><img style="max-width: 160px" src="pictures/orca.jpg" alt="Orca"></td>
+    </tr>
+    <tr>
+        <td>Jaws</td>
+        <td>NVDA</td>
+        <td>Voiceover</td>
+        <td>Narrator</td>
+        <td>Orca</td>
+    </tr>
+    <tr class="companies">
+        <td class="company">(Freedom Scientific)</td>
+        <td class="company">(NV Access)</td>
+        <td class="company">(Apple)</td>
+        <td class="company">(Microsoft)</td>
+        <td class="company">(GNOME)</td>
+    </tr>
+</table>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: text</h2>
+<video src="media/screen-reader-demo-text.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: language</h2>
+<video src="media/screen-reader-demo-lang-attribute.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>In the late 90s</h2>
+<img class="logo" src="pictures/windows.png" alt="Windows">
+<p>Screen readers consumed the HTML directly from the browser, and created a virtual model of the content</p>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: headings</h2>
+<video src="media/screen-reader-demo-headings.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: buttons</h2>
+<video src="media/screen-reader-demo-buttons.mp4"></video>
+</section>
+
+
+<section class="slide">
+<h2>In the early 00s</h2>
+<img class="logo" src="pictures/windows.png" alt="Windows">
+<img class="logo" src="pictures/macos.jpg" alt="MacOS">
+<p>Screen readers began using accessibility APIs to query information from the browser</p>
+</section>
+
+<section class="slide">
+<h2>Accessibility APIs</h2>
+<dl>
+<dt>Windows</dt>
+<dd>UI Automation (UIA)</dd>
+<dd>MS Active Accessibility (MSAA)</dd>
+<dd>IAccessible2 (IA2)</dd>
+<dt>Mac OS</dt>
+<dd>OSX Accessibility Protocol (AXAPI)</dd>
+<dt>Linux</dt>
+<dd>Accessibility Toolkit (ATK)</dd>
+<dd>AT Service Provider Interface (AT-SPI)</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>The <code>details</code> & <code>summary</code> elements</h2>
+<pre><code>&lt;details&gt;
+&lt;summary&gt;Tequila...&lt;/summary&gt;
+Makes me happy!
+&lt;/details&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Edge: not implemented</h2>
+<img src="pictures/edge-details-summary.png" alt="details/summary elements in Edge">
+</section>
+
+<section class="slide">
+<h2>Firefox: implemented</h2>
+<video src="media/keyboard-demo-details-summary.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The accessibility tree: <code>details</code> element</h2>
+<dl>
+<dt>Role</dt>
+<dd>button</dd>
+<dt>State</dt>
+<dd>focusable</dd>
+<dd>focused</dd>
+<dd>expandable</dd>
+<dd>collapsed</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: <code>details</code> & <code>summary</code> elements</h2>
+<video src="media/screen-reader-demo-details-summary.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>In the late 10s</h2>
+<p>All screen readers use accessibility APIs to query information from the browser, but not all create a virtual model of the content</p>
+</section>
+
+<section class="slide">
+<h2>Single process model</h2>
+<p>Single browser process that managed the application, content, and other common tasks</p>
+</section>
+
+<section class="slide">
+<h2>Multi-process model</h2>
+<p>Separate application process, one or more content processes, and processes for handling other common tasks</p>
+</section>
+
+<section class="slide">
+<h2>Communication architectures</h2>
+<img class="logo" src="pictures/windows10.png" alt="Windows">
+<dl class="large-dl">
+<dt>In-process communication</dt>
+<dd>Screen reader injects itself into the application process, and communicates directly with the browser</dd>
+</dl>
+<img class="logo" src="pictures/macos.jpg" alt="MacOS">
+<img class="logo" src="pictures/linux.png" alt="Linux">
+<dl class="large-dl">
+<dt>Out-of-process communication</dt>
+<dd>Screen reader communicates with the browser across application boundaries</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Multi-process: IE</h2>
+<img class="logo-large" src="pictures/windows10.png" alt="Windows">
+<img class="logo-large" src="pictures/ie.png" alt="IE">
+<p>Screen reader injects into the application process, and has direct access to the content process</p>
+</section>
+
+<section class="slide">
+<h2>IE: approach</h2>
+<img class="logo-large" src="pictures/ie.png" alt="IE">
+<p>Accessibility API calls made directly into the content process</p>
+</section>
+
+<section class="slide">
+<h2>IE: accessibility performance</h2>
+<img class="logo-large" src="pictures/ie.png" alt="Chrome">
+<img class="logo-large" src="pictures/jaws.png" alt="Jaws">
+<img class="logo-large" src="pictures/nvda.png" alt="NVDA">
+<p>Fast Time To Interaction (TTI) and subsequent performance, but prone to instability</p>
+</section>
+
+<section class="slide">
+<h2>Multi-process: Chrome & firefox</h2>
+<img class="logo-large" src="pictures/windows10.png" alt="Windows">
+<img class="logo-large" src="pictures/chrome.png" alt="Chrome">
+<img class="logo-large" src="pictures/firefox.png" alt="Firefox">
+<p>Screen reader injects into the application process, but does not have direct access to the content process</p>
+</section>
+
+<section class="slide">
+<h2>Chrome: initial approach</h2>
+<img class="logo-large" src="pictures/chrome.png" alt="Chrome">
+<p>Proxied accessibility API calls from the application process into the content process</p>
+</section>
+
+<section class="slide">
+<h2>Chrome: current approach</h2>
+<img class="logo-large" src="pictures/chrome.png" alt="Chrome">
+<p>Caches a copy of the accessibility tree in the application process</p>
+</section>
+
+<section class="slide">
+<h2>Chrome: accessibility performance</h2>
+<img class="logo-large" src="pictures/chrome.png" alt="Chrome">
+<img class="logo-large" src="pictures/jaws.png" alt="Jaws">
+<img class="logo-large" src="pictures/nvda.png" alt="NVDA">
+<p>Possible slow TTI, but fast subsequent performance</p>
+</section>
+
+<section class="slide">
+<h2>Chrome: screen reader TTI</h2>
+<video src="media/screen-reader-demo-aria-spec.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Firefox: approach</h2>
+<img class="logo-large" src="pictures/firefox.png" alt="Firefox">
+<p>Proxies accessibility API calls from the application process into the content process, but uses intelligent caching</p>
+</section>
+
+<section class="slide">
+<h2>Firefox: accessibility performance</h2>
+<img class="logo-large" src="pictures/firefox.png" alt="Firefox">
+<img class="logo-large" src="pictures/jaws.png" alt="Jaws">
+<img class="logo-large" src="pictures/nvda.png" alt="NVDA">
+<p>Good TTI and subsequent performance, but accessibility performance issues introduced with Quantum remain unresolved</p>
+</section>
+
+<section class="slide">
+<h2>Multi-process: Edge</h2>
+<img class="logo-large" src="pictures/windows10.png" alt="Windows">
+<img class="logo-large" src="pictures/edge.png" alt="Edge">
+<p>Screen readers cannot inject into the application process, and do not have access to the content process</p>
+</section>
+
+<section class="slide">
+<h2>Edge: approach</h2>
+<img class="logo-large" src="pictures/edge.png" alt="Edge">
+<p>No caching, all accessibility API requests are handled via the OS</p>
+</section>
+
+<section class="slide">
+<h2>Edge: accessibility performance</h2>
+<img class="logo-large" src="pictures/edge.png" alt="Edge">
+<img class="logo-large" src="pictures/jaws.png" alt="Jaws">
+<img class="logo-large" src="pictures/nvda.png" alt="NVDA">
+<img class="logo-large" src="pictures/narrator.png" alt="Narrator">
+<p>Fast TTI, but possible slow subsequent performance</p>
+</section>
+
+<section class="slide">
+<h2>Edge: Jaws & NVDA</h2>
+<img class="logo-large" src="pictures/edge.png" alt="Edge">
+<img class="logo-large" src="pictures/jaws.png" alt="Jaws">
+<img class="logo-large" src="pictures/nvda.png" alt="NVDA">
+<p>Out-of-process calls are 12 to 50 times slower than in-process calls, making a performant virtual model impossible</p>
+</section>
+
+<section class="slide">
+<h2>Edge: Narrator</h2>
+<img class="logo-large" src="pictures/edge.png" alt="Edge">
+<img class="logo-large" src="pictures/narrator.png" alt="Narrator">
+<p>Narrator is integrated into the OS, and does not use a virtual model, so is more performant</p>
+</section>
+
+<section class="slide">
+<h2>Safari: VoiceOver</h2>
+<img class="logo-large" src="pictures/safari.png" alt="Edge">
+<img class="logo-large" src="pictures/voiceover.png" alt="Narrator">
+<p>VoiceOver is also integrated into the OS, and does not use a virtual model, so is performant</p>
+</section>
+
+<section class="slide">
+<h2>Performance: drop the virtual model?</h2>
+<p>Screen readers depend on the virtual model to improve human performance</p>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: selecting content</h2>
+<video src="media/screen-reader-demo-select-text.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: select using placeholders</h2>
+<video src="media/screen-reader-demo-select-placeholders.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Performance: improve accessibility APIs</h2>
+<p>Accessibility APIs need the same features that screen readers have in the virtual model</p>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: searching with UIA</h2>
+<video src="media/screen-reader-demo-edge-search.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Performance: code well</h2>
+<p>Things that hit general performance will have an impact on accessibility performance</p>
+</section>
+
+<section class="slide">
+<h2>Thank you</h2>
+<p>To the following people, for answering many questions:</p>
+<ul>
+<li>Jamie Teh, Marco Zehe (Mozilla)</li>
+<li>Glen Gordon (Freedom Scientific)</li>
+<li>Alice Boxhall, Rob Dodson, Dominic Mazzoni, David Sexton (Google)</li>
+<li>David Storey (Microsoft)</li>
+<li>James Craig (Apple)</li>
+<li>Michael Curran (NVDA)</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: how it really is</h2>
+<video src="media/screen-reader-demo-text-fast.mp4"></video>
+</section>
+
+<section class="slide" id="cover">
+<h2>Thank you!</h2>
+<p>#PerfMatters, San Francisco 2018</p>
+<p>Léonie Watson ~ The Paciello Group (TPG)</p>
+<ul style="margin-top: 1em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<!--    <div class="progress"></div> -->
+<script src="shower/shower.min.js"></script>
+</body>
+</html>
