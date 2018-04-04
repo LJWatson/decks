@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're only supposed to blow the bloody doors off!</title>
+
+<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/media.css">
+</head>
+
+<body class="shower list">
+<header class="caption">
+<h1>You're only supposed to blow the bloody doors off!</h1>
+</header>
+
+<section class="slide" id="cover">
+<h2>You're only supposed to blow the bloody doors off!</h2>
+<p>FrontEnd NE, Newcastle 2018</p>
+<ul style="margin-top: 2em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<section class="slide">
+<h2>5... 4... 3... 2... 1...</h2>
+<video src="media/doors.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Screen readers</h2>
+<table id="screenreaders">
+    <tr>
+        <td><img src="pictures/jaws.png" alt="Jaws"></td>
+        <td><img style="max-height: 105px" src="pictures/nvda.png" alt="NVDA"></td>
+        <td><img src="pictures/voiceover.png" alt="Voiceover"></td>
+        <td><img src="pictures/narrator.png" alt="Narrator"></td>
+        <td><img style="max-width: 160px" src="pictures/orca.jpg" alt="Orca"></td>
+    </tr>
+    <tr>
+        <td>Jaws</td>
+        <td>NVDA</td>
+        <td>Voiceover</td>
+        <td>Narrator</td>
+        <td>Orca</td>
+    </tr>
+    <tr class="companies">
+        <td class="company">(Freedom Scientific)</td>
+        <td class="company">(NV Access)</td>
+        <td class="company">(Apple)</td>
+        <td class="company">(Microsoft)</td>
+        <td class="company">(GNOME)</td>
+    </tr>
+</table>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: text</h2>
+<video src="media/screen-reader-demo-text.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: headings</h2>
+<video src="media/screen-reader-demo-headings.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: buttons</h2>
+<video src="media/screen-reader-demo-buttons.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The <code>details</code> & <code>summary</code> elements</h2>
+<pre><code>&lt;details&gt;
+&lt;summary&gt;Tequila...&lt;/summary&gt;
+Makes me happy!
+&lt;/details&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Edge: not implemented</h2>
+<img src="pictures/edge-details-summary.png" alt="details/summary elements in Edge">
+</section>
+
+<section class="slide">
+<h2>Firefox: implemented</h2>
+<video src="media/keyboard-demo-details-summary.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The accessibility tree: <code>details</code> element</h2>
+<dl>
+<dt>Role</dt>
+<dd>button</dd>
+<dt>State</dt>
+<dd>focusable</dd>
+<dd>focused</dd>
+<dd>expandable</dd>
+<dd>collapsed</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: <code>details</code> & <code>summary</code> elements</h2>
+<video src="media/screen-reader-demo-details-summary.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Accessibility APIs</h2>
+<dl>
+<dt>Windows</dt>
+<dd>UI Automation (UIA)</dd>
+<dd>MS Active Accessibility (MSAA)</dd>
+<dd>IAccessible2 (IA2)</dd>
+<dt>Mac OS</dt>
+<dd>OSX Accessibility Protocol (AXAPI)</dd>
+<dt>Linux</dt>
+<dd>Accessibility Toolkit (ATK)</dd>
+<dd>AT Service Provider Interface (AT-SPI)</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>The <code>div</code> & <code>span</code> elements</h2>
+<p>Have neutral semantics</p>
+<pre><code>&lt;div class="toolbar"&gt;
+&lt;span class="button"&gt;Bold&lt;/span&gt;&lt;span class="button"&gt;Italic&lt;/span&gt;...
+&lt;/div&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: <code>div</code> & <code>span</code> elements</h2>
+<video src="media/screen-reader-demo-div-span.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Polyfill accessibility</h2>
+<p>Attributes that polyfill missing role, name, and state information for screen readers</p>
+<p>ARIA 1.1 (W3C Recommendation)<br>
+<a href="https://www.w3.org/TR/wai-aria-1.1/">w3.org/TR/wai-aria-1.1</a></p>
+</section>
+
+<section class="slide">
+<h2>The <code>role</code> attribute</h2>
+<p>70+ roles, including:</p>
+<ul>
+<li>tablist, tab, tabpanel</li>
+<li>checkbox, radio, textbox</li>
+<li>table, row, cell</li>
+<li>toolbar, menu, menubar</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>aria-</code> attributes</h2>
+<p>45+ states and properties, including:</p>
+<ul>
+<li><code>aria-invalid</code>, <code>aria-required</code></li>
+<li><code>aria-pressed</code>, <code>aria-expanded</code></li>
+<li><code>aria-controls</code>, <code>aria-owns</code></li>
+</ul>
+</section>
+<section class="slide">
+<h2>Accessibility mechanics</h2>
+<ul>
+<li>Browser parses the HTML and builds the DOM</li>
+<li>Browser uses the DOM to build the accessibility tree</li>
+<li>Browser updates the DOM in response to user interaction or scripted events</li>
+<li>Browser responds to changes in the DOM and updates the accessibility tree</li>
+<li>Assistive technologies listen for changes in the accessibility tree and respond accordingly</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>5... Don't use ARIA</h2>
+</section>
+
+<section class="slide">
+<h2>The <code>span</code> element</h2>
+<pre><code>&lt;span id="button"&gt;Tequila!&lt;/span&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard demo: <code>span</code> element</h2>
+<img src="pictures/tequila-button.jpg" alt="Tequila! button">
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: <code>span</code> element</h2>
+<video src="media/screen-reader-demo-button-span.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Polyfilled semantics</h2>
+<pre><code>&lt;span id="button" <mark>role="button" tabindex="0"</mark>&gt;...&lt;/span&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: polyfilled semantics</h2>
+<video src="media/screen-reader-demo-button.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The <code>button</code> element</h2>
+<pre><code>&lt;button&gt;Tequila!&lt;/button&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: <code>button</code> element</h2>
+<video src="media/screen-reader-demo-button.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>4... Don't break native semantics</h2>
+</section>
+
+<section class="slide">
+<h2>The wrong <code>role</code></h2>
+<pre><code>&lt;button <mark>role="heading" aria-level="1"</mark>&gt;Tequila!&lt;/button&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: the wrong <code>role</code></h2>
+<video src="media/screen-reader-demo-button-heading.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>3... Make it work with the keyboard</h2>
+</section>
+
+<section class="slide">
+<h2>Supplement existing interaction</h2>
+<pre><code>&lt;a href="#here" id="button" <mark>role="button"</mark>&gt;Tequila!&lt;/a&gt;
+
+var button = document.getElementById('button');
+button.addEventListener('keydown', function(event) {
+    if (event.keyCode == 13) {
+        doSomething();
+    }
+});</code></pre>
+</section>
+
+<section class="slide">
+<h2>Provide all interaction</h2>
+<pre><code>&lt;span id="button" <mark>role="button" tabindex="0"</mark>&gt;Tequila!&lt;/span&gt;
+
+var button = document.getElementById('button');
+button.addEventListener('keydown', function(event) {
+    if (event.keyCode == 13 || event.keyCode == 32) {
+        toggle();
+    }
+});</code></pre>
+</section>
+<section class="slide">
+<h2>Screen reader demo: provide all interaction</h2>
+<video src="media/screen-reader-demo-disclosure.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>2... Don't invoke applications mode</h2>
+</section>
+
+
+<section class="slide">
+<h2>The <code>application</code> role</h2>
+<pre><code>&lt;body role="application"&gt;...&lt;/body&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard intercept chain</h2>
+<dl>
+<dt>Windows</dt>
+<dd>Screen reader</dd>
+<dd>Browser</dd>
+<dt>Mac OS</dt>
+<dd>Browser</dd>
+<dd>Screen reader</dd>
+</dl>
+</section>
+
+
+<section class="slide">
+<h2>Other application roles</h2>
+<p>Several roles invoke applications mode, including:</p>
+<ul>
+<li>tablist</li>
+<li>grid</li>
+<li>menu and menubar</li>
+<li>toolbar</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: <code>tablist</code> role</h2>
+<video src="media/screen-reader-demo-tabpanels.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Common design patterns</h2>
+<p>ARIA Authoring Practices Guide (APG) 1.1:<br>
+<a href="https://www.w3.org/TR/wai-aria-practices-1.1/">w3.org/tr/wai-aria-practices-1.1/</a></p>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: <code>tablist</code> role + keyboard support</h2>
+<video src="media/screen-reader-demo-tabpanels-keyboard.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>1... JavaScript accessibility API</h2>
+</section>
+
+<section class="slide">
+<h2>With great power...</h2>
+<p>Accessibility Object Model (AOM):<br>
+<a href="https://github.com/WICG/aom">github.com/wicg/aom</a></p>
+<img src="pictures/chrome.png" alt="Chrome"><img src="pictures/firefox.png" alt="Firefox"><img
+src="pictures/safari.png" alt="Safari">
+</section>
+
+<section class="slide">
+<h2>AOM use cases</h2>
+<ul>
+<li>Set ARIA properties on ShadowRoot nodes</li>
+<li>Define relationships without IDrefs</li>
+<li>Capture events from Assistive Technologies (AT)</li>
+</ul>
+</section>
+
+<section class="slide" id="cover">
+<h2>You're only supposed to blow the bloody doors off!</h2>
+<p>Thank you</p>
+<ul style="margin-top: 2em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+<style>
+#cover h2 {
+margin:30px 0 0;
+color:#000;
+text-align:center;
+font-size:70px;
+}
+#cover p {
+margin:10px 0 0;
+text-align:center;
+color:#000;
+font-style:italic;
+font-size:20px;
+}
+#cover p a {
+color:#000;
+}
+</style>
+</section>
+
+<!--<div class="progress"></div> -->
+	<script src="shower/shower.min.js"></script>
+	</body>
+	</html>
