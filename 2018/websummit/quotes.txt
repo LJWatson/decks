@@ -1,0 +1,28 @@
+
+Opening Learn About Tequila
+
+You can learn about Joven, Blanco, or Reposado tequila. Which one do you want?
+
+Flight ZZ1050 is delayed due to system fault X32-G. Reposted time of departure is 15.30 hours
+
+Your flight from Bristol to Amsterdam is delayed due to a mechanical fault. It will now depart at 3.30pm
+
+Here are the most popular teas: 1. English Breakfast. 2. Darjeeling. 3. Assam. 4. Earl Grey
+
+The most popular tea is English Breakfast. Would you like to hear more?
+
+2. Darjeeling. 3. Assam. 4. Earl grey.
+
+You can order chocolate, strawberry, vanilla, banana, or peanut butter. For chocolate say 'chocolate', for strawberry say 'strawberry', for vanilla say 'vanilla', for banana say 'banana', or for peanut butter say 'peanut butter. 
+
+Would you like chocolate, strawberry, or another flavour?
+
+There is also vanilla, banana,  or peanut butter. Which would you like?
+
+You can add a recipe, delete a recipe, edit a recipe, find a recipe, or choose an ingredient. Which one do you want?
+
+Do you want to find a recipe, or something else?
+
+Bristol 35 - 20 Harlequins. Time remaining 00:30:30
+
+With 35 minutes to go, the score is Bristol 35, Harlequins 20.
