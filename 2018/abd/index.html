@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="shower/themes/tink/styles/screen-16x10.css">
+    <link rel="stylesheet" href="shower/themes/tink/styles/overrides.css">
+	<title>Technologic (Human afterall): Accessibility mix</title>
+</head>
+<body class="shower list">
+	<img id="tink-logo" alt="" src="shower/themes/tink/pictures/tink-avatar.png"/>
+	<header class="caption">
+		<h1>Technologic (Human afterall): Accessibility mix</h1>
+		<p><a href="https://tink.uk">Leonie Watson</a>, The Paciello Group (TPG)</p>
+	</header>
+
+	<section class="slide" id="cover">
+		<h2>Technologic (Human afterall): Accessibility mix</h2>
+		<p>Accessible By Design, Bloomington May 2018</p>
+		<p>Léonie Watson ~
+			<svg id="tpg-logo" width="200" height="29" focusable="false">
+            <image xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    xlink:href="shower/themes/tink/pictures/tpg-logo.svg" 
+                    src="shower/themes/tink/pictures/svg-logo.png" alt="The Paciello Group" width="200" height="29"></image>
+		</p>
+		<dl class="contact-list">
+			<dt>Mastodon</dt><dd><a href="https://toot.cafe/@tink">@tink@toot.cafe</a></dd>
+			<dt>Twitter</dt><dd><a href="https://twitter.com/leoniewatson">@LeonieWatson</a></dd>
+			<dt>Blog</dt> <dd><a href="http://tink.uk">tink.uk</a></dd>
+			<dt>Github</dt> <dd><a href="https://github.com/ljwatson">@LJWatson</a></dd>
+		</dl>
+	</section>
+<section class="slide">
+
+<h2>"Buy it, use it, break it, fix it"</h2>
+<audio src="audio/samples/1.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>"Trash it, change it, mail - upgrade it"</h2>
+<audio src="audio/samples/2.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Implicit semantics</h2>
+<p>Most HTML elements have implicit semantics (role and state)</p>
+</section>
+
+<section class="slide">
+<h2>The <code>a</code> element</h2>
+<pre><code>&lt;a href="https://tink.uk"&gt;Tink.UK&lt;/a&gt;</code></pre>
+<ul>
+<li>Role = "link"</li>
+<li>Accessible name = "Tink.UK"</li>
+<li>State = focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: the <code>a</code> element</h2>
+<dl>
+<dt>Screen reader says</dt>
+<dd>"tink.uk [Link]"</dd>
+</dl>
+<audio src="audio/screen-reader-demo-link.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>img</code> element</h2>
+<pre><code style="font-size: 80%">&lt;img src="chamucos.png"
+     alt="A bottle of Chamucos tequila with the dancing devil logo"&gt;</code></pre>
+<ul>
+<li>Role = "image"</li>
+<li>Accessible name = "A bottle of Chamucos tequila with the dancing devil logo"</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: the <code>img</code> element</h2>
+<dl>
+<dt>Screen reader says</dt>
+<dd>"[Graphic] A bottle of Chamucos tequila with the dancing devil logo"</dd>
+</dl>
+<audio src="audio/screen-reader-demo-image.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>input type="checkbox"</code> element</h2>
+<pre><code>&lt;input type="checkbox" id="tequila" checked&gt;
+&lt;label for="tequila"&gt;Tequila makes me happy&lt;/label&gt;</code></pre>
+<ul>
+<li>Role = "checkbox"</li>
+<li>Accessible name = "Tequila makes me happy"</li>
+<li>State = "focusable checked"</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: the <code>input type="checkbox"</code> element</h2>
+<dl>
+<dt>Screen reader says</dt>
+<dd>"Tequila [Checkbox, checked]"</dd>
+</dl>
+<audio src="audio/screen-reader-demo-checkbox.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Neutral semantics</h2>
+<p>Some elements do not convey role or state</p>
+</section>
+
+<section class="slide">
+<h2>The <code>div</code> & <code>span</code> elements</h2>
+<pre><code>&lt;div&gt;
+&lt;span class="button"&gt;
+Add English Breakfast tea to basket&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: the <code>div</code> & <code>span</code> elements</h2>
+<dl>
+<dt>Screen reader says</dt>
+<dd>"Add English Breakfast tea to basket"</dd>
+</dl>
+<audio src="audio/screen-reader-demo-div-span.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>"Charge it, point it, zoom it, press it"</h2>
+<audio src="audio/samples/3.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Keyboard focus</h2>
+<p>HTML has interactive elements that receive focus, including:</p>
+<ul>
+<li><code>&lt;a href&gt;</code></li>
+<li><code>&lt;button&gt;</code></li>
+<li><code>&lt;input&gt;</code></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>DOM order</h2>
+<pre><code>
+&lt;button&gt;1&lt;/button&gt;
+&lt;button&gt;2&lt;/button&gt;
+&lt;button&gt;3&lt;/button&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: DOM order</h2>
+<video src="video/screen-reader-demo-dom-order.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Expected interactions</h2>
+<p>Interactive elements have expected interactions provided by the browser:</p>
+<ul>
+<li>A link is activated by click, tap or the Enter key</li>
+<li>A button is activated by click, tap or the Enter or Space key</li>
+<li>An input is activated by click, tap or the Enter key</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>"Snap it, work it, quick - erase it"</h2>
+<audio src="audio/samples/4.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>details</code> & <code>summary</code> elements</h2>
+<pre><code>&lt;details&gt;
+&lt;summary&gt;Tequila...&lt;/summary&gt;
+Makes me happy!
+&lt;/details&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>The accessibility tree: <code>details</code> element</h2>
+<dl>
+<dt>Role</dt>
+<dd>button</dd>
+<dt>State</dt>
+<dd>focusable</dd>
+<dd>focused</dd>
+<dd>expandable</dd>
+<dd>collapsed</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: the <code>details</code> & <code>summary</code> elements</h2>
+<video src="video/screen-reader-demo-details-summary.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Accessibility APIs</h2>
+<table id="apis">
+    <tr>
+        <td><img src="pictures/windows10.png" alt="Windows"></td>
+        <td><img src="pictures/macos.jpg" alt="MacOS"></td>
+        <td><img src="pictures/linux.png" alt="Linux"></td>
+    </tr>
+    <tr class="companies">
+        <td class="company">
+            UI Automation (UIA)<br/>
+            MS Active Accessibility (MSAA)<br/>
+            IAccessible2 (IA2)<br/>
+        </td>
+        <td class="company">
+            OSX Accessibility Protocol (AXAPI)
+        </td>
+        <td class="company">
+            Accessibility Toolkit (ATK)<br/>
+            AT Service Provider Interface (AT-SPI)
+        </td>
+    </tr>
+</table>
+</section>
+
+<section class="slide">
+<h2>"Write it, cut it, paste it, save it"</h2>
+<audio src="audio/samples/5.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>ARIA</h2>
+<p>Attributes that polyfill missing role, name, and state information for screen readers</p>
+<p>ARIA 1.1 (W3C Recommendation)<br>
+<a href="https://www.w3.org/TR/wai-aria-1.1/">w3.org/TR/wai-aria-1.1</a></p>
+</section>
+
+<section class="slide">
+<h2>The <code>role</code> attribute</h2>
+<p>70+ roles, including:</p>
+<ul>
+<li><code>tablist</code>, <code>tab</code>, <code>tabpanel</code></li>
+<li><code>checkbox</code>, <code>radio</code>, <code>textbox</code></li>
+<li><code>table</code>, <code>row</code>, <code>cell</code></li>
+<li><code>toolbar</code>, <code>menu</code>, <code>menubar</code></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>aria-</code> attributes</h2>
+<p>45+ states and properties, including:</p>
+<ul>
+<li><code>aria-invalid</code>, <code>aria-required</code></li>
+<li><code>aria-pressed</code>, <code>aria-expanded</code></li>
+<li><code>aria-controls</code>, <code>aria-owns</code></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>"Load it, check it, quick - rewrite it"</h2>
+<audio src="audio/samples/6.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Recreating the <code>details</code> & <code>summary</code> elements</h2>
+<p>Design pattern available here:<br>
+<a href="https://design-patterns.tink.uk/">design-patterns.tink.uk</a></p>
+</section>
+
+<section class="slide">
+<h2>The <code>div</code> and <code>span</code> elements</h2>
+<pre><code>&lt;span id="button"&gt;Tequila &lt;span id="icon"&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;div id="content"&gt;Makes me happy&lt;/div&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard demo: disclosure</h2>
+<img src="pictures/disclosure.png" alt="Disclosure button">
+</section>
+
+<section class="slide">
+<h2>The <code>tabindex</code> attribute</h2>
+<pre><code style="font-size: 80%">&lt;span id="button" <mark>tabindex="0"</mark>&gt;Tequila &lt;span id="icon"&gt;&lt;/span&gt;&lt;/span&gt;</code></pre>
+
+<pre><code>&lt;script&gt;
+  var button = document.getElementById('button');
+  button.setAttribute('tabindex', 0);
+&lt;/script&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>role</code> attribute</h2>
+<pre><code>button.setAttribute('role', 'button');</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>aria-expanded</code> attribute</h2>
+<pre><code>button.setAttribute('aria-expanded', 'false');</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>aria-controls</code> attribute (optional)</h2>
+<pre><code>button.setAttribute('aria-controls', 'content');</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>aria-hidden</code> attribute</h2>
+<pre><code>icon.setAttribute('aria-hidden', 'true');</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>hidden</code> attribute</h2>
+<pre><code>content.setAttribute('hidden', 'true');</code></pre>
+</section>
+
+<section class="slide">
+<h2>Rendered code</h2>
+<pre><code style="font-size: 80%">&lt;span id="button" tabindex="0" role="button"
+      aria-expanded="false" aria-controls="content"&gt;
+    Tequila &lt;span id="icon" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;/span&gt;
+&lt;div id="content" hidden&gt;Makes me happy&lt;/div&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Pointer interaction</h2>
+<pre><code>button.addEventListener('click', disclose, false);</code></pre>
+</section>
+
+<section class="slide">
+<h2>Keyboard interaction</h2>
+<pre><code>button.addEventListener('keydown', function(event) {
+    if (event.keyCode == 13 || event.keyCode ==32) {
+        disclose();
+    }
+});</code></pre>
+</section>
+
+<section class="slide">
+<h2>Functionality</h2>
+<pre><code style="font-size: 75%">if (content.hasAttribute('hidden')) {
+    button.setAttribute('aria-expanded', 'true');
+    button.setAttribute('aria-controls', 'content');
+    content.removeAttribute('hidden');
+}
+else {
+    button.setAttribute('aria-expanded', 'false');
+    content.setAttribute('hidden', 'true');
+    button.removeAttribute('aria-controls');
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: disclosure</h2>
+<video src="video/screen-reader-demo-disclosure.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>"Plug it, play it, burn it, rip it<br>
+Drag and drop it, zip - unzip it"</h2>
+<audio src="audio/samples/7.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Screen readers</h2>
+<table id="screenreaders">
+    <tr>
+        <td><img src="pictures/jaws.png" alt="Jaws"></td>
+        <td><img style="max-height: 105px" src="pictures/nvda.png" alt="NVDA"></td>
+        <td style="padding-left: 20px"><img src="pictures/voiceover.png" alt="Voiceover"></td>
+        <td><img src="pictures/narrator.png" alt="Narrator"></td>
+        <td><img style="max-width: 160px" src="pictures/orca.jpg" alt="Orca"></td>
+        <td><img src="pictures/talkback.jpg" alt="TalkBack"></td>
+    </tr>
+    <tr>
+        <td>Jaws</td>
+        <td>NVDA</td>
+        <td style="padding-left: 20px">Voiceover</td>
+        <td>Narrator</td>
+        <td>Orca</td>
+        <td>TalkBack</td>
+    </tr>
+    <tr class="companies">
+        <td class="company">(Freedom Scientific)</td>
+        <td class="company">(NV Access)</td>
+        <td class="company" style="padding-left: 20px">(Apple)</td>
+        <td class="company">(Microsoft)</td>
+        <td class="company">(GNOME)</td>
+        <td class="company">(Android)</td>
+    </tr>
+</table>
+</section>
+
+<section class="slide">
+<h2>Zoom</h2>
+<div class="two-col">
+<img src="pictures/screenshot-tink-ordinary.png" alt="Normal scale"/>
+<img src="pictures/screenshot-tink-200.png" alt="Zoom scale"/>
+</div>
+</section>
+
+<section class="slide">
+<h2>Keyboard</h2>
+<img src="pictures/keyboard.png" alt="Keyboard"/>
+</section>
+
+<section class="slide">
+<h2>"Lock it, fill it, call it, find it<br>
+View it, code it, jam - unlock it"</h2>
+<audio src="audio/samples/8.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Space Jam</h2>
+<img src="pictures/space-jam3.jpg" alt="Space Jam poster (1996)" style="text-align: center">
+</section>
+
+<section class="slide">
+<h2>Space Jam website</h2>
+<img src="pictures/space-jam-website.jpg" alt="Space Jam website (1996)">
+</section>
+
+<section class="slide">
+<h2>Old school style</h2>
+<pre><code style="font-size: 80%">&lt;body vlink="#ff4c4c"
+      alink="#ff4c4c"
+      link="#ff4c4c"
+      text="#ff0000"
+      bgcolor="#000000"
+      background="img/bg_stars.gif"&gt;
+...
+&lt;/body&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Layout</h2>
+<pre><code style="font-size: 80%">&lt;table width="500" border="0"&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;...&lt;/td&gt;
+      ...
+    &lt;/tr&gt;
+  &lt;tbody&gt;
+&lt;/table&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Formatting</h2>
+<pre><code>&lt;center&gt;
+&lt;nobr&gt;
+...
+&lt;/nobr&gt;
+&lt;/center&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Fonts</h2>
+<pre><code style="font-size: 80%">&lt;font size="-1"&gt;
+  &lt;a target="_blank" href="http://www.warnerbros.com/term-use"&gt;
+    Legal/Privacy Information About This Site.&lt;/a&gt;
+&lt;/font&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Fixed in time</h2>
+<p>It's resilient, but:</p>
+<ul>
+<li>No style override</li>
+<li>No text resize</li>
+<li>No layout flexibility</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>"Surf it, scroll it, pause it, click it<br>
+Cross it, crack it, switch - update it"</h2>
+<audio src="audio/samples/9.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>CSS1 (1996)</h2>
+<ul>
+<li>Box model and basic floats</li>
+<li>Properties for fonts, colours and dimensions</li>
+<li>Pseudo-class for anchors</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>CSS2 (1998)</h2>
+<ul>
+<li><code>before/after</code> pseudo-elements</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>after</code> selector</h2>
+<pre><code>#a:after {
+  content: ' Makes me happy!';
+}
+...
+&lt;a href="/" id="a"&gt;Tequila!&lt;/a&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>CSS2.1 on generated content</h2>
+<blockquote cite="https://www.w3.org/TR/CSS2/generate.html">
+Generated content does not alter the document tree. In particular, it is not fed back to the document language processor (e.g., for reparsing).
+</blockquote>
+</section>
+
+<section class="slide">
+<h2>DOM representation</h2>
+<pre><code>&lt;a href="/" id="a"&gt;Tequila!&lt;/a&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>"Name it, rate it, tune it, print it<br>
+Scan it, send it, fax - rename it"</h2>
+<audio src="audio/samples/10.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: the <code>after</code> selector</h2>
+<dl>
+<dt>Screen reader says</dt>
+<dd>Tequila, makes me happy! [link]</dd>
+</dl>
+<audio src="audio/screen-reader-demo-after.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Browser support</h2>
+<table id="browsers">
+    <tr>
+        <td><img src="pictures/chrome.png" alt="Chrome"></td>
+        <td><img src="pictures/edge.png" alt="Edge"></td>
+        <td><img src="pictures/firefox.png" alt="Firefox"></td>
+        <td><img src="pictures/safari.png" alt="Safari"></td>
+    </tr>
+    <tr>
+        <td>Chrome</td>
+        <td>Edge</td>
+        <td>Firefox</td>
+        <td>Safari</td>
+    </tr>
+    <tr class="companies">
+        <td>(Google)</td>
+        <td>(Microsoft)</td>
+        <td>(Mozilla)</td>
+        <td>(Apple)</td>
+    </tr>
+</table>
+</section>
+
+<section class="slide">
+<h2>Browser solutions</h2>
+<ul>
+<li>Create a text node in the accessibility tree</li>
+<li>Include <code>after</code> content in the accessible name calculation</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>CSS3 FlexBox</h2>
+<ul>
+<li>Easier responsive layouts</li>
+<li>No more float hacks</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>button</code> element</h2>
+<pre><code>
+&lt;div&gt;
+    &lt;button&gt;1&lt;/button&gt;
+    &lt;button&gt;2&lt;/button&gt;
+    &lt;button&gt;3&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: DOM order</h2>
+<video src="video/screen-reader-demo-dom-order.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The <code>display</code> & <code>order</code> properties</h2>
+<pre><code>&lt;div <mark>style="display: flex;"</mark>&gt;
+    &lt;button <mark>style="order: 3;"</mark>&gt;1&lt;/button&gt;
+    &lt;button <mark>style="order: 2;"</mark>&gt;2&lt;/button&gt;
+    &lt;button <mark>style="order: 1;"</mark>&gt;3&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: flex order</h2>
+<video src="video/screen-reader-demo-flex-order.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Spec advice?</h2>
+<blockquote cite="https://www.w3.org/TR/css-flexbox-1/#order-accessibility">
+Authors must use ‘order' only for visual, not logical, reordering of content.</blockquote>
+ </section>
+
+ <section class="slide">
+<h2>The <code>tabindex</code> attribute</h2>
+<pre><code>&lt;div style="display: flex;"&gt;
+    &lt;button style="order: 3;" <mark>tabindex="3"</mark>&gt;1&lt;/button&gt;
+    &lt;button style="order: 2;" <mark>tabindex="2"</mark>&gt;2&lt;/button&gt;
+    &lt;button style="order: 1;" <mark>tabindex="1"</mark>&gt;3&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: tabindex order</h2>
+<video src="video/screen-reader-demo-tabindex-order.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The <code>tabindex</code> attribute problem</h2>
+<ul>
+<li>Elements with tabindex="0" are part of the natural tab sequence</li>
+<li>Elements with tabindex="-1" are not, but are focusable with scripting</li>
+<li>Elements with tabindex=">0" are never a good idea</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>aria-flowto</code> attribute</h2>
+<pre><code style="font-size: 80%">&lt;div style="display: flex;"&gt;
+    &lt;button <mark>id="b1" aria-flowto="b3"</mark> style="order: 3;"&gt;1&lt;/button&gt;
+    &lt;button <mark>id="b2" aria-flowto="b1"</mark> style="order: 2;"&gt;2&lt;/button&gt;
+    &lt;button <mark>id="b3" aria-flowto="b2"</mark> style="order: 1;"&gt;3&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo: the <code>aria-flowto</code> attribute</h2>
+<video src="video/screen-reader-demo-flowto-order.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The <code>aria-flowto</code> attribute problem</h2>
+<ul>
+<li>Adds another navigation method (DOM order, flexed order and aria-flowto order</li>
+<li>Is poorly supported</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The Firefox "bug"</h2>
+<video src="video/screen-reader-demo-firefox-order.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>"Touch it, bring it, pay it, watch it<br>
+Turn it, leave it, start - format it"</h2>
+<audio src="audio/samples/11.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>It doesn't have to be perfect</h2>
+<p>... just a little bit better than yesterday</p>
+</section>
+
+<section class="slide">
+<h2>Technologic (Human afterall)</h2>
+<audio src="audio/samples/12.mp3"></audio>
+</section>
+
+<section class="slide" id="cover">
+		<h2>Technologic (Human afterall): Accessibility mix</h2>
+		<p>Accessible By Design, Bloomington May 2018</p>
+		<p>Léonie Watson ~
+			<svg id="tpg-logo" width="200" height="29" focusable="false">
+            <image xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    xlink:href="shower/themes/tink/pictures/tpg-logo.svg" 
+                    src="shower/themes/tink/pictures/svg-logo.png" alt="The Paciello Group" width="200" height="29"></image>
+		</p>
+		<dl class="contact-list">
+			<dt>Mastodon</dt><dd><a href="https://toot.cafe/@tink">@tink@toot.cafe</a></dd>
+			<dt>Twitter</dt><dd><a href="https://twitter.com/leoniewatson">@LeonieWatson</a></dd>
+			<dt>Blog</dt> <dd><a href="http://tink.uk">tink.uk</a></dd>
+			<dt>Github</dt> <dd><a href="https://github.com/ljwatson">@LJWatson</a></dd>
+		</dl>
+	</section>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2016 Yours Truly, Famous Inc. -->
+</body>
+</html>
