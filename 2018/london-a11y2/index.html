@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -206,7 +206,7 @@
 
 <section class="slide">
 <h2>Demo: the <code>button</code> element</h2>
-<video src="media/toggle-1-nosound.mp4"></video>
+<video src="media/toggle-1-sound.mp4"></video>
 </section>
 
 
@@ -341,19 +341,6 @@ button.addEventListener('keydown', function(event) {
 </section>
 
 <section class="slide">
-<h2>The <code>button</code> element</h2>
-<pre><code>&lt;button id="button" <mark>aria-pressed="false"</mark>&gt;Play&lt;/button&gt;</code></pre>
-<dl>
-<dt>Role</dt>
-<dd>button</dd>
-<dt>Name</dt>
-<dd>Play</dd>
-<dt>State</dt>
-<dd>Focusable, Not pressed</dd>
-</dl>
-</section>
-
-<section class="slide">
 <h2>The functionality</h2>
 <pre><code>var button = document.getElementById('button');
 
@@ -381,6 +368,19 @@ function doSomething(event) {
 <section class="slide">
 <h2>Demo: the <code>aria-pressed</code> attribute</h2>
 <video src="media/toggle-2.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The <code>button</code> element</h2>
+<pre><code>&lt;button id="button" <mark>aria-pressed="false"</mark>&gt;Play&lt;/button&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>button</dd>
+<dt>Name</dt>
+<dd>Play</dd>
+<dt>State</dt>
+<dd>Focusable, Not pressed</dd>
+</dl>
 </section>
 
 <section class="slide">
@@ -503,6 +503,12 @@ button.ariaPressed = 'false';</code></pre>
 <li>Walk the computed accessibility tree (including virtual nodes)</li>
 </ul>
 </section>
+
+<section class="slide">
+<h2>Laws of unintended consequences</h2>
+<p>There is a trade-off between accessibility and privacy</p>
+</section>
+
 
 <section class="slide">
 <h1>Be a time traveller</h1>
