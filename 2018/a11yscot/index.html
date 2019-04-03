@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="shower/themes/tink/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/tink/styles/overrides.css">
+<title>Talking technology</title>
+</head>
+<body class="shower list">
+<img id="tink-logo" alt="" src="shower/themes/tink/pictures/tink-avatar.png"/>
+<img id="tetralogical-logo" alt="" src="shower/themes/tink/pictures/Tetralogical-logo-RGB.svg"/>
+<header class="caption">
+<h1>Talking technology</h1>
+<p><a href="https://tink.uk">Léonie Watson</a></p>
+</header>
+<section class="slide" id="cover">
+<h2>Talking technology</h2>
+<p>Accessibility Scotland meetup, Glasgow April 2019</p>
+<p>Léonie Watson, TetraLogical</p>
+
+<ul id="contact-list">
+<li><img src="shower/themes/tink/pictures/twitter.svg" alt="Twitter"/><a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li><img src="shower/themes/tink/pictures/tink.svg" alt="Tink"/><a href="https://tink.uk">https://tink.uk</a></li>
+<li><img src="shower/themes/tink/pictures/github.svg" alt="Github"/><a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Conversation architecture</h2>
+<uL>
+<li>Speak</li>
+<li>Listen</li>
+<li>Understand</li>
+<li>Respond</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Automatic Speech Recognition (ASR)</h2>
+<p>Recognises human speech and converts it into text</p>
+</section>
+
+<section class="slide">
+<h2>IBM Shoebox</h2>
+<video src="media/ibm-shoebox.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Hidden Markov Model (HMM)</h2>
+<p>Statistical speech processing, leading to greater recognition accuracy</p>
+</section>
+
+<section class="slide">
+<h2>Natural Language Processing (NLP)</h2>
+<p>Takes text and converts it into structured data</p>
+</section>
+
+<section class="slide">
+<h2>Machine Learning</h2>
+<p>Takes structured data, processes it, and returns structured data</p>
+</section>
+
+<section class="slide">
+<h2>Natural Language Generation (NLG)</h2>
+<p>Takes structured data and converts it into text</p>
+</section>
+
+<section class="slide">
+<h2>Text To Speech (TTS)</h2>
+<p>Takes text and converts it into synthetic speech</p>
+</section>
+
+<section class="slide">
+<h2>Voice XML (VXML)</h2>
+<img class="logo left" src="pictures/w3c.png" alt="W3C logo">
+<ul>
+<li>VXML 1.0 W3C Recommendation (2000)</li>
+<li>VXML 2.0 W3C Recommendation (2004)</li>
+<li>VXML 2.1 W3C Recommendation (2007)</li>
+<li>VXML 3.0 W3C Working Draft (2010)</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Voice browsers</h2>
+<p>VXML is parsed in voice browsers to create voice interfaces</p>
+</section>
+
+<section class="slide">
+<h2>VXML documents</h2>
+<ul>
+<li>Recognise spoken words and phrases</li>
+<li>Control dialogue flow</li>
+<li>Respond with spoken or audio prompts</li>
+<li>Manage telephony control</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;prompt&gt;</code> element</h2>
+<pre><code><xmp>
+<vxml version="2.1" lang="en">
+  <form>
+    <block>
+      <prompt bargein="false">Welcome!</prompt>
+    </block>
+  </form>
+</vxml>
+</xmp>
+</code>
+</pre>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;menu&gt;</code> element</h2>
+<pre><code><xmp>
+  <vxml version="2.1" lang="en">
+    <menu>
+      <prompt>Choose from: <enumerate/></prompt>
+      <choice next="https://tequila.com/blanco.vxml">Blanco</choice>
+      <choice next="https://tequila.com/reposado.vxml">Reposado</choice>
+      <noinput>Please say one of <enumerate/></noinput>
+    </menu>
+  </vxml>
+</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>Alexa <code>LaunchRequestHandler</code></h2>
+<pre><code><xmp>const LaunchRequestHandler = {
+...
+handle(handlerInput) {
+    const speechOutput = "Hello world!";
+    
+    return handlerInput.responseBuilder
+      .speak(speechOutput)
+      .reprompt(speechOutput)
+      .getResponse();
+  },
+};</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>Speech Synthesis Markup Language (SSML)</h2>
+<img class="logo left" src="pictures/w3c.png" alt="W3C logo">
+<ul>
+<li>SSML W3C Recommendation (2004)</li>
+<li>SSML 1.1 W3C Recommendation (2010)</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>SSML elements</h2>
+<p>Describe the characteristics of synthetic speech</p>
+</section>
+
+<section class="slide">
+<h2>Alexa default</h2>
+<pre><code><xmp>const speechOutput =
+  "The terror, which would not end for another twenty-eight years – if it ever
+  did end – began, so far as I know or can tell, with a boat made from a sheet
+  of newspaper floating down a gutter swollen with rain.";</xmp></code></pre>
+<audio src="media/stephen-king1.mp3" preload="auto"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;voice&gt;</code> & <code>&lt;emphasis&gt;</code> elements</h2>
+<pre><code><xmp>const speechOutput = 
+  "<voice name='Matthew'><lang xml:lang='en-US'>
+    The <emphasis level='moderate'>terror</emphasis>, which would
+    not end for another twenty-eight years – if it ever 
+    <emphasis level='moderate'>did</emphasis> end – began, 
+    <emphasis level='reduced'>so far as I know or can tell</emphasis>, 
+    with a boat made from a sheet of newspaper floating down a gutter 
+    <emphasis level='moderate'>swollen</emphasis> with 
+    <emphasis level='moderate'>rain</emphasis>.
+  </lang></voice>";</xmp></code></pre>
+<audio src="media/stephen-king2.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;p&gt;</code> element</h2>
+<pre><code><xmp>const speechOutput =
+  "<p>Hello, my name is Inigo Montoya. You killed my father. Prepare to die.</p>";
+</xmp></code></pre>
+<audio src="media/inigo-montoya1.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;lang&gt;</code> & <code>&lt;break&gt;</code> elements</h2>
+<pre><code><xmp>const speechOutput =
+  "<voice name='Enrique'><lang xml:lang='es-ES'>
+  <p>Hello, <break time='500ms'/> my name is Inigo Montoya.
+  You killed my father. <break strength='x-strong'/>Prepare to die.</p>
+  </lang></voice>";</xmp></code></pre>
+<audio src="media/inigo-montoya2.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;s&gt;</code> element</h2>
+<pre><code><xmp>const speechOutput = 
+  "Piglet sidled up to Pooh from behind.
+  'Pooh!' he whispered.
+  'Yes, Piglet?'
+  'Nothing', said Piglet, taking Pooh's paw.
+  I just wanted to be sure of you.";</xmp></code></pre>
+<audio src="media/aa-milne1.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;prosody&gt;</code> element</h2>
+<pre><code><xmp>const speechOutput = 
+  "<voice name='Brian'>
+  Piglet sidled up to Pooh from behind.
+  <prosody pitch='x-high' rate='medium' volume='soft'>'Pooh!'</prosody> he whispered.
+  'Yes, Piglet?'
+  <prosody pitch='x-high' rate='x-fast'>'Nothing',</prosody> said Piglet, taking Pooh's paw.
+  <prosody pitch='x-high' rate='x-fast'>I just wanted to be sure of you.</prosody>
+  </voice>";</xmp></code></pre>
+<audio src="media/aa-milne2.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;amazon:effect&gt;</code> element</h2>
+<pre><code><xmp>const speechOutput =
+  "<amazon:effect name='whispered'>Shush! Be very, very quiet.</amazon:effect>";</xmp></code></pre>
+<audio src="media/whisper.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;say-as&gt;</code> element</h2>
+<pre><code><xmp>const speechOutput = 
+  "<voice name='Joey'><lang xml:lang='en-US'>Frankly my dear, I don't give-a</lang>
+  <say-as interpret-as='expletive'>damn</say-as>!
+  </voice>";</xmp></code></pre>
+<audio src="media/interpret-as-expletive.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>interpret-as="interjection"</code> attribute</h2>
+<pre><code><xmp>const speechOutput = "<say-as interpret-as='interjection'>Cha ching!</say-as>";</xmp></code></pre>
+<audio src="media/interpret-as-interjection.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>SSML in browsers</h2>
+<p>SSML elements are not rendered in the DOM</p>
+</section>
+
+<section class="slide">
+<h2>Web Speech API</h2>
+<img class="logo left" src="pictures/w3c.png" alt="W3C logo">
+<ul>
+<li>W3C Draft Community Group Report (2012)</li>
+<li>W3C Draft Community Group Report (2019)</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Web Speech interfaces</h2>
+<ul>
+<li>SpeechRecognition interface</li>
+<li>SpeechSynthesis interface</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>SpeechSynthesisUtterance</code> object</h2>
+<pre><code>var utterance = new SpeechSynthesisUtterance();</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>.text</code> attribute</h2>
+<pre><code>utterance.text = "Tequila!";</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>.speak()</code> method</h2>
+<pre><code>window.speechSynthesis.speak(utterance);</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>.getVoices()</code> method</h2>
+<pre><code>var tts = speechSynthesis.getVoices();</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>.voice</code> attribute</h2>
+<pre><code>utterance.voice = "Microsoft Hazel desktop - English (Great Britain)";</code></pre>
+</section>
+
+<section class="slide">
+<h2>SpeechSynthesis demo</h2>
+<video src="media/news-demo.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>SpeechSynthesis hints demo</h2>
+<video src="media/tabpanels-hints.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>CSS Speech module</h2>
+<img class="logo left" src="pictures/w3c.png" alt="W3C logo">
+<ul>
+<li>CSS Level 2 Aural Style Sheets W3C Recommendation (1998)</li>
+<li>CSS Level 3 Speech module W3C Note (2018)</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>CSS Speech properties</h2>
+<p>Describe the characteristics of content when spoken by synthetic speech</p>
+</section>
+
+<section class="slide">
+<h2>The <code>speak:;</code> property</h2>
+<pre><code>.content {
+  speak: auto;
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>voice-volume:;</code> property</h2>
+<pre><code>.content {
+  voice-volume: loud;
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>voice-rate:;</code> property</h2>
+<pre><code>.content {
+  voice-rate: x-fast;
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>voice-pitch:;</code> property</h2>
+<pre><code>.content {
+  voice-pitch: x-low;
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo</h2>
+<pre><code><h2 class="headline">News headline: Nothing happened!</h2>
+<p class="date">Reported on 1 April</p>
+<p>Nothing happened today. Everybody went and had a cup of tea instead.</p></code></pre>
+<audio src="media/screen-reader1.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Screen reader + CSS Speech demo</h2>
+<pre><code style="font-size: 60%;">.headeline {
+  speak: auto;
+  voice-volume: x-loud;
+  voice-rate: fast;
+  voice-pitch: high;
+}
+
+.date {
+  speak: auto;
+  voice-volume: soft;
+  voice-rate: x-fast;
+  voice-pitch: low;
+}</code></pre>
+<audio src="media/screen-reader2.mp3"></audio>
+</section>
+ 
+<section class="slide" id="cover">
+<h2>Thank you!</h2>
+<p>Léonie Watson, TetraLogical</p>
+
+<ul id="contact-list">
+<li><img src="shower/themes/tink/pictures/twitter.svg" alt="Twitter"/><a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li><img src="shower/themes/tink/pictures/tink.svg" alt="Tink"/><a href="https://tink.uk">https://tink.uk</a></li>
+<li><img src="shower/themes/tink/pictures/github.svg" alt="Github"/><a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+</section>
+
+<script src="shower/shower.min.js"></script>
+</body>
+</html>
