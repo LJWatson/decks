@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="shower/themes/tink/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/tink/styles/overrides.css">
+<title>Time traveller's guide to accessibility mechanics</title>
+</head>
+<body class="shower list">
+<img id="tink-logo" alt="" src="shower/themes/tink/pictures/tink-avatar.png"/>
+<img id="tetralogical-logo" alt="" src="shower/themes/tink/pictures/Tetralogical-logo-RGB.svg"/>
+<header class="caption">
+<h1>Time traveller's guide to accessibility mechanics</h1>
+<p><a href="https://tink.uk">Léonie Watson</a></p>
+</header>
+<section class="slide" id="cover">
+<h2>Time traveller's guide to accessibility mechanics</h2>
+<p>JavaScript Central Asia, Bishkek May 2019</p>
+<p>Léonie Watson, TetraLogical</p>
+
+<ul id="contact-list">
+<li><img src="shower/themes/tink/pictures/twitter.svg" alt="Twitter"/><a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li><img src="shower/themes/tink/pictures/tink.svg" alt="Tink"/><a href="https://tink.uk">https://tink.uk</a></li>
+<li><img src="shower/themes/tink/pictures/github.svg" alt="Github"/><a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Browsers</h2>
+<table id="browsers">
+    <tr>
+        <td><img src="pictures/chrome.png" alt="Chrome"></td>
+        <td><img src="pictures/edge.png" alt="Edge"></td>
+        <td><img src="pictures/firefox.png" alt="Firefox"></td>
+        <td><img src="pictures/safari.png" alt="Safari"></td>
+    </tr>
+    <tr>
+        <td>Chrome</td>
+        <td>Edge</td>
+        <td>Firefox</td>
+        <td>Safari</td>
+    </tr>
+    <tr class="companies">
+        <td>(Google)</td>
+        <td>(Microsoft)</td>
+        <td>(Mozilla)</td>
+        <td>(Apple)</td>
+    </tr>
+</table>
+</section>
+
+<section class="slide">
+<h2>Screen readers</h2>
+<table id="screenreaders">
+    <tr>
+        <td><img src="pictures/jaws.png" alt="Jaws"></td>
+        <td><img style="max-height: 105px" src="pictures/nvda.png" alt="NVDA"></td>
+        <td><img src="pictures/voiceover.png" alt="Voiceover"></td>
+        <td><img src="pictures/narrator.png" alt="Narrator"></td>
+        <td><img style="max-width: 160px" src="pictures/orca.jpg" alt="Orca"></td>
+    </tr>
+    <tr>
+        <td>Jaws</td>
+        <td>NVDA</td>
+        <td>Voiceover</td>
+        <td>Narrator</td>
+        <td>Orca</td>
+    </tr>
+    <tr class="companies">
+        <td class="company">(Freedom Scientific)</td>
+        <td class="company">(NV Access)</td>
+        <td class="company">(Apple)</td>
+        <td class="company">(Microsoft)</td>
+        <td class="company">(GNOME)</td>
+    </tr>
+</table>
+</section>
+<section class="slide">
+<h1>Past...</h1>
+</section>
+
+<section class="slide">
+<h2>In the 1990s</h2>
+<img class="logo left" src="pictures/windows.png" alt="Windows">
+<p>Screen readers consumed the HTML directly from the browser, and created a virtual model of the content</p>
+</section>
+
+<section class="slide">
+<h2>Demo: reading text</h2>
+<video src="media/screen-reader-demo-text.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>By the 2000s</h2>
+<div class="row">
+    <div class="two-column"><img class="logo" src="pictures/windows.png" alt="Windows"></div>
+    <div class="two-column"><img class="logo" src="pictures/macos.jpg" alt="MacOS"></div>
+</div>
+<p>Screen readers began using platform accessibility APIs to query information from the browser</p>
+</section>
+
+<section class="slide">
+<h2>Platform accessibility APIs</h2>
+<table id="apis">
+    <tr>
+        <td><img src="pictures/windows.png" alt="Windows"></td>
+        <td><img src="pictures/macos.jpg" alt="MacOS"></td>
+        <td><img src="pictures/linux.png" alt="Linux"></td>
+    </tr>
+    <tr class="companies">
+        <td class="company">
+            UI Automation (UIA)<br/>
+            MS Active Accessibility (MSAA)<br/>
+            IAccessible2 (IA2)<br/>
+        </td>
+        <td class="company">
+            OSX Accessibility Protocol (AXAPI)
+        </td>
+        <td class="company">
+            Accessibility Toolkit (ATK)<br/>
+            AT Service Provider Interface (AT-SPI)
+        </td>
+    </tr>
+</table>
+</section>
+
+<section class="slide">
+<h2>The <code>main</code> element</h2>
+<pre><code>&lt;main&gt;...&lt;/main&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>main</dd>
+</dl>
+<audio src="media/main.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>nav</code> element</h2>
+<pre><code>&lt;nav&gt;...&lt;/nav&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>navigation</dd>
+</dl>
+<audio src="media/navigation.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>ol</code> element</h2>
+<pre><code>&lt;ol&gt;
+&lt;li&gt;Do this&lt;/li&gt;
+&lt;li&gt;Do that&lt;/li&gt;
+&lt;li&gt;Do something else&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<audio src="media/list-ordered.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>h1</code> element</h2>
+<pre><code>&lt;h1&gt;...&lt;/h1&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>heading</dd>
+<dt>State</dt>
+<dd>Level 1</dd>
+</dl>
+<audio src="media/heading.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>checked</code> attribute</h2>
+<pre><code>&lt;input type="checkbox" <mark>checked</mark>&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>checkbox</dd>
+<dt>State</dt>
+<dd>checked</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Demo: the <code>checked</code> attribute</h2>
+<video src="media/checkbox-checked.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The <code>button</code> element</h2>
+<pre><code>&lt;button&gt;Play&lt;/button&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>button</dd>
+<dt>Name</dt>
+<dd>Play</dd>
+<dt>State</dt>
+<dd>Focusable</dd>
+<dt>Interaction</dt>
+<dd>Click, Keyboard, Tap</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Demo: the <code>button</code> element</h2>
+<video src="media/toggle-1-sound.mp4"></video>
+</section>
+
+
+<section class="slide">
+<h2>Present...</h1>
+</section>
+
+<section class="slide">
+<h2>Custom UI components</h2>
+<ul>
+<li>We create things that do not exist in HTML</li>
+<li>We use <code>div</code> and <code>span</code> elements as building blocks</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Neutral elements</h2>
+<pre><code>&lt;div class="toolbar"&gt;
+&lt;span class="button"&gt;Bold&lt;/span&gt;&lt;span class="button"&gt;Italic&lt;/span&gt;...
+&lt;/div&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd> -</dd>
+<dt>Name</dt>
+<dd> -</dd>
+<dt>State</dt>
+<dd> -</dd>
+</dl>
+<audio src="media/bold-italic.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Using ARIA</h2>
+<p>Attributes that polyfill missing role, name, and state information for screen readers</p>
+<ul>
+<li>ARIA 1.1 (W3C Recommendation):<br>
+<a href="https://w3.org/tr/wai-aria-1.1/">w3.org/tr/wai-aria-1.1/</a></li>
+<li>Rules for Using ARIA (W3C Note):<br>
+<a href="https://www.w3.org/TR/using-aria/">w3.org/TR/using-aria/</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>role</code> attribute</h2>
+<p>70+ roles, including:</p>
+<ul>
+<li>tablist, tab, tabpanel</li>
+<li>checkbox, radio, textbox</li>
+<li>table, row, cell</li>
+<li>toolbar, menu, menubar</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>aria-</code> attributes</h2>
+<p>45+ states and properties, including:</p>
+<ul>
+<li><code>aria-invalid</code>, <code>aria-required</code></li>
+<li><code>aria-pressed</code>, <code>aria-expanded</code></li>
+<li><code>aria-controls</code>, <code>aria-owns</code></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>span</code> element</h2>
+<pre><code>&lt;span id="button"&gt;Play&lt;/span&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd></dd>
+<dt>Name</dt>
+<dd></dd>
+<dt>State</dt>
+<dd></dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>The <code>role</code> attribute</h2>
+<pre><code>&lt;span id="button" <mark>role="button"</mark>&gt;Play&lt;/span&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>button</dd>
+<dt>Name</dt>
+<dd>Play</dd>
+<dt>State</dt>
+<dd></dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>The <code>tabindex</code> attribute</h2>
+<pre><code>&lt;span id="button" role="button" <mark>tabindex="0"</mark>&gt;Play&lt;/span&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>button</dd>
+<dt>Name</dt>
+<dd>Play</dd>
+<dt>State</dt>
+<dd>Focusable</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Keyboard interaction</h2>
+<pre><code>&lt;span id="button" role="button" tabindex="0"&gt;Play&lt;/span&gt;
+
+var button = document.getElementById('button');
+button.addEventListener('click', doSomething, false);
+button.addEventListener('keydown', function(event) {
+    if (event.keyCode == 13 || event.keyCode ==32) {
+        doSomething();
+    }
+});</code></pre>
+</section>
+
+<section class="slide">
+<h2>Demo: Custom button</h2>
+<video src="media/toggle-1-sound.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The <code>aria-pressed</code> attribute</h2>
+<pre><code>&lt;span id="button" role="button" tabindex="0" <mark>aria-pressed="false"</mark>&gt;Play&lt;/span&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>button</dd>
+<dt>Name</dt>
+<dd>Play</dd>
+<dt>State</dt>
+<dd>Focusable, Not pressed</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>The functionality</h2>
+<pre><code>var button = document.getElementById('button');
+
+function doSomething(event) {        
+    if (button.getAttribute('aria-pressed') == 'false') {
+        button.setAttribute('aria-pressed', 'true');
+    }
+    else {
+        button.setAttribute('aria-pressed', 'false');
+    }
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>The CSS attribute selector</h2>
+<pre><code>span[aria-pressed="true"] {
+    color: #fff;
+    padding: 11px 12px 9px 16px;
+    text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff;
+    box-shadow: 0 1px 0 #666, 0 2px 0 #444, 0 2px 2px rgba(0,0,0,0.9);
+}
+</code></pre>
+</section>
+
+<section class="slide">
+<h2>Demo: the <code>aria-pressed</code> attribute</h2>
+<video src="media/toggle-2.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The <code>button</code> element</h2>
+<pre><code>&lt;button id="button" <mark>aria-pressed="false"</mark>&gt;Play&lt;/button&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>button</dd>
+<dt>Name</dt>
+<dd>Play</dd>
+<dt>State</dt>
+<dd>Focusable, Not pressed</dd>
+</dl>
+</section>
+
+
+<section class="slide">
+<h2>The custom element</h2>
+<pre><code>class tButton extends HTMLElement {
+    constructor () {
+        super();
+        var shadow = this.attachShadow({ mode: 'open' });
+
+        // Additional code
+
+        shadow.appendChild(button);
+    }
+}
+customElements.define('toggle-button', tButton);</code></pre>
+</section>
+
+<section class="slide">
+<h2>Extending the <code>button</code> element</h2>
+<pre><code>constructor () {
+    ...
+    var button = document.createElement('button');
+    var text = this.innerHTML;
+	button.setAttribute("aria-pressed", "false");
+
+    button.classList.add('toggle-button');
+    button.textContent = text;
+    ...
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>The functionality</h2>
+<pre><code style="font-size: 60%">constructor () {
+    ...
+    function toggle(event) {
+        if (button.getAttribute('aria-pressed') == 'false') {
+            button.setAttribute('aria-pressed', 'true');
+        }
+        else {
+            button.setAttribute('aria-pressed', 'false');
+        }
+    }
+    button.addEventListener('click', toggle, false);
+    ...
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>toggle-button</code> element</h2>
+<pre><code>&lt;toggle-button&gt;Play&lt;/toggle-button&gt;</code></pre>
+<dl>
+<dt>Role</dt>
+<dd>toggle-button</dd>
+<dt>Name</dt>
+<dd>Play</dd>
+<dt>State</dt>
+<dd>Focusable, not pressed</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Demo: the <code>toggle-button</code> element</h2>
+<video src="media/toggle-2.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>The rendered code</h2>
+<pre><code>&lt;toggle-button <mark>aria-pressed="false"</mark>&gt;Play&lt;/toggle-button&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h1>Future</h1>
+</section>
+
+<section class="slide">
+<h2>Accessibility Object Model (AOM)</h2>
+<p>An experimental JavaScript accessibility API:<br>
+<a href="https://github.com/WICG/aom">github.com/WICG/aom</a></p>
+</section>
+
+<section class="slide">
+<h2>Phase 1A: ARIA reflection</h2>
+<p>Instead of:</p>
+<pre><code>button.setAttribute('role', 'button');
+button.setAttribute('aria-pressed', 'false');</code></pre>
+<p>It would be:</p>
+<pre><code>button.role = 'button';
+button.ariaPressed = 'false';</code></pre>
+</section>
+
+<section class="slide">
+<h2>Phase 1B: Custom Element semantics</h2>
+<p>Authors will be able to:</p>
+<ul>
+<li>Set immutable default semantics by setting properties through the <code>ElementDefinitionOptions</code> object</li>
+<li>Modify semantics in response to user interaction using the <code>ElementInternals</code> object</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Phase 2: User action events</h2>
+<p>Authors will be able to respond to new types of input event, including:</p>
+<ul>
+<li><code>actionIncrement</code> and <code>actionDecrement</code></li>
+<li><code>actionDismiss</code></li>
+<li><code>actionScrollpageUp</code> and <code>actionScrollPageDown</code></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Phase 3: Virtual accessibility nodes</h2>
+<p>Will allow authors to create virtual accessibility tree nodes that do not map to the DOM</p>
+</section>
+
+<section class="slide">
+<h2>Phase 4: Computed accessibility tree</h2>
+<p>Will allow authors to:</p>
+<ul>
+<li>Access all computed properties for nodes in the accessibility tree</li>
+<li>Walk the computed accessibility tree (including virtual nodes)</li>
+</ul>
+</section>
+
+<section class="slide">
+<h1>Be a time traveller</h1>
+</section>
+
+<section class="slide">
+<h2>Use the best...</h2>
+<p>Of the past, present, and future</p>
+</section>
+
+
+<section class="slide">
+<h2>Thank you!</h2>
+<p>Léonie Watson, TetraLogical</p>
+
+<ul id="contact-list">
+<li><img src="shower/themes/tink/pictures/twitter.svg" alt="Twitter"/><a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li><img src="shower/themes/tink/pictures/tink.svg" alt="Tink"/><a href="https://tink.uk">https://tink.uk</a></li>
+<li><img src="shower/themes/tink/pictures/github.svg" alt="Github"/><a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+</section>
+
+<script src="shower/shower.min.js"></script>
+</body>
+</html>
