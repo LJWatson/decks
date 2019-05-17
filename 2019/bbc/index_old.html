@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="shower/themes/tink/styles/screen-16x10.css">
+<title>The art of noise (keep talking)</title>
+</head>
+<body class="shower list">
+<img id="tink-logo" alt="" src="shower/themes/tink/pictures/tink-avatar.png"/>
+<header class="caption">
+<h1>The art of noise (keep talking)</h1>
+<p><a href="https://tink.uk">Léonie Watson</a></p>
+</header>
+<section class="slide" id="cover">
+<h2>The art of noise (keep talking)</h2>
+<p>London Accessibility meetup, London September 2018</p>
+<p>Léonie Watson</p>
+
+<ul id="contact-list">
+<li><img src="shower/themes/tink/pictures/mastodon.svg" alt="Mastodon Logo"/> <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li><img src="shower/themes/tink/pictures/twitter.svg" alt="Twitter Logo"/><a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li><img src="shower/themes/tink/pictures/tink.svg" alt="Tink Logo"/><a href="https://tink.uk">https://tink.uk</a></li>
+<li><img src="shower/themes/tink/pictures/github.svg" alt="Github Logo"/><a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Transcripts</h2>
+<p>https://decks.tink.uk/2018/london-a11y/transcripts.html</p>
+</section>
+
+<section class="slide">
+<h2>Keep talking</h2>
+<video src="media/keep-talking.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Voder synthesizer (1939)</h2>
+<video src="media/voder.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Bell Labs IBM704 (1961)</h2>
+<video src="media/daisy-bell.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Texas Instruments Speak & Spell (1978)</h2>
+<video src="media/speak-and-spell.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Mego Toy Corp 2-XL robot (1978)</h2>
+<video src="media/2-xl.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>DECTalk Text To Speech (TTS) synthesizer (1984)</h2>
+<video src="media/dectalk-tts.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Apple MacInTalk (1984)</h2>
+<video src="media/apple-macintalk.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Apple voice recognition (1993)</h2>
+<video src="media/apple-voice-recognition.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Dragon Naturally Speaking (1997)</h2>
+<video src="media/dragon-naturally-speaking.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Apple Siri (2011)</h2>
+<video src="media/apple-siri.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Microsoft Cortana (2014)</h2>
+<video src="media/microsoft-cortana.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Amazon Echo (2014)</h2>
+<video src="media/amazon-echo.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Google Now with context awareness (2015)</h2>
+<video src="media/google-now.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Speech is powerful</h2>
+<p>We use speech to:</p>
+<ul>
+<li>Persuade</li>
+<li>Encourage</li>
+<li>Confront</li>
+<li>Comfort</li>
+<li>Amuse</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Speech is strange</h2>
+<p>We use:</p>
+<ul>
+<li>Idioms</li>
+<li>Context</li>
+<li>Slang</li>
+<li>Regional variations</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Speech isn't always needed</h2>
+<p>We use:</p>
+<ul>
+<li>Gestures</li>
+<li>Visual cues</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Making synthetic speech sound human</h2>
+<p>Synthetic speech must be:</p>
+<ul>
+<li>Natural</li>
+<li>Intelligible</li>
+<li>Understandable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Formant synthesis</h2>
+<ul>
+<li>Does not sound natural</li>
+<li>Is not intelligible</li>
+<li>Is fast and responsive</li>
+</ul>
+<audio src="media/formant.mp3"></audio>
+<audio src="media/formant-fast.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Concatonative synthesis</h2>
+<ul>
+<li>Sounds more natural</li>
+<li>Is more intelligible</li>
+<li>Is less responsive</li>
+</ul>
+<audio src="media/concatonative.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Parametric synthesis</h2>
+<ul>
+<li>Is natural</li>
+<li>Is intelligible</li>
+<li>Is responsive</li>
+</ul>
+<audio src="media/parametric.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Voice XML (1999)</h2>
+<p>Used to specify dialogues between humans and computers via voice browsers<br>
+<a href="https://w3.org/tr/voicexml21/">w3.org/tr/voicexml21/</a></p>
+</section>
+
+<section class="slide">
+<h2>Speech Synthesis Markup Language (2004)</h2>
+<p>Used to define speech characteristics
+<br>
+<a href="https://w3.org/tr/speech-synthesis/">w3.org/tr/speech-synthesis</a></p>
+</section>
+
+<section class="slide">
+<h2>CSS Speech module (2012)</h2>
+<p>Used for aural design of web content
+<br>
+<a href="https://www.w3.org/TR/css3-speech/">w3.org/css3-speech</a></p>
+</section>
+
+<section class="slide">
+<h2>Web Speech API (2014)</h2>
+<p>Used to provide voice input and voice output for web applications
+<br>
+<a href="https://w3c.github.io/speech-api/webspeechapi.html">w3c.github.io/speech-api/webspeechapi.html</a></p>
+</section>
+
+<section class="slide">
+<h2>CSS Speech + Web Speech API demo</h2>
+<video src="media/css-speech.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Inclusive Design Principles</h2>
+<p>Putting people first
+<br>
+<img src="pictures/idp-logo.png" alt="Inclusive Design Principles logo"><br>
+<a href="https://inclusivedesignprinciples.org">inclusivedesignprinciples.org</a></p>
+</section>
+
+<section class="slide">
+<h2>1. Provide comparable experience</h2>
+<p>Ensure your interface provides a comparable experience for all so people can accomplish tasks in a way that suits their needs without undermining the quality
+of the content.</p>
+</section>
+
+<section class="slide">
+<h2>Conversation transcripts</h2>
+<p>Provide a way to view the conversation in text</p>
+<ul>
+<li>Via an app</li>
+<li>Via a screen</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>2. Consider situation</h2>
+<p>People use your interface in different situations. Make sure your interface delivers a valuable experience to people regardless of their circumstances.</p>
+<ul>
+<li>Explain what the user can do</li>
+<li>Ask direct questions</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Don't</h2>
+<audio src="media/app/1-opening-tequila.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>Open Learn About Tequila"</dd>
+<dt>App</dt>
+<dd>"Opening Learn About Tequila</dd>
+<dt>User</dt>
+<dd>"Um...</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Do</h2>
+<audio src="media/app/2-learn-about-tequila.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>Open Learn About Tequila</dd>
+<dt>App</dt>
+<dd>"You can learn about Joven, Blanco, or Reposado tequila. Which one do you want?</dd>
+<dt>User</dt>
+<dd>"Reposado tequila please"</dd>
+</dl>
+</section>
+
+<section class="slide"><h2>3. Be consistent</h2>
+<p>Use familiar conventions and apply them consistently.</p>
+<ul>
+<li>Use common words and phrases</li>
+<li>Avoid technical jargon</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Don't</h2>
+<audio src="media/app/3-flight-delayed.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>"Initiate Flight Status and report on flight ZZ1050"</dd>
+<dt>App</dt>
+<dd>"Flight ZZ1050 is delayed due to system fault X32-G. Reposted time of departure is 15.30 hours"</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Do</h2>
+<audio src="media/app/4-flight-from-bristol.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>"Ask Flight Status about my flight to Amsterdam"</dd>
+<dt>App</dt>
+<dd>"Your flight from Bristol to Amsterdam is delayed due to a mechanical fault. It will now depart at 3.30pm</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>4. Give control</h2>
+<p>Ensure people are in control. People should be able to access and interact with content in their preferred way.</p>
+<ul>
+<li>Provide information in small chunks</li>
+<li>Let the user decide what to do next</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Don't</h2>
+<audio src="media/app/5-popular-teas.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>"Ask the Tea Shop about the most popular teas</dd>
+<dt>App</dt>
+<dd>Here are the most popular teas:<br>
+1. English Breakfast<br>
+2. Darjeeling<br>
+3. Assam<br>
+4. Earl Grey</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Do</h2>
+<audio src="media/app/6-english-breakfast.mp3"></audio>
+<audio src="media/app/7-teas-list.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>"Ask the Tea Shop about the most popular teas</dd>
+<dt>App</dt>
+<dd>"The most popular tea is English Breakfast. Would you like to hear more?</dd>
+<dt>User</dt>
+<dd>Yes please</dd>
+<dt>App</dt>
+<dd>2. Darjeeling<br>
+3. Assam...</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>5. Offer choice</h2>
+<p>Consider providing different ways for people to complete tasks, especially those that are complex or non standard.</p>
+<ul>
+<li>Don't offer too many choices</li>
+<li>Make choices simple</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Don't</h2>
+<audio src="media/app/8-milkshakes.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>"Order a milkshake from the Burger Place"</dd>
+<dt>App</dt>
+<dd>"You can order chocolate, strawberry, vanilla, banana, or peanut butter.<br>
+For chocolate say 'chocolate', for strawberry say 'strawberry'...</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Do</h2>
+<audio src="media/app/9-chose-flavour.mp3"></audio>
+<audio src="media/app/10-more-flavours.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>"Order a milkshake from the Burger Place"</dd>
+<dt>App</dt>
+<dd>Would you like chocolate, strawberry, or another flavour?</dd>
+<dt>User</dt>
+<dd>"Another flavour"</dd>
+<dt>App</dt>
+<dd>There is also vanilla, banana,  or peanut butter. Which would you like?</dd>
+<dt>User</dt>
+<dd>Peanut butter please</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>6. Prioritise content</h2>
+<p>Help users focus on core tasks, features, and information by prioritising them within the content and layout.</p>
+<ul>
+<li>Offer important options first</li>
+<li>Help users prioritise</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Don't</h2>
+<audio src="media/app/11-recipe-options.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>"Open my Recipe Book"</dd>
+<dt>App:</dt>
+<dd>You can add a recipe, delete a recipe, edit a recipe, find a recipe, or choose an ingredient. Which one do you want?</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Do</h2>
+<audio src="media/app/12-find-recipe.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>"Open my Recipe Book"</dd>
+<dt>App</dt>
+<dd>"Do you want to find a recipe, or something else?"</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>7. Add value</h2>
+<p>Consider the value of features and how they improve the experience for different users.</p>
+<ul>
+<li>Write for ear not eye</li>
+<li>Keep it simple</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Don't</h2>
+<audio src="media/app/13-rugby-scores.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>"Ask Score Keeper for an update on the Bristol game"</dd>
+<dt>App</dt>
+<dd>"Bristol 35 - 20 Harlequins<br>
+Time remaining 00:30:30"</dd>
+</dl>
+</section>
+</dd>
+
+<section class="slide">
+<h2>Do</h2>
+<audio src="media/app/14-rugby-scores.mp3"></audio>
+<dl>
+<dt>User</dt>
+<dd>"Ask Score Keeper for an update on the Bristol game"</dd>
+<dt>App</dt>
+<dd>"With 35 minutes to go, the score is Bristol 35, Harlequins 20"</dd>
+</dl>
+</section>
+
+<section class="slide">
+<h2>Privacy</h2>
+<p>Can we make conversations with technology private?</p>
+</section>
+
+<section class="slide">
+<h2>Security</h2>
+<p>How do we secure our conversations with technology?</p>
+</section>
+
+<section class="slide">
+<h2>Identity</h2>
+<p>How do we identify ourselves in conversation with technology?</p>
+</section>
+
+<section class="slide">
+<h2>Trust</h2>
+<p>What happens if the speaking technology is too convincing?</p>
+</section>
+
+<section class="slide">
+<h2>Keep talking (with technology)</h2>
+<video src="media/keep-talking.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Thank you</h2>
+<p>Léonie Watson ~ The Paciello Group (TPG)</p>
+<ul style="margin-top: 2em">
+<li>Mastodon: <a href="https://toot.cafe/@tink">@tink@toot.cafe</a></li>
+<li>Twitter: <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li>Blog: &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://tink.uk">tink.uk</a></li>
+<li>Github: <a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+</section>
+
+<script src="shower/shower.min.js"></script>
+</body>
+</html>
