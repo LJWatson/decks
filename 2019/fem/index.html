@@ -1,0 +1,417 @@
+e<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="shower/themes/tink/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/tink/styles/overrides.css">
+<title>Web Components and the AOM</title>
+</head>
+<body class="shower list">
+<img id="tink-logo" alt="" src="shower/themes/tink/pictures/tink-avatar.png"/>
+<img id="tetralogical-logo" alt="" src="shower/themes/tink/pictures/Tetralogical-logo-RGB.svg"/>
+<header class="caption">
+<h1>Web Components and the AOM</h1>
+<p><a href="https://tink.uk">Léonie Watson</a></p>
+</header>
+<section class="slide" id="cover">
+<h2>Web Components and the AOM</h2>
+<p>Frontend Moscow, October 2019</p>
+<p>Léonie Watson, TetraLogical</p>
+
+<ul id="contact-list">
+<li><img src="shower/themes/tink/pictures/twitter.svg" alt="Twitter"/><a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li><img src="shower/themes/tink/pictures/tink.svg" alt="Tink"/><a href="https://tink.uk">https://tink.uk</a></li>
+<li><img src="shower/themes/tink/pictures/github.svg" alt="Github"/><a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Browser mechanics</h2>
+<p class="mp"><span class="m1">HTML</span> &gt; <span class="m2">DOM</span> &gt; <span class="m3">Accessibility Tree</span> &gt; <span class="m4">User Interface</span></p>
+</section>
+
+<section class="slide">
+<h2>HTML: the <code>&lt;button&gt;</code> element</h2>
+<pre><code>&lt;button&gt;Play&lt;/button&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>DOM: the <code>&lt;button&gt;</code> element</h2>
+<pre><code>&lt;button&gt;Play&lt;/button&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Acc tree: the <code>&lt;button&gt;</code> element</h2>
+<ul>
+<li>Role: button</li>
+<li>Name: "Play"</li>
+<li>State: focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>UI: the <code>&lt;button&gt;</code> element</h2>
+<img src="pictures/button.png" alt="Button image"/>
+</section>
+
+<section class="slide">
+<h2>Custom Element: customised</h2>
+<pre><code>class ToggleButton extends HTMLButtonElement {
+    constructor() {
+        super();
+    }
+}
+
+customElements.define("toggle-button", ToggleButton, { extends: "button" });</code></pre>
+</section>
+
+<section class="slide">
+<h2>connectedCallback()</h2>
+<pre><code>connectedCallback() {
+    this.setAttribute("aria-pressed", "false");
+    this.addEventListener("click", togglePressed);
+}</code></pre>
+</section>
+
+<section class="slide">
+	<h2>Function: the <code>&lt;toggle-button&gt;</code> element</h2>
+	<pre><code>function togglePressed() {
+    if (this.getAttribute("aria-pressed") == "false") {
+        this.setAttribute("aria-pressed", "true");
+    } else {
+        this.setAttribute("aria-pressed", "false");
+    }
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>HTML: the <code>is</code> attribute</h2>
+<pre><code>&lt;button is="toggle-button"&gt;Play&lt;/button&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>DOM: the <code>is</code> attribute</h2>
+<pre><code>&lt;button is="toggle-button" aria-pressed="false"&gt;Play&lt;/button&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Acc tree: the <code>is</code> attribute</h2>
+<ul>
+<li>Role: toggle-button</li>
+<li>Name: "Play"</li>
+<li>State: focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Demo: the <code>is="custom-button"</code> attribute</h2>
+<video src="media/screen-reader-demo-toggle-button.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Custom Element: autonomous</h2>
+<pre><code>class ToggleButton extends HTMLElement {
+    constructor() {
+        super();
+    }
+}
+
+customElements.define("toggle-button", ToggleButton);</code></pre>
+</section>
+
+<section class="slide">
+<h2>connectedCallback()</h2>
+<pre><code style="font-size: 65%">connectedCallback() {
+    this.setAttribute("role", "button");
+    this.setAttribute("tabindex", "0");
+    this.setAttribute("aria-pressed", "false");
+
+    this.addEventListener("click", togglePressed);
+    this.addEventListener("keydown", function (e) {
+        if (e.keyCode == 13 || e.keyCode == 32) {
+            togglePressed();
+        }
+    });
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>HTML: the <code>&lt;toggle-button&gt;</code> element</h2>
+<pre><code>&lt;toggle-button&gt;Play&lt;/toggle-button&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>DOM: the <code>&lt;toggle-button&gt;</code> element</h2>
+<pre><code>&lt;toggle-button role="button" tabindex="0" aria-pressed="false"&gt;Play&lt;/toggle-button&gt;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Acc tree: the <code>&lt;toggle-button&gt;</code> element</h2>
+<ul>
+<li>Role: toggle button</li>
+<li>Name: "Play"</li>
+<li>State: focusable</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Demo: the <code>&lt;toggle-button&gt;</code> element</h2>
+<video src="media/screen-reader-demo-toggle-button.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Accessibility Object Model (AOM)</h2>
+<div style="width: 20%"><img src="pictures/w3c.svg" alt="W3C"></div>
+<p>Web Platform Incubator Community Group (WICG)<br>
+https://wicg.github.io/aom</p>
+</section>
+
+<section class="slide">
+<h2>Phase 1a: ARIA attribute reflection</h2>
+<p>Will enable reflection of:</p>
+<ul>
+<li>ARIA attributes</li>
+<li>Element references</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Reflecting ARIA attributes</h2>
+<p>Adds two interface mixins to ARIA 1.2</p>
+<ul>
+<li>AccessibleRole</li>
+<li>AccessibleAttributes</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>connectedCallback()</h2>
+<pre><code>connectedCallback() {
+    this.role = "button";
+    this.tabIndex = "0";
+    this.ariaPressed = "false";
+
+    ...
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2>ARIA attribute reflection: implementation status</h2>
+<p>https://w3c-test.org/wai-aria/idlharness.window.html</p>
+<table id="browsers">
+    <tr>
+        <td><img src="pictures/chrome.png" alt="Chrome"></td>
+        <td><img src="pictures/edge-chromium-beta.png" alt="Edge"></td>
+        <td><img src="pictures/firefox.png" alt="Firefox"></td>
+        <td><img src="pictures/safari.png" alt="Safari"></td>
+    </tr>
+    <tr class="companies">
+        <td>Chrome</td>
+        <td>Edge (Chromium beta)</td>
+        <td>Firefox</td>
+        <td>Safari</td>
+    </tr>
+    <tr>
+        <td><mark>82/106</mark></td>
+        <td><mark>82/106</mark></td>
+        <td><mark>1/106</mark></td>
+        <td><mark>86/106</mark></td>
+    </tr>
+</table>
+</section>
+
+<section class="slide">
+<h2>Reflecting element references ⚠️</h2>
+<pre><code>connectedCallback() {
+    this.ariaDescribedByElements = [description1];
+    ...
+}</code></pre>
+</section>
+
+<section class="slide">
+<h2 style="font-size: 44px">Phase 1b: Custom element semantics ⚠️</h2>
+<p>Will enable semantics to be provided in two ways:</p>
+<ul>
+<li>Default semantics via ElementDefinitionOptions</li>
+<li>Per instance semantics via ElementInternals</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Default semantics ⚠️</h2>
+<pre><code>class ToggleButton extends HTMLElement {
+    constructor() {
+        super();
+    }
+}
+customElements.define("toggle-button", ToggleButton, { role: "button", tabIndex: "0" });</code></pre>
+</section>
+
+<section class="slide">
+<h2>Per instance semantics ⚠️</h2>
+<pre><code>class ToggleButton extends HTMLElement {
+    var internals = null;
+	constructor() {
+        super();
+        this.internals = customElements.createInternals(this);
+        this.internals.ariaPressed = "false";
+    }
+}
+
+customElements.define("toggle-button", ToggleButton, { role: "button", tabIndex: "0" });</code></pre>
+</section>
+
+<section class="slide">
+<h2>Phase 2: User action events ⚠️</h2>
+<p>Will enable listening for Assistive Technology (AT) events</p>
+</section>
+
+<section class="slide">
+<h2>Synthesized DOM events ⚠️</h2>
+<p>To protect AT user privacy, AT events will trigger synthesized DOM events</p>
+<ul>
+<li>AT click fires a synthesized click event</li>
+<li>AT select fires a synthesized click event</li>
+<li>AT focus will fire a synthesized focus event</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>New AT events ⚠️</h2>
+<p>New AT events will be introduced:</p>
+<ul>
+<li>Increment/decrement</li>
+<li>Scroll up/down</li>
+<li>Dismiss</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Phase 3: Virtual accessibility nodes ⚠️</h2>
+<p>Will allow virtual nodes to be added to the accessibility tree</p>
+<ul>
+<li>Attach an accessible node to a DOM node with attachAccessibleRoot()</li>
+<li>No mixing of DOM and virtual accessibility tree branches</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2 style="font-size: 44px">Phase 4: Computed tree introspection ⚠️</h2>
+<p>Will provide access to:</p>
+<ul>
+<li>Computed accessibility properties for accessibility nodes associated with DOM nodes</li>
+<li>Computed accessibility tree including virtual accessibility nodes</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>HTML: the <code>&lt;speak-content&gt;</code> element</h2>
+<pre><code>&lt;speak-content&gt;
+    &lt;span slot="control"&gt;Speak this&lt;/span&gt;
+    &lt;div slot="speak"&gt;1 tequila... 2 tequila... 3 tequila... floor!&lt;/div&gt;
+&lt;/speak-content&gt;</code></pre>
+        </section>
+
+<section class="slide">
+<h2>HTML template + the shadow DOM</h2>
+<pre><code style="font-size: 55%">class SpeakContent extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: "open" });
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
+}
+const template = document.createElement("template");
+template.innerHTML = `&lt;style&gt; ... &lt;/style&gt;
+                      &lt;button id="control"&gt;
+                        &lt;slot name="control"&gt;&lt;/slot&gt;
+                      &lt;/button&gt;
+                      &lt;slot name="speak" id="speak"&gt;&lt;/slot&gt;`;
+
+customElements.define("speak-content", SpeakContent);</code></pre>
+</section>
+
+<section class="slide">
+<h2>connectedCallback()</h2>
+<pre><code>   connectedCallback() {
+        var control = this.shadowRoot.querySelector("button");
+        control.setAttribute("aria-pressed", "false");
+        var speak = this.querySelector("div");
+        var speakContent = speak.textContent;
+        control.addEventListener("click", speakThis);
+    }</code></pre>
+	</section>
+
+<section class="slide">
+<h2>speakThis()</h2>
+<pre><code>    function speakThis(e) {
+        if (control.getAttribute("aria-pressed") == "false") {
+            control.setAttribute("aria-pressed", "true");
+
+            var utterance = new SpeechSynthesisUtterance();
+            utterance.text = speakContent;
+            window.speechSynthesis.speak(utterance);
+
+            setTimeout(resetPressedState, 500);
+        }
+    }</code></pre>
+</section>
+
+<section class="slide">
+<h2>resetPressedState()</h2>
+<pre><code>    function resetPressedState() {
+        if (window.speechSynthesis.speaking === false) {
+            control.setAttribute("aria-pressed", "false");
+        }
+        else {
+            setTimeout(resetPressedState, 500);
+        }
+    }</code></pre>
+</section>
+
+<section class="slide">
+<h2>CSS attribute selector</h2>
+<pre><code>const template = document.createElement("template");
+template.innerHTML = 
+    `&lt;style&gt;
+    ...
+    #control[aria-pressed="true"] {
+        color: #fff;
+        padding: 11px 12px 9px 16px;
+        text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff;
+        box-shadow: 0 1px 0 #666, 0 2px 0 #444, 0 2px 2px rgba(0, 0, 0, 0.9);
+    }
+    ...
+    &lt;/style&gt;`;</code></pre>
+</section>
+
+<section class="slide">
+<h2>Demo: the <code>&lt;speak-content&gt;</code> element</h2>
+<video src="media/speak-content-1.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>With thanks to</h2>
+<ul>
+<li>Scott O'Hara @ScottOHara</li>
+<li>Patrick Lauke @Patrick_H_Lauke<br>
+https://codepen.io/patrickhlauke/pen/byWPMX :)</li>
+<li>Dan Hopkins @PerlBod</li>
+</ul>
+</section>
+
+<section class="slide" id="cover">
+<h2>Thank you!</h2>
+<p>Léonie Watson, TetraLogical</p>
+
+<ul id="contact-list">
+<li><img src="shower/themes/tink/pictures/twitter.svg" alt="Twitter"/><a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li><img src="shower/themes/tink/pictures/github.svg" alt="Github"/><a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+</section>
+
+<script src="shower/shower.min.js"></script>
+</body>
+</html>
