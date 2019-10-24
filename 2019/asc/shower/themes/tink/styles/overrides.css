@@ -59,3 +59,8 @@ table#apis:nth-of-type(1) tr:nth-child(2) td {
     display: inline-block;
     margin-bottom: 40px;
 }
+
+.video-larger {
+    /* down from 80% for captions */
+    max-height:78%;
+}
