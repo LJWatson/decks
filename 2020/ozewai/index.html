@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="shower/themes/tetralogical/styles/screen-16x10.css">
+<link rel="stylesheet" href="shower/themes/tetralogical/styles/overrides.css">
+<link rel="stylesheet" href="shower/themes/tetralogical/styles/hosted.css">
+<link rel="stylesheet" href="shower/themes/tetralogical/styles/prism-coy.css">
+<title>You talkin' to me?</title>
+</head>
+<body class="shower list">
+<script src="shower/themes/tetralogical/prism-coy.js"></script>
+
+<img id="tetralogical-logo" alt="TetraLogical" src="shower/themes/tetralogical/pictures/Tetralogical-logo-RGB.svg"/>
+
+<header class="caption">
+
+<h1>You talkin' to me?</h1>
+<p>Léonie Watson, TetraLogical</p>
+</header>
+
+<section class="slide" id="cover">
+<h2>You talkin' to me?</h2>
+<p>Australian Accessibility Conference, Online December 2020</p>
+<p>Léonie Watson, TetraLogical</p>
+
+<ul id="contact-list">
+<li><img src="shower/themes/tetralogical/pictures/email.svg" alt="Email"> <a href="mailto:hello@tetralogical.com">hello@tetralogical.com</a></li>
+<li><img src="shower/themes/tetralogical/pictures/tetralogical-icon.svg" alt="Website"> <a href="https://tetralogical.com">tetralogical.com</a></li>
+<li><img src="shower/themes/tetralogical/pictures/twitter.svg" alt="Twitter"> <a href="https://twitter.com/tetralogical">@TetraLogical</a></li>
+<li><img src="shower/themes/tetralogical/pictures/twitter.svg" alt="Twitter"> <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li><img src="shower/themes/tetralogical/pictures/github.svg" alt="Github"> <a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>IBM Shoebox (1961)</h2>
+<video src="media/ibm-shoebox-captioned.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Voice XML (VXML)</h2>
+<img class="logo left" src="pictures/w3c.png" alt="W3C logo">
+<ul>
+<li>VXML 1.0 W3C Recommendation (2000)</li>
+<li>VXML 2.0 W3C Recommendation (2004)</li>
+<li>VXML 2.1 W3C Recommendation (2007)</li>
+<li>VXML 3.0 W3C Working Draft (2010)</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Voice browsers</h2>
+<p>VXML is parsed in voice browsers to create voice interfaces</p>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;prompt&gt;</code> element</h2>
+<pre><code class="lang-xml"><xmp><vxml version="2.1" lang="en">
+ <form>
+  <block>
+   <prompt bargein="false">Hello and welcome to hell!</prompt>
+  </block>
+ </form>
+</vxml></xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;menu&gt;</code> element</h2>
+<pre><code class="lang-xml" style="font-size: 75%"><xmp><vxml version="2.1" lang="en">
+ <menu>
+  <prompt>Hello and welcome to hell!<enumerate/></prompt>
+  <choice next="https://hell.com/1.vxml">Press 1 to make the wrong choice.</choice>
+  <choice next="https://hell.com/2.vxml">Press 2 to listen to elevator music.</choice>
+  <choice next="https://hell.com/3.vxml">Press 3 if you've lost the will.</choice>
+  <noinput>Press 4 to hear these options again.<enumerate/></noinput>
+ </menu>
+</vxml></xmp></code></pre>
+<audio src="media/telephone-menu.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Conversation architecture</h2>
+<uL>
+<li>Speak</li>
+<li>Listen</li>
+<li>Understand</li>
+<li>Respond</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Automatic Speech Recognition (ASR)</h2>
+<p>Recognises human speech and converts it into text</p>
+</section>
+
+<section class="slide">
+<h2>Apple voice recognition (1993)</h2>
+<video src="media/apple-voice-recog-captioned.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Natural Language Processing (NLP)</h2>
+<p>Takes text and converts it into structured data</p>
+</section>
+
+<section class="slide">
+<h2>Machine Learning</h2>
+<p>Takes structured data, processes it, and returns structured data</p>
+</section>
+
+<section class="slide">
+<h2>Natural Language Generation (NLG)</h2>
+<p>Takes structured data and converts it into text</p>
+</section>
+
+<section class="slide">
+<h2>Text To Speech (TTS)</h2>
+<p>Takes text and converts it into synthetic speech</p>
+</section>
+
+<section class="slide">
+<h2>Voder synthesizer (1939)</h2>
+<video src="media/voder-captioned.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Bell Labs IBM704 (1961)</h2>
+<video src="media/bell-labs-daisy-bell-captioned.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Amazon Echo (2014)</h2>
+<video src="media/amazon-echo-captioned.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>Parts of a skill</h2>
+<ul>
+<li>Skill interface</li>
+<li>Skill service</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Interaction schema</h2>
+<pre><code class="lang-json" style="font-size: 80%"><xmp>{
+	"interactionModel": {
+  		"languageModel": {
+   			"invocationName": "conference info",
+   			"intents": [],
+   			"types": []
+  		}
+ 	}
+}</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>Default intents</h2>
+<ul>
+<li>AMAZON.CancelIntent</li>
+<li>AMAZON.HelpIntent</li>
+<li>AMAZON.StopIntent</li>
+<li>AMAZON.NavigateHomeIntent</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Built-in intents</h2>
+<p>25 available, including:</p>
+<ul>
+<li>AMAZON.FallbackIntent</li>
+<li>AMAZON.NoIntent</li>
+<li>AMAZON.YesIntent</li>
+<li>AMAZON.RepeatIntent</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>AMAZON.HelpIntent schema</h2>
+<pre><code class="lang-json" style="font-size: 60%"><xmp>{
+	"interactionModel": {
+  		"languageModel": {
+   			"invocationName": "conference info",
+   			"intents": [
+    			{
+    				"name": "AMAZON.HelpIntent",
+    				"samples": []
+    			}
+   			]
+		 }
+	}
+}</xmp></code}</xmp></code></pre> </pre>
+</section>
+
+<section class="slide">
+<h2>AboutConferenceIntent schema</h2>
+<pre><code class="lang-json" style="font-size: 60%"><xmp>{
+	"interactionModel": {
+		"languageModel": {
+			"invocationName": "conference info",
+			"intents": [
+				{
+					"name": "AboutConferenceIntent",
+					"samples": [ "about Australian Accessibility Conference" ]
+				}
+			],
+			"types": []
+		}
+	}
+}</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>Adding a slot, part 1 - intents</h2>
+<pre><code class="lang-json" style="font-size: 60%"><xmp>{
+	"intents": [
+		{
+			"name":	"AboutConferenceIntent",
+			"slots": [
+			 	{
+					 "name": "conference",
+					 "type": "conference"
+				}
+			],
+			"samples": [ "about {conference}" ]
+		}
+	],
+	...
+</xmp></code style="font-size: 60%"></pre>
+</section>
+<section class="slide">
+	<h2>Adding a slot, part 2 - types</h2>
+	<pre><code class="lang-json" style="font-size: 50%"><xmp>...
+	"types": [
+		{
+			"name": "conference",
+			"values": [
+				{
+					"name": { "value": "Australian Accessibility Conference" }
+				},
+				{
+					"name": { "value": "Sight Tech Global" }
+				},
+				{
+					"name": { "value": "Web Stories" }
+				}
+			]
+		}
+
+</xmp></code style="font-size: 60%"></pre>
+</section>
+
+<section class="slide">
+<h2>Alexa Skills Kit</h2>				
+<pre><code class="lang-javascript"><xmp>const Alexa = require("ask-sdk-core");</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>Request types</h2>
+<ul>
+<li>LaunchRequest</li>
+<li>IntentRequest</li>
+<li>SessionEndedRequest</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>JSON launch request</h2>
+<pre><code class="lang-json" style="font-size: 60%"><xmp>    "version": "1.0",
+	"session": {
+		"new": true,
+		"sessionId": "amzn1.echo-api.session.b65841a9-f6cf-406d-aa6b-5c89097f4de2",
+		"application": {},
+		"device": {},
+		"request": {
+			"type": "LaunchRequest",
+			"requestId": "amzn1.echo-api.request.8a52f508-67b6-445b-a0ac-74273ed5ab13",
+			"timestamp": "2020-12-08T15:20:25Z",
+			"locale": "en-AU",
+			"shouldLinkResultBeReturned": false
+		}
+	}
+</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>LaunchRequestIntentHandler</h2>
+<pre><code class="lang-js" style="font-size: 60%"><xmp>const LaunchRequestHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === "LaunchRequest";
+    },
+    handle(handlerInput) {
+        let welcomePrompt = "Hello Which conference do you want to know about?";
+        let welcomeReprompt = "Let me know which conference you're interested in?";
+        return handlerInput.responseBuilder
+            .speak(welcomePrompt)
+            .reprompt(welcomeReprompt)
+            .getResponse();
+    }
+};</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>JSON launch request response</h2>
+<pre><code class="lang-json" style="font-size: 45%"><xmp>    "body": {
+		"version": "1.0",
+		"response": {
+			"outputSpeech": {
+				"type": "SSML",
+				"ssml": "<speak>Hello. Which conference do you want to know about?</speak>"
+			},
+			"reprompt": {
+				"outputSpeech": {
+					"type": "SSML",
+					"ssml": "<speak>Let me know which conference you're interested in?</speak>"
+				}
+			},
+			"shouldEndSession": false,
+			"type": "_DEFAULT_RESPONSE"
+		},
+		"sessionAttributes": {},
+		"userAgent": "ask-node/2.7.0 Node/v10.17.0"
+	}
+</xmp></code style="font-size: 60%"></pre>
+<audio src="media/alexa-conf-welcome.mp3"></audio>
+<audio src="media/alexa-conf-response.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2 style="font-size: 42px">Speech Synthesis Markup Language (SSML)</h2>
+<img class="logo left" src="pictures/w3c.png" alt="W3C logo">
+<ul>
+<li>SSML W3C Recommendation (2004)</li>
+<li>SSML 1.1 W3C Recommendation (2010)</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Alexa, in her own voice(s)</h2>
+<p id="flags"><img src="pictures/india.svg"/><img src="pictures/america.svg"><img src="pictures/canada.svg"><img src="pictures/australia.svg"><img src="pictures/uk.svg"></p>
+<p>"Hello, I'm Alexa and this is how I sound in India.<br>
+This is how I sound in America, and this is me in Canada.<br>
+Here I am in Australia, and this is me in the United Kingdom."</p>
+<audio src="media/alexa-regions.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;p&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<p>The terror, which would not end
+					  for another 28 years – if it ever did end – began,
+					  so far as I know or can tell, with a boat made from
+					  a sheet of newspaper floating down a gutter swollen
+					  with rain.</p>`;</xmp></code></pre>
+<audio src="media/stephen-king1.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;voice&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<voice name='Matthew'>
+					  	<p>The terror, which would not end
+						for another 28 years – if it ever did end – began,
+						so far as I know or can tell, with a boat made from
+					  	a sheet of newspaper floating down a gutter swollen
+					  	with rain.</p>
+					  </voice>`;</xmp></code class="lang-html" style="font-size: 80%"></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;emphasis&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 70%"><xmp>let responsePrompt =
+	`<voice name='Matthew'>
+	  <p>The <emphasis level='moderate'>terror</emphasis>, which would not end
+	  for another 28 years – if it ever <emphasis level='moderate'>did</emphasis> end – began,
+	  <emphasis level='reduced'>so far as I know or can tell</emphasis>, with a boat made from
+	  a sheet of newspaper floating down a gutter <emphasis level='moderate'>swollen</emphasis>
+	  with <emphasis level='moderate'>rain</emphasis>.</p>
+	</voice>`;
+</xmp></code class="lang-html" style="font-size: 80%"></pre>
+<audio src="media/stephen-king2.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;voice&gt;</code> element again</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<voice name='Matthew'>
+						<p>The Terror, which would not end
+						for another 28 years...</p>
+					  </voice>`;</xmp></code class="lang-html" style="font-size: 80%"></pre>
+<audio src="media/alexa-without-lang.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;lang&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<voice name='Matthew'><lang xml:lang ='en-US'>
+						<p>The Terror, which would not end
+						for another 28 years...</p>
+					  </lang></voice>`;</xmp></code class="lang-html" style="font-size: 80%"></pre>
+<audio src="media/alexa-with-lang.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;p&gt;</code> element again</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<p>Hello, my name is Inigo Montoya.
+					  You killed my father. Prepare to die!</p>`;</xmp></code class="lang-html" style="font-size: 80%"></pre>
+<audio src="media/inigo-montoya1.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;break&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<voice name='Enrique'><lang xml:lang='es-ES'>
+					  	<p>Hello, <break time='500ms'/> my name is Inigo Montoya.
+						 You killed my father.
+						 <break strength='x-strong'/>Prepare to die!</p>
+					  </lang></voice>`;</xmp></code class="lang-html" style="font-size: 80%"></pre>
+<audio src="media/inigo-montoya2.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;s&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<s>Piglet sidled up to Pooh from behind.</s>
+					  <s>'Pooh!' he whispered.</s>
+					  <s>'Yes, Piglet?'</s>
+					  <s>'Nothing', said Piglet, taking Pooh's paw.
+						 'I just wanted to be sure of you'.</s>`;</xmp></code></pre>
+<audio src="media/aa-milne1.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;prosody&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 70%"><xmp>let responsePrompt =
+	`<voice name='Brian'>
+	  <s>Piglet sidled up to Pooh from behind.</s>
+	  <s><prosody pitch='x-high' rate='medium' volume='soft'>'Pooh'</prosody> he whispered.</s>
+	  <s>'Yes, Piglet?'</s><s><prosody pitch='x-high' rate='x-fast'>'Nothing',</prosody>
+		 said Piglet, taking Pooh's paw.
+		 <prosody pitch='x-high' rate='x-fast'>'I just wanted to be sure of you'.</prosody></s>
+	 </voice>`;
+	</xmp></code class="lang-html" style="font-size: 80%"></pre>
+<audio src="media/aa-milne2.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;amazon-effect&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 70%"><xmp>let responsePrompt = `<amazon:effect name='whispered'>
+						Shhh. Be very, very quiet.
+					  </amazon:effect>`;
+					</xmp></code class="lang-html" style="font-size: 70%"></pre>
+<audio src="media/alexa-effect-whisper.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>The <code>&lt;p&gt;</code> element again</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<p>I'm so excited (and I just can't hide it)!</p>`;</xmp></code class="lang-html" style="font-size: 80%"></pre>
+<audio src="media/alexa-emotion-normal.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2 style="font-size: 42px">The <code>&lt;amazon:emotion name="excited"&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<amazon:emotion name='excited' intensity='high'>
+						<p>I'm so excited (and I just can't hide it)!</p>
+					  </amazon:emotion>`;</xmp></code class="lang-html" style="font-size: 80%"></pre>
+<audio src="media/alexa-emotion-excited.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2 style="font-size: 38px">The <code>&lt;amazon:emotion name="disappointed"&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<amazon:emotion name='disappointed' intensity='high'>
+						<p>I'm so excited (and I just can't hide it)!</p>
+					  </amazon:emotion>`;</xmp></code></pre>
+<audio src="media/alexa-emotion-disappointed.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2 style="font-size: 46px">The <code>&lt;amazon:domain name="news&gt;"</code> element</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<p>Now it's me, with the news. <amazon:domain name='news'>
+					  Today absolutely nothing happened. Everybody went
+					  and had a nice cup of tea instead.</amazon:domain></p>`;</xmp></code class="lang-html" style="font-size: 80%"></pre>
+<audio src="media/alexa-domain-news.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2 style="font-size: 40px">The <code>&lt;say-as interpret-as="expletive"&gt;</code> element</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<voice name='Joey'><lang xml:lang='en-US'>
+						Frankly my dear, I don't give-a
+						<say-as interpret-as='expletive'>damn</say-as>!
+					  </lang></voice>`;</xmp></code></pre>
+<audio src="media/alexa-expletive.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2 style="font-size: 34px">The <code>&lt;say-as interpret-as="interjection"&gt;</code> element UK</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<say-as interpret-as='interjection'>
+						Ace. As if. Bah humbug. Blimey. Cha ching. Crikey.
+						Eek. Good Grief. Hiss. Moo. Nom nom. Oof. Oy. Simples.
+						Tick tick tick. Uh huh. Whee.
+					  </say-as>`;</xmp></code class="lang-html" style="font-size: 80%"></pre>
+<audio src="media/alexa-interjections-uk.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2 style="font-size: 32px">The <code>&lt;say-as interpret-as="interjection"&gt;</code> element Australia</h2>
+<pre><code class="lang-html" style="font-size: 80%"><xmp>let responsePrompt = `<say-as interpret-as='interjection'>
+						aaaarrrr. As if. aussie aussie aussie. aw man. blimey.
+						bummer. checkmate. fair dinkum. fair go. g'day.
+						good onya. no worries. strewth. you beauty.
+					  </say-as>`;</xmp></code></pre>
+<audio src="media/alexa-interjections-australia.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Web Speech API</h2>
+<img class="logo left" src="pictures/w3c.png" alt="W3C logo">
+<ul>
+<li>W3C Draft Community Group Report (2012)</li>
+<li>W3C Draft Community Group Report (2019)</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>Web Speech interfaces</h2>
+<ul>
+<li>SpeechRecognition interface</li>
+<li>SpeechSynthesis interface</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>The <code>SpeechSynthesisUtterance</code> object</h2>
+<pre><code class="lang-js"><xmp>var utterance = new SpeechSynthesisUtterance();</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>.text</code> attribute</h2>
+<pre><code class="lang-js"><xmp>utterance.text = "Tequila!";</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>.speak()</code> method</h2>
+<pre><code class="lang-js"><xmp>window.speechSynthesis.speak(utterance);</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>.getVoices()</code> method</h2>
+<pre><code class="lang-js"><xmp>var tts = speechSynthesis.getVoices();</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>.voice</code> attribute</h2>
+<pre><code class="lang-js" style="font-size: 90%"><xmp>utterance.voice = "Microsoft Hazel desktop - English (Great Britain)";</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>SpeechSynthesis demo</h2>
+<video src="media/speech-synthesis-demo.mp4"></video>
+</section>
+
+<section class="slide">
+<h2>CSS Speech module</h2>
+<img class="logo left" src="pictures/w3c.png" alt="W3C logo">
+<ul>
+<li>CSS Level 2 Aural Style Sheets W3C Recommendation (1998)</li>
+<li>CSS Level 3 Speech module W3C Note (2018)</li>
+<li>CSS Level 3 Speech module Candidate Recommendation (2020)</li>
+</ul>
+</section>
+
+<section class="slide">
+<h2>CSS Speech properties</h2>
+<p>Describe the characteristics of content when spoken by synthetic speech</p>
+</section>
+
+<section class="slide">
+<h2>The <code>speak:;</code> property</h2>
+<pre><code class="lang-css"><xmp>.content {
+	speak: auto;
+}</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>voice-volume:;</code> property</h2>
+<pre><code class="lang-css"><xmp>.content {
+	voice-volume: loud;
+}</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>voice-rate:;</code> property</h2>
+<pre><code class="lang-css"><xmp>.content {
+	voice-rate: x-fast;
+}</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>The <code>voice-pitch:;</code> property</h2>
+<pre><code class="lang-css"><xmp>.content {
+	voice-pitch: x-low;
+}</xmp></code></pre>
+</section>
+
+<section class="slide">
+<h2>Screen reader demo</h2>
+<pre><code class="lang-html"><xmp><h2 class="headline">News headline: Nothing happened!</h2>
+<p class="date">Reported on 1 April</p>
+<p>Nothing happened today.
+   Everybody went and had a nice cup of tea instead.</p></xmp></code></pre>
+<audio src="media/screen-reader1.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Screen reader + CSS Speech demo</h2>
+<pre><code class="lang-css" style="font-size: 60%;"><xmp>.headline {
+	speak: auto;
+	voice-volume: x-loud;
+	voice-rate: fast;
+	voice-pitch: high;
+}
+
+.date {
+	speak: auto;
+	voice-volume: soft;
+	voice-rate: x-fast;
+	voice-pitch: low;
+}</xmp></code></pre>
+<audio src="media/screen-reader2.mp3"></audio>
+</section>
+
+<section class="slide">
+<h2>Thank you</h2>
+<ul id="contact-list">
+<li><img src="shower/themes/tetralogical/pictures/email.svg" alt="Email"> <a href="mailto:hello@tetralogical.com">hello@tetralogical.com</a></li>
+<li><img src="shower/themes/tetralogical/pictures/tetralogical-icon.svg" alt="Website"> <a href="https://tetralogical.com">tetralogical.com</a></li>
+<li><img src="shower/themes/tetralogical/pictures/twitter.svg" alt="Twitter"> <a href="https://twitter.com/tetralogical">@TetraLogical</a></li>
+<li><img src="shower/themes/tetralogical/pictures/twitter.svg" alt="Twitter"> <a href="https://twitter.com/leoniewatson">@LeonieWatson</a></li>
+<li><img src="shower/themes/tetralogical/pictures/github.svg" alt="Github"> <a href="https://github.com/ljwatson">@LJWatson</a></li>
+</ul>
+
+<audio src="media/goodbye.mp3"></audio>
+</section>
+
+<script src="shower/shower.min.js"></script>
+</body>
+</html>
