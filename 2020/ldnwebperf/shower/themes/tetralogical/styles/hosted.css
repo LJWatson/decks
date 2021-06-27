@@ -1,0 +1,67 @@
+.shower.list {
+  display: block;
+  clip: auto;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  background: #F6F5F4;
+}
+
+.shower.list .caption {
+  padding: 1rem 5% 2rem 5%;
+  background: none;
+  border-bottom: 3px solid #420065;
+  overflow: hidden;
+  font-size: 48px;
+}
+
+.shower.list .caption h1 {
+  color: #420065;
+}
+
+.shower.list .caption p {
+  color: #a900c0;
+}
+
+.shower.list #tetralogical-logo {
+  position: inherit;
+  float: right;
+  height: 100px;
+}
+
+.shower.list .slide ul:not(#contact-list) {
+  list-style: disc;
+}
+
+.shower.list .slide ul:not(#contact-list)>li::before {
+  content: none;
+}
+
+.shower.list .slide ol li,
+.shower.list .slide ul li {
+  text-indent: inherit;;
+}
+
+.shower.list .slide {
+  -webkit-transform: none;
+  transform: none;
+  margin: 1rem;
+  padding: 5%;
+  overflow: visible;
+  width: auto;
+  height: auto;
+}
+
+.shower.list .slide:not(#cover)::after {
+  content: none;
+}
+
+@media (max-width: 800px) {
+  .shower.list .slide blockquote::before {
+    margin: 7px 0 0 -32px;
+    font-size: 75px;
+  }
+
+  .shower.list #tetralogical-logo {
+    float: none;
+  }
+}
